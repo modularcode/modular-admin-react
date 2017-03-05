@@ -1,5 +1,7 @@
 # Modular Admin: Free Bootstrap 4 Dashboard Theme | ReactJS version (draft in progress)
 
+ ![demo](http://modularcode.github.io/modular-admin-html/assets/demo.png)
+
 ## Technical requirements
 
 - Modular folder structure
