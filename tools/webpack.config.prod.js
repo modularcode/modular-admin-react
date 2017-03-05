@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 
 const config = require('./config');
@@ -11,7 +12,14 @@ const webpackConfigDevelopment = {
   output: {
     path: config.DIST_DIR_CLIENT,
     filename: 'bundle.js'
-  }
+  },
+  devtool: 'source-map',
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
+      comments: false
+    })
+  ]
 };
 
 
