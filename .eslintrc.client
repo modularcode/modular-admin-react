@@ -1,0 +1,26 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "rules": {
+    "no-console":0,
+    "func-names": ["error", "never"],
+    "indent": [
+      "warn",
+      2
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ]
+  },
+  "plugins": [
+    "react"
+  ],
+  "env": {
+    "browser": true
+  }
+}
