@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 import Client from './Client';
 
-const rootEl = document.getElementsByTagName('body')[0];
+const rootEl = document.getElementById('root');
 
 /* eslint-disable */
 const render = (Component) => {
@@ -19,4 +19,6 @@ const render = (Component) => {
 
 render(Client);
 
-// if (module.hot) module.hot.accept('./Client', () => render(Client));
+if (module.hot) {
+  module.hot.accept('./Client', () => render(Client));
+}

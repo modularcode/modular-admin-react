@@ -8,6 +8,7 @@
 - AirBnB style guide
 - React best practices
 - Webpack dev server
+- Reacgt hot module replacement
 - React router
 - Redux
 - Redux dev tools

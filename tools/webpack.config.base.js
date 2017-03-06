@@ -23,7 +23,10 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({
+      title: 'Modular Admin | ReactJS version',
+      template: config.CLIENT_DIR + '/index.ejs',
+    })
   ],
   resolve: {
     modules: [

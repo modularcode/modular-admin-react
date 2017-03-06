@@ -9,11 +9,16 @@ const webpackConfigDevelopment = {
   entry: [
     'babel-polyfill',
     'react-hot-loader/patch',
+    // activate HMR for React
+    'webpack-dev-server/client?http://localhost:3000',
+    // bundle the client for webpack-dev-server
+    // and connect to the provided endpoint
+    'webpack/hot/only-dev-server',
     config.CLIENT_DIR + '/main.jsx'
   ],
   output: {
     path: config.DIST_DIR_CLIENT,
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -28,7 +33,10 @@ const webpackConfigDevelopment = {
   devtool: 'source-map',
   devServer: {
     contentBase: config.DIST_DIR_CLIENT,
-    historyApiFallback: true
+    host: 'localhost',
+    port: 3000,
+    historyApiFallback: true,
+    hot: true,
   },
 };
 
