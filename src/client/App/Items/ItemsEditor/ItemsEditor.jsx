@@ -9,7 +9,7 @@ export default class ItemsEditor extends Component {
   render() {
     return (
       <div>
-        Items List
+        Items Editor
       </div>
     );
   }
