@@ -24,5 +24,12 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin()
-  ]
+  ],
+  resolve: {
+    modules: [
+      config.NPM_DIR,
+      config.CLIENT_DIR,
+    ],
+    extensions: ['.js', '.jsx']
+  }
 };

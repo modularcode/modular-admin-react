@@ -9,7 +9,7 @@ const webpackConfigDevelopment = {
   entry: [
     'babel-polyfill',
     'react-hot-loader/patch',
-    config.CLIENT_DIR + '/main.js'
+    config.CLIENT_DIR + '/main.jsx'
   ],
   output: {
     path: config.DIST_DIR_CLIENT,
@@ -24,7 +24,12 @@ const webpackConfigDevelopment = {
 
     new webpack.NoEmitOnErrorsPlugin(),
     // do not emit compiled assets that include errors
-  ]
+  ],
+  devtool: 'source-map',
+  devServer: {
+    contentBase: config.DIST_DIR_CLIENT,
+    historyApiFallback: true
+  },
 };
 
 

@@ -6,7 +6,7 @@
     "node": true
   },
   "rules": {
-    "no-console":0,
+    "no-console": 0,
     "func-names": ["error", "never"],
     "indent": [
       "warn",
@@ -16,10 +16,7 @@
       "error",
       "single"
     ],
-    "semi": [
-      "error",
-      "always"
-    ]
+    "react/prefer-stateless-function": [0]
   },
   "plugins": [
     "react"

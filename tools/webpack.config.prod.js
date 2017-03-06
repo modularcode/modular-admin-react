@@ -7,7 +7,7 @@ const webpackConfigBase = require('./webpack.config.base');
 
 const webpackConfigDevelopment = {
   entry: [
-    config.CLIENT_DIR + '/main.js'
+    config.CLIENT_DIR + '/main.jsx'
   ],
   output: {
     path: config.DIST_DIR_CLIENT,
