@@ -1,16 +1,15 @@
 // Libs
 import React, { Component, PropTypes } from 'react';
 
-export default class Items extends Component {
+export default class ItemsList extends Component {
   static propTypes = {
-    children: PropTypes.element.isRequired,
+
   }
 
   render() {
     return (
       <div>
-        Items
-        {this.props.children}
+        Items List
       </div>
     );
   }

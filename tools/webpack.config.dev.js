@@ -14,7 +14,7 @@ const webpackConfigDevelopment = {
     // bundle the client for webpack-dev-server
     // and connect to the provided endpoint
     'webpack/hot/only-dev-server',
-    config.CLIENT_DIR + '/main.jsx'
+    config.CLIENT_DIR + '/index.jsx'
   ],
   output: {
     path: config.DIST_DIR_CLIENT,

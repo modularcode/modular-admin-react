@@ -2,7 +2,7 @@ import { AppContainer } from 'react-hot-loader';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Client from './Client';
+import router from './router';
 
 const rootEl = document.getElementById('root');
 
@@ -17,8 +17,8 @@ const render = (Component) => {
 };
 /* eslint-enable */
 
-render(Client);
+render(router);
 
 if (module.hot) {
-  module.hot.accept('./Client', () => render(Client));
+  module.hot.accept('./router', () => render(router));
 }
