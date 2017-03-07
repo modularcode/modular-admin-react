@@ -16,10 +16,64 @@ module.exports = {
       {
         test: /\.(jsx|js)$/,
         exclude: config.NPM_DIR,
+        loader: "babel-loader",
+      },
+      {
+        test:   /\.scss/,
         use: [
-          "babel-loader"
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              includePaths: [
+                config.NPM_DIR,
+                config.CLIENT_DIR
+              ]
+            }
+          },
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: []
+            }
+          }
         ],
       },
+      {
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          "css-loader"
+        ]
+      },
+      {
+        test: /\.png$/,
+        loader: "url-loader",
+        options: {
+          limit: 100000
+        }
+      },
+      {
+        test: /\.jpg$/,
+        loader: "file-loader"
+      },
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "url-loader",
+        options: {
+          limit: 10000,
+          mimetype: "application/font-woff"
+        }
+      },
+      {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "file-loader"
+      }
     ],
   },
   plugins: [
