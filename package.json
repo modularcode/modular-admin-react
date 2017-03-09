@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/modularcode/modular-admin-react",
   "dependencies": {
+    "color": "^1.0.3",
     "express": "^4.15.0",
     "grid-styled": "^1.0.1",
     "node-sass": "^4.5.0",

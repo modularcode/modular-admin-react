@@ -20,3 +20,6 @@ injectGlobal`
   }
 `;
 /* eslint-enable */
+
+
+export default {};

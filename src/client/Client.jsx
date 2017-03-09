@@ -3,8 +3,8 @@ import { Router, Route, IndexRedirect, IndexRoute, browserHistory } from 'react-
 import { ThemeProvider } from 'styled-components';
 
 // Styles (Styled components)
-import './_common/style';
-import theme from './_common/theme';
+import theme from './theme';
+import './ClientStyled';
 
 // Styles (SASS)
 // import './_common/style.scss';
