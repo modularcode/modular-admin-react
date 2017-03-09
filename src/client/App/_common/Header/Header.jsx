@@ -1,13 +1,16 @@
 // Libs
 import React, { Component } from 'react';
 
-// Components
+// Styled components
+import { HeaderContainer } from './HeaderStyled';
+
+// Component
 export default class Header extends Component {
   render() {
     return (
-      <header>
+      <HeaderContainer>
         The Header
-      </header>
+      </HeaderContainer>
     );
   }
 }

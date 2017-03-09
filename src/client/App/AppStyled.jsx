@@ -1,26 +1,25 @@
-import React from 'react';
-import styled, { ThemeProvider } from 'styled-components';
+import styled from 'styled-components';
 
 export const AppContainer = styled.div`
   position: absolute;
-  padding-left: 200px;
-  width: 100%;
-  min-height: 100vh;
   top: 0;
   left: 0;
+  width: 100%;
+  padding-left: ${props => props.theme.sidebarWidth}px;
+
   background-color: #efefef;
 `;
 
 export const AppContent = styled.article`
-  position: absolute;
-  left: 250px;
-  top: 100px;
-  right: 0;
-  bottom: 0;
+  min-height: 100vh;
+  padding-top: ${props => props.theme.headerHeight}px;
+  padding-bottom: ${props => props.theme.footerHeight}px;
+
   background-color: #ccc;
 `;
 
 
 export default {
   AppContainer,
+  AppContent,
 };

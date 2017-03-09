@@ -50,8 +50,9 @@ export const link = {
 
 // Header
 export const header = {
-  headerHeight:       70,
-  headerHeightXs:     50,
+  headerHeight:           70,
+  headerHeight_xs:        50,
+  headerBackgroundColor:  '#d7dde4',
 };
 
 // Sidebar
@@ -79,7 +80,8 @@ export const sidebarNav = {
 
 // Footer
 export const footer = {
-  footerHeight:       50,
+  footerHeight:             50,
+  footerBackgroundColor:    '#fff',
 };
 
 // Dropdowns

@@ -1,5 +1,5 @@
 // Libs
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react'; // , PropTypes
 
 export default class ItemsList extends Component {
   static propTypes = {

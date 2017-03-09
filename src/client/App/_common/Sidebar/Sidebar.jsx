@@ -1,13 +1,16 @@
 // Libs
 import React, { Component } from 'react';
 
-// Components
+// Styled components
+import { SidebarContainer } from './SidebarStyled';
+
+// Component
 export default class Sidebar extends Component {
   render() {
     return (
-      <aside>
+      <SidebarContainer>
         The Sidebar
-      </aside>
+      </SidebarContainer>
     );
   }
 }

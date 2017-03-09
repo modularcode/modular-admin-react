@@ -1,13 +1,16 @@
 // Libs
 import React, { Component } from 'react';
 
-// Components
+// Styled components
+import { FooterContainer } from './FooterStyled';
+
+// Component
 export default class Footer extends Component {
   render() {
     return (
-      <footer>
+      <FooterContainer>
         The Footer
-      </footer>
+      </FooterContainer>
     );
   }
 }

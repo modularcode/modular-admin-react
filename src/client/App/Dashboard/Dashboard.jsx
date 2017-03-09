@@ -1,7 +1,7 @@
 // Libs
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react'; // ,PropTypes
 
-export default class App extends Component {
+export default class Dashboard extends Component {
   static propTypes = {
 
   }
