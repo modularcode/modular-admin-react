@@ -1,4 +1,4 @@
-# Modular Admin: Free Bootstrap 4 Dashboard Theme | ReactJS version (draft in progress)
+# Modular Admin: Free Bootstrap 4 Dashboard Theme | ReactJS version (in development)
 
  ![demo](http://modularcode.github.io/modular-admin-html/assets/demo.png)
 
