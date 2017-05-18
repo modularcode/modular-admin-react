@@ -8,7 +8,7 @@
 - AirBnB style guide
 - React best practices
 - Webpack dev server
-- Reacgt hot module replacement
+- React hot module replacement
 - React router
 - Redux
 - Redux dev tools
@@ -20,12 +20,12 @@
 
 ## ToDo
 
-- Setup `npm start` command, which builds the app and starts node servcer
+- Setup `npm start` command, which builds the app and starts node server
 - Setup environments
 - Configure styles and scripts bundling
 - Setup hot module reloading
 - Setup bootstrap styles and scripts
-- Setup `src/browser` driectory structure as in **modular-admin-html**
+- Setup `src/browser` directory structure as in **modular-admin-html**
 - Import common styles from **modular-admin-html**
 - Implement auth layouts in React
 
@@ -77,7 +77,7 @@ At first I was defining api interaction files in ```_services/{entityName}.js```
 
 #### Why redux-thunk and not redux-saga
 
-Redux thunk is more simple to start with. More advanced users should be able to easily move from redux-thunk to redux-saga.
+Redux thunk is simpler to start with. More advanced users should be able to easily move from redux-thunk to redux-saga.
 
 #### Separate folder for build tasks configs
 
