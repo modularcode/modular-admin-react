@@ -1,4 +1,25 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">Modular Material Admin + React</h1>
+
+<div align="center">
+
+Free [MaterialUI](https://material-ui.com/) dashboard theme implemented by using **ReactJS** + **React Hooks** + **TypeScript** + **Context API**
+
+**(in development)**
+
+</div>
+
+[![demo](https://repository-images.githubusercontent.com/195131407/ffa79c80-b806-11e9-8aa8-75d9609bb9e5)](https://modular-material-admin-react.netlify.com)
+
+<p align="center">
+  <strong>
+    <a href="https://modular-material-admin-react.netlify.com" target="_blank">🚀 View Demo</a>
+  </strong>
+  |
+  <strong>
+    <a href="https://modular-material-admin-react-docs.netlify.com" target="_blank">🤷🏼‍♂️ Read The Docs</a>
+  </strong>
+</p>
+
 
 ## Available Scripts
 
