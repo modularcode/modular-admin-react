@@ -3,9 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.8.1",
+    "@material-ui/icons": "^4.5.1",
+    "axios": "^0.19.0",
+    "axios-mock-adapter": "^1.17.0",
+    "chart.js": "^2.9.3",
+    "cross-env": "^6.0.3",
+    "disqus-react": "^1.0.7",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "store": "^2.0.12",
+    "typeface-roboto": "0.0.75",
+    "uuid": "^3.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
