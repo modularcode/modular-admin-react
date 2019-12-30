@@ -9,7 +9,7 @@ import IconButton from '@material-ui/core/IconButton'
 
 import IconMenu from '@material-ui/icons/Menu'
 
-import HeaderDemo from './AppHeaderDemo'
+import HeaderDemo from './AppHeaderDemoButtons'
 
 import HeaderSearch from './AppHeaderSearch'
 import HeaderNotifications from './AppHeaderNotifications'

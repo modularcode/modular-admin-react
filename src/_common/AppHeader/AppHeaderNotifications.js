@@ -39,7 +39,7 @@ const notifications = [
   },
 ]
 
-const HeaderNotifications = () => {
+const AppHeaderNotifications = () => {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = React.useState(null)
 
@@ -143,4 +143,4 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default HeaderNotifications
+export default AppHeaderNotifications

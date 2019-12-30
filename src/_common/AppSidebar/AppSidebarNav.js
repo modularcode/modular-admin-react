@@ -27,7 +27,7 @@ import IconPreson from '@material-ui/icons/Person' //
 import IconStock from '@material-ui/icons/LocalShipping'
 import IconLocation from '@material-ui/icons/LocationOn'
 
-import SidebarNavItems from './SidebarNavItems'
+import SidebarNavItems from './AppSidebarNavList'
 
 const SidebarNav = props => {
   const { isCollapsed } = props

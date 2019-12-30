@@ -1,0 +1,50 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
+import theme from '../../_theme'
+
+import AppSidebar from './AppSidebar.js'
+
+<Meta title="General/Components/AppSidebar" component={AppSidebar} />
+
+# App Sidebar
+
+Application sidebar component.
+
+<Preview>
+  <Story name="default sidebar">
+    {() => {
+      return (
+        <div style={{
+          position: 'relative',
+          width: theme.sidebar.width,
+          height: 1100
+        }}>
+          <AppSidebar />
+        </div>
+      )
+    }}
+  </Story>
+</Preview>
+
+
+## Collapsed sidebar
+
+<Preview>
+  <Story name="collapsed sidebar">
+    {() => {
+      return (
+        <div style={{
+          position: 'relative',
+          width: theme.sidebar.width,
+          height: 1100
+        }}>
+          <AppSidebar collapsed={true} />
+        </div>
+      )
+    }}
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={AppSidebar} />
+

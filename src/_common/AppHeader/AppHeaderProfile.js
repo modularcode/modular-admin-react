@@ -18,7 +18,7 @@ import IconAccount from '@material-ui/icons/AccountBalance'
 import IconSettings from '@material-ui/icons/Settings'
 import IconLogout from '@material-ui/icons/ExitToApp'
 
-const HeaderProfile = () => {
+const AppHeaderProfile = () => {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = React.useState(null)
   const { user } = {}
@@ -126,4 +126,4 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default HeaderProfile
+export default AppHeaderProfile

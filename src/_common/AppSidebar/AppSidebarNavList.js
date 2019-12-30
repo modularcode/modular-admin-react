@@ -1,15 +1,15 @@
 import React from 'react'
 
-import SidebarNavItem from './SidebarNavItem'
+import AppSidebarNavItem from './AppSidebarNavItem'
 
-const SidebarNavItems = props => {
+const AppSidebarNavList = props => {
   const { items = [], isCollapsed = false, isNested = false } = props
   // const classes = useStyles()
 
   return (
     <>
       {items.map((item, index) => (
-        <SidebarNavItem
+        <AppSidebarNavItem
           {...item}
           isCollapsed={isCollapsed}
           isNested={isNested}
@@ -20,4 +20,4 @@ const SidebarNavItems = props => {
   )
 }
 
-export default SidebarNavItems
+export default AppSidebarNavList

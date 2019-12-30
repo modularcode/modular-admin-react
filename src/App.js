@@ -6,6 +6,8 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from './_theme'
 import AppRouter from './AppRouter'
 
+console.log('theme', theme)
+
 const App = () => {
   return (
     <div className="App">

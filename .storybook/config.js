@@ -1,9 +1,12 @@
 import 'storybook-chromatic'
+import 'typeface-roboto'
+
 import React from 'react'
 import { configure, addDecorator, addParameters } from '@storybook/react'
 import { withA11y } from '@storybook/addon-a11y'
 import { themes } from '@storybook/theming';
 import { ThemeProvider } from '@material-ui/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
 import { BrowserRouter } from 'react-router-dom' //
 
 
@@ -27,13 +30,14 @@ addParameters({
 
 addDecorator(withA11y);
 addDecorator(story => (
-  <>
+  <div className="App">
     <ThemeProvider theme={appTheme}>
+      <CssBaseline />
       <BrowserRouter>
         {story()}
       </BrowserRouter>
     </ThemeProvider>
-  </>
+  </div>
 ));
 
 // automatically import all files ending in *.stories.js

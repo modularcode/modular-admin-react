@@ -12,7 +12,7 @@ import IconStar from '@material-ui/icons/Star'
 //   <Link innerRef={ref as any} {...props} />
 // ))
 
-const HeaderDemo = props => {
+const AppHeaderDemoButtons = props => {
   const classes = useStyles(props)
 
   return (
@@ -80,4 +80,4 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default HeaderDemo
+export default AppHeaderDemoButtons
