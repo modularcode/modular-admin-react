@@ -1,4 +1,4 @@
-import React, { useState, useRef, useLayoutEffect, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import useComponentSize from '@rehooks/component-size'
@@ -27,14 +27,13 @@ export default function DashboardLayout(
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'))
   const isMobile = !isDesktop
 
-  const [contentOffset, setContentOffset] = useState(0)
   const [isSidebarOpenMobile, setIsSidebarOpenMobile] = useState(false)
-  const [isSidebarOpenDesktop, setIsSidebarOpenDesktop] = useState(false)
+  // const [isSidebarOpenDesktop, setIsSidebarOpenDesktop] = useState(false)
   const [isSidebarCollapsedDesktop, setIsSidebarCollapsedDesktop] = useState(false)
 
   const headerSize = useComponentSize(refHeaderContainer)
   const sidebarSize = useComponentSize(refSidebarContainer)
-  const footerSize = useComponentSize(refFooterContainer)
+  // const footerSize = useComponentSize(refFooterContainer)
 
   const HeaderComponent = header
   const SidebarComponent = sidebar
@@ -44,20 +43,20 @@ export default function DashboardLayout(
     setIsSidebarOpenMobile(!isSidebarOpenMobile)
   }
 
-  function handleSidebarToggle() {
-    // Open/close on mobile
-    if (isMobile) {
-      setIsSidebarOpenMobile(!isSidebarOpenMobile)
-    }
-    // Collapse/uncollapse on desktop
-    else {
-      setIsSidebarCollapsedDesktop(!isSidebarCollapsedDesktop)
-    }
-  }
+  // function handleSidebarToggle() {
+  //   // Open/close on mobile
+  //   if (isMobile) {
+  //     setIsSidebarOpenMobile(!isSidebarOpenMobile)
+  //   }
+  //   // Collapse/uncollapse on desktop
+  //   else {
+  //     setIsSidebarCollapsedDesktop(!isSidebarCollapsedDesktop)
+  //   }
+  // }
 
-  function handleSidebarToggleCollapse() {
-    setIsSidebarCollapsedDesktop(!setIsSidebarCollapsedDesktop)
-  }
+  // function handleSidebarToggleCollapse() {
+  //   setIsSidebarCollapsedDesktop(!setIsSidebarCollapsedDesktop)
+  // }
 
   return (
     <div className={classes.dashboardContainer}>

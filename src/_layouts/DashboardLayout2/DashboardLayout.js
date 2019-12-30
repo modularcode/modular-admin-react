@@ -7,7 +7,7 @@ import Drawer from '@material-ui/core/Drawer'
 import Hidden from '@material-ui/core/Hidden'
 
 import AppHeader from '../../_common/AppHeader/AppHeader'
-import AppSidebar from '../../_common/AppSidebar/AppSidebar'
+// import AppSidebar from '../../_common/AppSidebar/AppSidebar'
 import AppFooter from '../../_common/AppFooter'
 
 export default function Dashboard({ children }) {

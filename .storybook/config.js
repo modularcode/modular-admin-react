@@ -1,5 +1,4 @@
-import 'storybook-chromatic'
-import 'typeface-roboto'
+// import 'typeface-roboto'
 
 import React from 'react'
 import { configure, addDecorator, addParameters } from '@storybook/react'
@@ -20,10 +19,27 @@ addParameters({
     showRoots: true,
     theme: docsTheme,
     storySort: (a, b) => {
-      const aNestingLevel = a[1].parameters.fileName.split('/').length
-      const bNestingLevel = b[1].parameters.fileName.split('/').length
+      console.log('a', a);
+      // console.log('b', b);
 
-      return `${aNestingLevel}${a[1].id}`.localeCompare(`${bNestingLevel}${b[1].id}`)
+      // const aNestingLevel = a[1].parameters.fileName.split('/').length
+      // const bNestingLevel = b[1].parameters.fileName.split('/').length
+
+      // return `${aNestingLevel}${a[1].id}`.localeCompare(`${bNestingLevel}${b[1].id}`)
+
+      const getPriority = (id) => {
+        if (id.indexOf('general-') > -1) {
+          return '0'
+        }
+        else {
+          return 'z';
+        }
+      }
+
+      const aPriority = getPriority(a[1].id);
+      const bPriority = getPriority(b[1].id);
+
+      return `${aPriority}${a[1].id}`.localeCompare(`${bPriority}${b[1].id}`);
     }
   },
 });
