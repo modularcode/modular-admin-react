@@ -11,84 +11,102 @@ import AppHeader from '../../_common/AppHeader'
 import AppFooter from '../../_common/AppFooter'
 import AppSidebar from '../../_common/AppSidebar'
 
-export default function DashboardLayout(
-  { header, footer, sidebar, content, children } = {
+const DashboardLayout = (
+  {
+    header,
+    footer,
+    sidebar,
+    isSidebarOpenMobileInitial,
+    isSidebarOpenDesktopInitial,
+    isSidebarCollapsedInitial,
+    children,
+  } = {
     header: AppHeader,
     footer: AppFooter,
     sidebar: AppSidebar,
+    isSidebarOpenMobileInitial: false,
+    isSidebarOpenDesktopInitial: true,
+    isSidebarCollapsedInitial: false,
   },
-) {
+) => {
   const refHeaderContainer = useRef(null)
-  const refSidebarContainer = useRef(null)
-  const refFooterContainer = useRef(null)
+  // const refSidebarContainer = useRef(null)
+  // const refFooterContainer = useRef(null)
 
   const classes = useStyles()
   const theme = useTheme()
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'))
   const isMobile = !isDesktop
 
-  const [isSidebarOpenMobile, setIsSidebarOpenMobile] = useState(false)
-  // const [isSidebarOpenDesktop, setIsSidebarOpenDesktop] = useState(false)
-  const [isSidebarCollapsedDesktop, setIsSidebarCollapsedDesktop] = useState(false)
+  const [isSidebarOpenMobile, setIsSidebarOpenMobile] = useState(
+    isSidebarOpenMobileInitial,
+  )
+  const [isSidebarOpenDesktop, setIsSidebarOpenDesktop] = useState(
+    isSidebarOpenDesktopInitial,
+  )
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(isSidebarCollapsedInitial)
 
   const headerSize = useComponentSize(refHeaderContainer)
-  const sidebarSize = useComponentSize(refSidebarContainer)
+  // const sidebarSize = useComponentSize(refSidebarContainer)
   // const footerSize = useComponentSize(refFooterContainer)
+
+  const contentOffset = (() => {
+    if ((isDesktop && !isSidebarOpenDesktop) || isMobile) {
+      return 0
+    } else if (isDesktop && isSidebarCollapsed) {
+      return theme.sidebar.widthCollapsed
+    } else {
+      return theme.sidebar.width
+    }
+  })()
 
   const HeaderComponent = header
   const SidebarComponent = sidebar
   const FooterComponent = footer
 
-  function handleSidebarMobileToggle() {
+  function handleSidebarToggleOpenMobile() {
     setIsSidebarOpenMobile(!isSidebarOpenMobile)
   }
 
-  // function handleSidebarToggle() {
-  //   // Open/close on mobile
-  //   if (isMobile) {
-  //     setIsSidebarOpenMobile(!isSidebarOpenMobile)
-  //   }
-  //   // Collapse/uncollapse on desktop
-  //   else {
-  //     setIsSidebarCollapsedDesktop(!isSidebarCollapsedDesktop)
-  //   }
-  // }
+  function handleSidebarToggle() {
+    // Open/close on mobile
+    if (isMobile) {
+      setIsSidebarOpenMobile(!isSidebarOpenMobile)
+    }
+    // Collapse/uncollapse on desktop
+    else {
+      setIsSidebarCollapsed(!isSidebarCollapsed)
+    }
+  }
 
-  // function handleSidebarToggleCollapse() {
-  //   setIsSidebarCollapsedDesktop(!setIsSidebarCollapsedDesktop)
-  // }
+  function handleSidebarToggleCollapse() {
+    setIsSidebarCollapsed(!isSidebarCollapsed)
+  }
 
   return (
     <div className={classes.dashboardContainer}>
       <div
         ref={refHeaderContainer}
-        className={clsx(
-          classes.headerContainer,
-          isDesktop && classes.headerContainerDesktop,
-          isDesktop &&
-            isSidebarCollapsedDesktop &&
-            classes.headerContainerDesktopDrawerCollapsed,
-        )}
+        className={clsx(classes.headerContainer)}
         style={{
-          width: `calc(100% - ${sidebarSize.width}px)`,
+          width: `calc(100% - ${contentOffset}px)`,
         }}
       >
-        {HeaderComponent && <HeaderComponent />}
+        {HeaderComponent && <HeaderComponent onToggleClick={handleSidebarToggle} />}
       </div>
       <div
-        ref={refSidebarContainer}
+        // ref={refSidebarContainer}
         className={clsx(
           classes.sidebarContainer,
           isMobile && classes.sidebarContainerMobile,
-          isDesktop && isSidebarCollapsedDesktop && classes.sidebarContainerCollapsed,
+          isDesktop && isSidebarCollapsed && classes.sidebarContainerCollapsed,
         )}
       >
         <Hidden mdUp implementation="css">
           <Drawer
             variant="temporary"
-            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
             open={isSidebarOpenMobile}
-            onClose={handleSidebarMobileToggle}
+            onClose={handleSidebarToggleOpenMobile}
             classes={{
               paper: clsx(classes.drawer), //  classes.drawerMobile
             }}
@@ -138,10 +156,13 @@ export default function DashboardLayout(
   )
 }
 
-DashboardLayout.props = {
+DashboardLayout.propTypes = {
   header: PropTypes.elementType,
   sidebar: PropTypes.elementType,
   footer: PropTypes.elementType,
+  isSidebarOpenMobileInitial: PropTypes.bool,
+  isSidebarOpenDesktopInitial: PropTypes.bool,
+  isSidebarCollapsedInitial: PropTypes.bool,
 }
 
 const useStyles = makeStyles(theme => ({
@@ -169,10 +190,11 @@ const useStyles = makeStyles(theme => ({
     top: 0,
     bottom: 0,
     flexDirection: 'row',
-    [theme.breakpoints.up('md')]: {
-      width: theme.sidebar.width,
-      flexShrink: 0,
-    },
+    width: theme.sidebar.width,
+    // [theme.breakpoints.up('md')]: {
+    //   width: theme.sidebar.width,
+    //   flexShrink: 0,
+    // },
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -187,6 +209,10 @@ const useStyles = makeStyles(theme => ({
   drawer: {
     width: '100%',
     position: 'absolute',
+    // [theme.breakpoints.up('md')]: {
+    //   width: theme.sidebar.width,
+    //   flexShrink: 0,
+    // },
   },
   mainContainer: {
     flexGrow: 1,
@@ -204,3 +230,5 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
   },
 }))
+
+export default DashboardLayout

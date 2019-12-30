@@ -15,7 +15,7 @@ import HeaderSearch from './AppHeaderSearch'
 import HeaderNotifications from './AppHeaderNotifications'
 import HeaderProfile from './AppHeaderProfile'
 
-const AppHeader = ({ onToggle }) => {
+const AppHeader = ({ onToggleClick }) => {
   const classes = useStyles()
 
   return (
@@ -25,7 +25,7 @@ const AppHeader = ({ onToggle }) => {
           edge="start"
           color="inherit"
           aria-label="Toggle sidebar"
-          onClick={onToggle}
+          onClick={onToggleClick}
           className={clsx(classes.menuButton)}
         >
           <IconMenu />
@@ -42,7 +42,7 @@ const AppHeader = ({ onToggle }) => {
 }
 
 AppHeader.propTypes = {
-  onToggle: PropTypes.func,
+  onToggleClick: PropTypes.func,
 }
 
 const useStyles = makeStyles(theme => ({
