@@ -15,14 +15,11 @@ import HeaderSearch from './AppHeaderSearch'
 import HeaderNotifications from './AppHeaderNotifications'
 import HeaderProfile from './AppHeaderProfile'
 
-/**
- * The `Avatar` component is where all your avatars come to play.
- */
-const Header = ({ onToggle }) => {
+const AppHeader = ({ onToggle }) => {
   const classes = useStyles()
 
   return (
-    <AppBar position="absolute" className={classes.header}>
+    <AppBar position="static" className={classes.header}>
       <Toolbar className={classes.toolbar}>
         <IconButton
           edge="start"
@@ -44,7 +41,7 @@ const Header = ({ onToggle }) => {
   )
 }
 
-Header.propTypes = {
+AppHeader.propTypes = {
   onToggle: PropTypes.func,
 }
 
@@ -69,4 +66,4 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default Header
+export default AppHeader

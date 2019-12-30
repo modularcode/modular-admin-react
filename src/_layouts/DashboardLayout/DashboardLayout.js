@@ -197,6 +197,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
   },
   contentContainer: {
+    display: 'flex',
     position: 'relative',
     flex: 1,
   },

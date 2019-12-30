@@ -1,6 +1,10 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks'
 import DashboardLayout from './DashboardLayout.js'
 
+import AppHeader from '../../_common/AppHeader'
+import AppSidebar from '../../_common/AppSidebar'
+import AppFooter from '../../_common/AppFooter'
+
 <Meta title="General/Components/DashboardLayout" component={DashboardLayout} />
 
 
@@ -8,7 +12,7 @@ import DashboardLayout from './DashboardLayout.js'
 
 Application dashboard layout.
 
-export const Placeholder = ({ children }) => <div
+export const DemoPlaceholder = ({ children }) => <div
   style={{
     padding: 10,
     top: 10,
@@ -35,7 +39,7 @@ export const Placeholder = ({ children }) => <div
   </div>
 </div>
 
-export const Header = () => <div 
+export const DemoHeader = () => <div 
   style={{
     width: '100%',
     background: 'rgb(152, 173, 153)',
@@ -43,12 +47,12 @@ export const Header = () => <div
     flexDirection: 'column',
   }}
 >
-  <Placeholder>
+  <DemoPlaceholder>
     Header
-  </Placeholder>
+  </DemoPlaceholder>
 </div>
 
-export const Sidebar = () => <div 
+export const DemoSidebar = () => <div 
   style={{
     position: 'absolute',
     width: '100%',
@@ -59,33 +63,49 @@ export const Sidebar = () => <div
     flexDirection: 'column',
   }}
 >
-  <Placeholder>
+  <DemoPlaceholder>
     Sidebar
-  </Placeholder>
+  </DemoPlaceholder>
 </div>
 
-export const Footer = () => <div 
+export const DemoFooter = () => <div 
   style={{
     background: '#bfb8ab',
     display: 'flex',
     flexDirection: 'column',
   }}
 >
-  <Placeholder>
+  <DemoPlaceholder>
     Footer
-  </Placeholder>
+  </DemoPlaceholder>
 </div>
 
 <Preview>
   <Story name="dashboard layout">
     <DashboardLayout
-      header={Header}
-      sidebar={Sidebar}
-      footer={Footer}
+      header={DemoHeader}
+      sidebar={DemoSidebar}
+      footer={DemoFooter}
     >
-      <Placeholder>
+      <DemoPlaceholder>
         Content
-      </Placeholder>
+      </DemoPlaceholder>
+    </DashboardLayout>
+  </Story>
+</Preview>
+
+## With real header/footer/sidebar
+
+<Preview>
+  <Story name="with components">
+    <DashboardLayout
+      header={AppHeader}
+      sidebar={AppSidebar}
+      footer={AppFooter}
+    >
+      <DemoPlaceholder>
+        Content
+      </DemoPlaceholder>
     </DashboardLayout>
   </Story>
 </Preview>
