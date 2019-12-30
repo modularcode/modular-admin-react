@@ -2,12 +2,13 @@ import React from 'react'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 
+/* 
 interface LogoProps {
   className?: string
   size?: number
 }
-
-const Logo = (props: LogoProps) => {
+ */
+const Logo = props => {
   const classes = useStyles(props)
 
   return (
@@ -35,7 +36,7 @@ const Logo = (props: LogoProps) => {
 }
 
 const useStyles = makeStyles(theme => ({
-  Logo: (props: LogoProps) => ({
+  Logo: props => ({
     display: 'inline-block',
     verticalAlign: 'text-bottom',
     width: props.size,

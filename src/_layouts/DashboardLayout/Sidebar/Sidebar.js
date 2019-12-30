@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
 import Typography from '@material-ui/core/Typography'
 
-import Logo from '_common/Logo/Logo'
+import Logo from '_common/BaseLogo/BaseLogo'
 import SidebarNav from './SidebarNav'
 
 const Sidebar = props => {

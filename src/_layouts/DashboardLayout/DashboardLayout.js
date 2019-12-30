@@ -47,7 +47,7 @@ export default function Dashboard({ children }) {
       >
         <Header onToggle={handleSidebarToggle} />
       </div>
-      {/* <div
+      <div
         className={clsx(
           classes.sidebarContainer,
           isMobile && classes.sidebarContainerMobile,
@@ -70,12 +70,12 @@ export default function Dashboard({ children }) {
               keepMounted: true, // Better open performance on mobile.
             }}
           >
-            <Sidebar
+            {/* <Sidebar
               isDesktop={isDesktop}
               isMobile={isMobile}
               isSidebarCollapsedDesktop={isSidebarCollapsedDesktop}
               isSidebarOpenMobile={isSidebarOpenMobile}
-            />
+            /> */}
           </Drawer>
         </Hidden>
         <Hidden smDown implementation="css">
@@ -89,15 +89,15 @@ export default function Dashboard({ children }) {
             }}
             variant="permanent"
           >
-            <Sidebar
+            {/* <Sidebar
               isDesktop={isDesktop}
               isMobile={isMobile}
               isSidebarCollapsedDesktop={isSidebarCollapsedDesktop}
               isSidebarOpenMobile={isSidebarOpenMobile}
-            />
+            /> */}
           </Drawer>
         </Hidden>
-      </div> */}
+      </div>
       <main className={classes.content}>
         <div className={classes.headerSpacer} />
         {children}

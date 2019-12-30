@@ -1,0 +1,21 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks'
+import { Button } from '@storybook/react/demo'
+
+<Meta title="General/AppHeader" component={Button} />
+
+# Checkbox
+
+With `MDX` we can define a story for `Button` right in the middle of our
+markdown documentation.
+
+<Preview>
+  <Story name="all buttons">
+    <form>
+      <Button>
+        <span role="img" aria-label="so cool">
+          😀 😎 👍 💯
+        </span>
+      </Button>
+    </form>
+  </Story>
+</Preview>
