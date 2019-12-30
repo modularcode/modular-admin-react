@@ -4,6 +4,7 @@ import { configure, addDecorator, addParameters } from '@storybook/react'
 import { withA11y } from '@storybook/addon-a11y'
 import { themes } from '@storybook/theming';
 import { ThemeProvider } from '@material-ui/styles'
+import { BrowserRouter } from 'react-router-dom' //
 
 
 import docsTheme from './theme'
@@ -28,7 +29,9 @@ addDecorator(withA11y);
 addDecorator(story => (
   <>
     <ThemeProvider theme={appTheme}>
-      {story()}
+      <BrowserRouter>
+        {story()}
+      </BrowserRouter>
     </ThemeProvider>
   </>
 ));

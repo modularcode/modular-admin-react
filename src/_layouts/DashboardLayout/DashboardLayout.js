@@ -6,9 +6,9 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 import Drawer from '@material-ui/core/Drawer'
 import Hidden from '@material-ui/core/Hidden'
 
-import Header from './Header/Header'
-import Sidebar from './Sidebar/Sidebar'
-import Footer from './Footer'
+import AppHeader from '../../_common/AppHeader/AppHeader'
+import AppSidebar from '../../_common/AppSidebar/Sidebar'
+import AppFooter from '../../_common/AppFooter'
 
 export default function Dashboard({ children }) {
   const classes = useStyles()
@@ -45,7 +45,7 @@ export default function Dashboard({ children }) {
             classes.headerContainerDesktopDrawerCollapsed,
         )}
       >
-        <Header onToggle={handleSidebarToggle} />
+        <AppHeader onToggle={handleSidebarToggle} />
       </div>
       <div
         className={clsx(
@@ -101,7 +101,7 @@ export default function Dashboard({ children }) {
       <main className={classes.content}>
         <div className={classes.headerSpacer} />
         {children}
-        <Footer />
+        <AppFooter />
       </main>
     </div>
   )
