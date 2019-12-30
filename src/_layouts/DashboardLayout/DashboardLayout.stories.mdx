@@ -3,13 +3,90 @@ import DashboardLayout from './DashboardLayout.js'
 
 <Meta title="General/Components/DashboardLayout" component={DashboardLayout} />
 
+
 # Dashboard Layout
 
 Application dashboard layout.
 
+export const Placeholder = ({ children }) => <div
+  style={{
+    padding: 10,
+    top: 10,
+    bottom: 10,
+    left: 10,
+    right: 10,
+    display: 'flex',
+    flex: 1,
+    display: 'flex',
+  }}
+>
+  <div
+    style={{
+      border: '3px dashed #ccc',
+      padding: 10,
+      display: 'flex',
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: 10,
+    }}
+  >
+    {children}
+  </div>
+</div>
+
+export const Header = () => <div 
+  style={{
+    width: '100%',
+    background: 'rgb(152, 173, 153)',
+    display: 'flex',
+    flexDirection: 'column',
+  }}
+>
+  <Placeholder>
+    Header
+  </Placeholder>
+</div>
+
+export const Sidebar = () => <div 
+  style={{
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    background: '#7e868c',
+    color: '#fff',
+    display: 'flex',
+    flexDirection: 'column',
+  }}
+>
+  <Placeholder>
+    Sidebar
+  </Placeholder>
+</div>
+
+export const Footer = () => <div 
+  style={{
+    background: '#bfb8ab',
+    display: 'flex',
+    flexDirection: 'column',
+  }}
+>
+  <Placeholder>
+    Footer
+  </Placeholder>
+</div>
+
 <Preview>
   <Story name="dashboard layout">
-    <DashboardLayout />
+    <DashboardLayout
+      header={Header}
+      sidebar={Sidebar}
+      footer={Footer}
+    >
+      <Placeholder>
+        Content
+      </Placeholder>
+    </DashboardLayout>
   </Story>
 </Preview>
 
