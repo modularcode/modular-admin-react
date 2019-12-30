@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios'
-import User, { UserSubmissionData, UserId } from '_types/User'
+import User, { UserSubmissionData, UserId } from './_types/User'
 import apiClient from './client'
 
 export interface UsersService {

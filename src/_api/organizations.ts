@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios'
 import Organization, {
   OrganizationSubmissionData,
   OrganizationId,
-} from '_types/Organization'
+} from './_types/Organization'
 import apiClient from './client'
 
 export interface OrganizationsService {

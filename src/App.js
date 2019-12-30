@@ -4,15 +4,13 @@ import { ThemeProvider } from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 
 import theme from './_theme'
-
-// import AppRouter from './AppRouter'
+import AppRouter from './AppRouter'
 
 const App = () => {
   return (
     <div className="App">
       <CssBaseline />
-      <div>Gago</div>
-      {/* <AppRouter /> */}
+      <AppRouter />
     </div>
   )
 }
