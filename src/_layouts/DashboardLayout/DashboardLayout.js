@@ -12,21 +12,10 @@ import AppFooter from '../../_common/AppFooter'
 import AppSidebar from '../../_common/AppSidebar'
 
 const DashboardLayout = (
-  {
-    header,
-    footer,
-    sidebar,
-    isSidebarOpenMobileInitial,
-    isSidebarOpenDesktopInitial,
-    isSidebarCollapsedInitial,
-    children,
-  } = {
+  { header, footer, sidebar, children } = {
     header: AppHeader,
     footer: AppFooter,
     sidebar: AppSidebar,
-    isSidebarOpenMobileInitial: false,
-    isSidebarOpenDesktopInitial: true,
-    isSidebarCollapsedInitial: false,
   },
 ) => {
   const refHeaderContainer = useRef(null)
@@ -38,13 +27,9 @@ const DashboardLayout = (
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'))
   const isMobile = !isDesktop
 
-  const [isSidebarOpenMobile, setIsSidebarOpenMobile] = useState(
-    isSidebarOpenMobileInitial,
-  )
-  const [isSidebarOpenDesktop, setIsSidebarOpenDesktop] = useState(
-    isSidebarOpenDesktopInitial,
-  )
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(isSidebarCollapsedInitial)
+  const [isSidebarOpenMobile, setIsSidebarOpenMobile] = useState(false)
+  const [isSidebarOpenDesktop, setIsSidebarOpenDesktop] = useState(true)
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
 
   const headerSize = useComponentSize(refHeaderContainer)
   // const sidebarSize = useComponentSize(refSidebarContainer)
@@ -114,13 +99,7 @@ const DashboardLayout = (
               keepMounted: true, // Better open performance on mobile.
             }}
           >
-            {SidebarComponent && <SidebarComponent />}
-            {/* <Sidebar
-              isDesktop={isDesktop}
-              isMobile={isMobile}
-              isSidebarCollapsedDesktop={isSidebarCollapsedDesktop}
-              isSidebarOpenMobile={isSidebarOpenMobile}
-            /> */}
+            {SidebarComponent && <SidebarComponent isCollapsed={isSidebarCollapsed} />}
           </Drawer>
         </Hidden>
         <Hidden smDown implementation="css">
@@ -131,13 +110,6 @@ const DashboardLayout = (
             variant="permanent"
           >
             {SidebarComponent && <SidebarComponent />}
-            {/* {sidebar} */}
-            {/* <Sidebar
-              isDesktop={isDesktop}
-              isMobile={isMobile}
-              isSidebarCollapsedDesktop={isSidebarCollapsedDesktop}
-              isSidebarOpenMobile={isSidebarOpenMobile}
-            /> */}
           </Drawer>
         </Hidden>
       </div>
@@ -156,13 +128,16 @@ const DashboardLayout = (
   )
 }
 
+DashboardLayout.defaultProps = {
+  header: AppHeader,
+  sidebar: AppSidebar,
+  footer: AppFooter,
+}
+
 DashboardLayout.propTypes = {
   header: PropTypes.elementType,
   sidebar: PropTypes.elementType,
   footer: PropTypes.elementType,
-  isSidebarOpenMobileInitial: PropTypes.bool,
-  isSidebarOpenDesktopInitial: PropTypes.bool,
-  isSidebarCollapsedInitial: PropTypes.bool,
 }
 
 const useStyles = makeStyles(theme => ({

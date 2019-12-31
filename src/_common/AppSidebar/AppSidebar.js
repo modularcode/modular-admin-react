@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 
 import { Link } from 'react-router-dom'
@@ -8,7 +9,7 @@ import Logo from '_common/BaseLogo/BaseLogo'
 import SidebarNav from './AppSidebarNav'
 
 const Sidebar = props => {
-  const { isDesktop, isSidebarCollapsedDesktop } = props
+  const { isCollapsed } = props
 
   const classes = useStyles(props)
 
@@ -29,9 +30,17 @@ const Sidebar = props => {
           </Typography>
         </Link>
       </div>
-      <SidebarNav isCollapsed={isDesktop && isSidebarCollapsedDesktop} />
+      <SidebarNav isCollapsed={isCollapsed} />
     </aside>
   )
+}
+
+Sidebar.defaultProps = {
+  isCollapsed: false,
+}
+
+Sidebar.propTypes = {
+  isCollapsed: PropTypes.bool,
 }
 
 const useStyles = makeStyles(theme => ({
