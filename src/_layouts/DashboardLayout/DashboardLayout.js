@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import useComponentSize from '@rehooks/component-size'
@@ -19,19 +19,23 @@ const DashboardLayout = (
   },
 ) => {
   const refHeaderContainer = useRef(null)
-  // const refSidebarContainer = useRef(null)
-  // const refFooterContainer = useRef(null)
 
   const classes = useStyles()
   const theme = useTheme()
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'))
   const isMobile = !isDesktop
 
+  const [headerHeight, setHeaderHeight] = useState(0)
   const [isSidebarOpenMobile, setIsSidebarOpenMobile] = useState(false)
   const [isSidebarOpenDesktop, setIsSidebarOpenDesktop] = useState(true)
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
 
-  const headerSize = useComponentSize(refHeaderContainer)
+  useEffect(() => {
+    // code to run on component mount
+    setHeaderHeight(refHeaderContainer.current.offsetHeight)
+  }, [])
+
+  // const headerSize = useComponentSize(refHeaderContainer)
   // const sidebarSize = useComponentSize(refSidebarContainer)
   // const footerSize = useComponentSize(refFooterContainer)
 
@@ -116,7 +120,7 @@ const DashboardLayout = (
       <main
         className={classes.mainContainer}
         style={{
-          paddingTop: headerSize.height,
+          paddingTop: headerHeight, // || headerSize.height,
         }}
       >
         <div className={classes.contentContainer}>{children}</div>
@@ -184,10 +188,10 @@ const useStyles = makeStyles(theme => ({
   drawer: {
     width: '100%',
     position: 'absolute',
-    // [theme.breakpoints.up('md')]: {
-    //   width: theme.sidebar.width,
-    //   flexShrink: 0,
-    // },
+    [theme.breakpoints.down('sm')]: {
+      width: theme.sidebar.width,
+      flexShrink: 0,
+    },
   },
   mainContainer: {
     flexGrow: 1,
