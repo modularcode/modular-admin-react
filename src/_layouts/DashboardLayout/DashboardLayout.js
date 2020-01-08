@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import useComponentSize from '@rehooks/component-size'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import Drawer from '@material-ui/core/Drawer'
@@ -34,10 +33,6 @@ const DashboardLayout = (
     // code to run on component mount
     setHeaderHeight(refHeaderContainer.current.offsetHeight)
   }, [])
-
-  // const headerSize = useComponentSize(refHeaderContainer)
-  // const sidebarSize = useComponentSize(refSidebarContainer)
-  // const footerSize = useComponentSize(refFooterContainer)
 
   const contentOffset = (() => {
     if ((isDesktop && !isSidebarOpenDesktop) || isMobile) {
@@ -91,6 +86,7 @@ const DashboardLayout = (
           isDesktop && isSidebarCollapsed && classes.sidebarContainerCollapsed,
         )}
       >
+        {/* Mobile sidebar */}
         <Hidden mdUp implementation="css">
           <Drawer
             variant="temporary"
@@ -103,9 +99,10 @@ const DashboardLayout = (
               keepMounted: true, // Better open performance on mobile.
             }}
           >
-            {SidebarComponent && <SidebarComponent isCollapsed={isSidebarCollapsed} />}
+            {SidebarComponent && <SidebarComponent />}
           </Drawer>
         </Hidden>
+        {/* Desktop sidebar */}
         <Hidden smDown implementation="css">
           <Drawer
             classes={{
@@ -113,7 +110,7 @@ const DashboardLayout = (
             }}
             variant="permanent"
           >
-            {SidebarComponent && <SidebarComponent />}
+            {SidebarComponent && <SidebarComponent isCollapsed={isSidebarCollapsed} />}
           </Drawer>
         </Hidden>
       </div>

@@ -67,22 +67,15 @@ const useStyles = makeStyles(theme => ({
     textDecoration: 'none',
     color: 'inherit',
     display: 'flex',
-    // '&:hover': {
-    //   '& $logo': {
-    //     color: '#fff',
-    //   },
-    // },
   },
   logo: {
     color: theme.palette.primary.main,
   },
   title: props => ({
-    // fontSize: '20px',
-    // fontWeight: 400,
     position: 'relative',
     overflow: 'visible',
     marginLeft: '5px',
-    display: props.isDesktop && props.isSidebarCollapsedDesktop ? 'none' : 'block',
+    display: props.isCollapsed ? 'none' : 'block',
   }),
   name: {},
   tagline: {

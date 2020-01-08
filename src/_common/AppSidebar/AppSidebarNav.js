@@ -96,37 +96,6 @@ const SidebarNav = props => {
     },
   ]
 
-  const itemsProfile = [
-    {
-      name: 'My Profile',
-      link: '/profile',
-      Icon: IconInfo,
-    },
-    {
-      name: 'Profile Settings',
-      link: '/profile/settings',
-      Icon: IconSettings,
-    },
-  ]
-
-  const itemsOrganizations = [
-    {
-      name: 'My Organizations',
-      link: '/organizations',
-      Icon: IconInfo,
-    },
-    {
-      name: 'Organization Settings',
-      link: '/organizations/settings',
-      Icon: IconSettings,
-    },
-    {
-      name: 'Team',
-      link: '/organizations/users',
-      Icon: IconGroup,
-    },
-  ]
-
   const itemsAuth = [
     {
       name: 'Login',
@@ -143,6 +112,39 @@ const SidebarNav = props => {
     {
       name: 'Reset',
       link: '/auth/reset',
+    },
+  ]
+
+  const itemsAccount = [
+    {
+      name: 'Profile',
+      items: [
+        {
+          name: 'My Profile',
+          link: '/profile/me',
+        },
+        {
+          name: 'User Profile',
+          link: '/profile/user/2',
+        },
+        {
+          name: 'Profile Settings',
+          link: '/profile/settings',
+        },
+      ],
+    },
+    {
+      name: 'Organization',
+      items: [
+        {
+          name: 'My Organizations',
+          link: '/organizations',
+        },
+        {
+          name: 'Organization Settings',
+          link: '/organizations/1/settings',
+        },
+      ],
     },
   ]
 
@@ -175,32 +177,6 @@ const SidebarNav = props => {
     },
   ]
 
-  // eslint-disable-next-line
-  const itemsAppModules = [
-    {
-      name: 'Sales Management',
-      link: '/sales',
-      Icon: IconSales,
-      items: itemsSales,
-    },
-    // {
-    //   name: 'Customer Support',
-    //   link: '/support',
-    //   Icon: IconPhone,
-    // },
-    // {
-    //   name: 'Content Management',
-    //   link: '/content',
-    //   Icon: IconContent,
-    //   items: itemsContent,
-    // },
-    // {
-    //   name: 'Services',
-    //   link: '/services',
-    //   Icon: IconSync,
-    // },
-  ]
-
   const itemsCoreModules = [
     {
       name: 'Auth',
@@ -208,14 +184,9 @@ const SidebarNav = props => {
       Icon: IconPreson,
     },
     {
-      name: 'Profile',
-      items: itemsProfile,
+      name: 'Account',
+      items: itemsAccount,
       Icon: IconProfile,
-    },
-    {
-      name: 'Organizations',
-      items: itemsOrganizations,
-      Icon: IconAccount,
     },
     {
       name: 'Administration',
@@ -226,14 +197,6 @@ const SidebarNav = props => {
       name: 'Misc Pages',
       items: itemsMisc,
       Icon: IconMisc,
-    },
-  ]
-
-  const itemsUI = [
-    {
-      name: 'UI Components',
-      link: '/demo/components',
-      Icon: IconPersonalVideo,
     },
   ]
 
@@ -269,7 +232,7 @@ const SidebarNav = props => {
       <List className={classes.navList} disablePadding>
         {!isCollapsed && (
           <ListSubheader disableSticky={true} className={classes.navListHeader}>
-            Applications
+            Sales Management
           </ListSubheader>
         )}
         <SidebarNavItems isCollapsed={isCollapsed} items={itemsSales} />
@@ -278,20 +241,21 @@ const SidebarNav = props => {
       <List className={classes.navList} disablePadding>
         {!isCollapsed && (
           <ListSubheader disableSticky={true} className={classes.navListHeader}>
-            Basic Functionality
+            Content Management
+          </ListSubheader>
+        )}
+        <SidebarNavItems isCollapsed={isCollapsed} items={itemsContent} />
+      </List>
+
+      <List className={classes.navList} disablePadding>
+        {!isCollapsed && (
+          <ListSubheader disableSticky={true} className={classes.navListHeader}>
+            Core Modules
           </ListSubheader>
         )}
         <SidebarNavItems isCollapsed={isCollapsed} items={itemsCoreModules} />
       </List>
 
-      <List className={classes.navList} disablePadding>
-        {!isCollapsed && (
-          <ListSubheader inset disableSticky={true}>
-            UI & Utils
-          </ListSubheader>
-        )}
-        <SidebarNavItems isCollapsed={isCollapsed} items={itemsUI} />
-      </List>
       <List className={classes.navList} disablePadding>
         {!isCollapsed && (
           <ListSubheader disableSticky={true} className={classes.navListHeader}>

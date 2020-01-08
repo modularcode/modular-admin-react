@@ -19,21 +19,20 @@ addParameters({
     showRoots: true,
     theme: docsTheme,
     storySort: (a, b) => {
-      console.log('a', a);
-      // console.log('b', b);
-
-      // const aNestingLevel = a[1].parameters.fileName.split('/').length
-      // const bNestingLevel = b[1].parameters.fileName.split('/').length
-
-      // return `${aNestingLevel}${a[1].id}`.localeCompare(`${bNestingLevel}${b[1].id}`)
-
       const getPriority = (id) => {
+        var priority = '';
+
         if (id.indexOf('general-') > -1) {
-          return '0'
+          priority = '0'
         }
         else {
-          return 'z';
+          priority = 'z';
         }
+
+        if (id.includes('--page')) {
+          priority = priority + '0';
+        }
+        return priority;
       }
 
       const aPriority = getPriority(a[1].id);

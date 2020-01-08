@@ -207,10 +207,10 @@ const useStyles = makeStyles(theme =>
       width: theme.sidebar.widthCollapsed,
       '& $iconToggle': {
         position: 'absolute',
-        bottom: -1,
+        // bottom: -1,
         fontSize: 14,
-        left: '50%',
-        marginLeft: '-0.5em',
+        top: '50%',
+        margintop: '-0.5em',
       },
       '&.active': {
         background: 'rgba(0, 0, 0, 0.08)',
