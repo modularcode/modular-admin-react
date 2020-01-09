@@ -3,7 +3,6 @@ import { makeStyles, createStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import ListSubheader from '@material-ui/core/ListSubheader'
 
-import IconSales from '@material-ui/icons/MonetizationOn'
 import IconProfile from '@material-ui/icons/AccountBox'
 import IconAccount from '@material-ui/icons/AccountBalance' //
 import IconAdmin from '@material-ui/icons/VpnKey'
@@ -13,6 +12,12 @@ import IconDashboard from '@material-ui/icons/Dashboard'
 import IconProducts from '@material-ui/icons/LocalMall'
 import IconOrders from '@material-ui/icons/ShoppingCart'
 import IconPeople from '@material-ui/icons/People'
+import IconSearch from '@material-ui/icons/Search'
+import IconError from '@material-ui/icons/Error'
+import IconAdd from '@material-ui/icons/Add'
+import IconFolder from '@material-ui/icons/Folder'
+
+import IconItems from '@material-ui/icons/FilterNone'
 import IconPersonalVideo from '@material-ui/icons/PersonalVideo'
 import IconLibraryBooks from '@material-ui/icons/LibraryBooks'
 import IconQuestionAnswer from '@material-ui/icons/QuestionAnswer'
@@ -27,7 +32,7 @@ import IconPreson from '@material-ui/icons/Person' //
 import IconStock from '@material-ui/icons/LocalShipping'
 import IconLocation from '@material-ui/icons/LocationOn'
 
-import SidebarNavItems from './AppSidebarNavList'
+import SidebarNavList from './SidebarNavList'
 
 const SidebarNav = props => {
   const { isCollapsed } = props
@@ -84,15 +89,18 @@ const SidebarNav = props => {
     {
       name: 'All Items',
       link: '/content/items',
+      Icon: IconItems,
     },
     {
       name: 'Add New',
       link: '/content/items/new',
+      Icon: IconAdd,
     },
 
     {
       name: 'Categories',
       link: '/content/categories',
+      Icon: IconFolder,
     },
   ]
 
@@ -166,17 +174,6 @@ const SidebarNav = props => {
     },
   ]
 
-  const itemsMisc = [
-    {
-      name: 'Search',
-      link: '/search',
-    },
-    {
-      name: 'Not Found',
-      link: '/notfound',
-    },
-  ]
-
   const itemsCoreModules = [
     {
       name: 'Auth',
@@ -194,9 +191,14 @@ const SidebarNav = props => {
       Icon: IconAdmin,
     },
     {
-      name: 'Misc Pages',
-      items: itemsMisc,
-      Icon: IconMisc,
+      name: 'Search',
+      link: '/search',
+      Icon: IconSearch,
+    },
+    {
+      name: 'Error',
+      link: '/error',
+      Icon: IconError,
     },
   ]
 
@@ -230,39 +232,31 @@ const SidebarNav = props => {
   return (
     <div>
       <List className={classes.navList} disablePadding>
-        {!isCollapsed && (
-          <ListSubheader disableSticky={true} className={classes.navListHeader}>
-            Sales Management
-          </ListSubheader>
-        )}
-        <SidebarNavItems isCollapsed={isCollapsed} items={itemsSales} />
+        <ListSubheader disableSticky={true} className={classes.navListHeader}>
+          Sales Management
+        </ListSubheader>
+        <SidebarNavList isCollapsed={isCollapsed} items={itemsSales} />
       </List>
 
       <List className={classes.navList} disablePadding>
-        {!isCollapsed && (
-          <ListSubheader disableSticky={true} className={classes.navListHeader}>
-            Content Management
-          </ListSubheader>
-        )}
-        <SidebarNavItems isCollapsed={isCollapsed} items={itemsContent} />
+        <ListSubheader disableSticky={true} className={classes.navListHeader}>
+          Content Management
+        </ListSubheader>
+        <SidebarNavList isCollapsed={isCollapsed} items={itemsContent} />
       </List>
 
       <List className={classes.navList} disablePadding>
-        {!isCollapsed && (
-          <ListSubheader disableSticky={true} className={classes.navListHeader}>
-            Core Modules
-          </ListSubheader>
-        )}
-        <SidebarNavItems isCollapsed={isCollapsed} items={itemsCoreModules} />
+        <ListSubheader disableSticky={true} className={classes.navListHeader}>
+          Core Modules
+        </ListSubheader>
+        <SidebarNavList isCollapsed={isCollapsed} items={itemsCoreModules} />
       </List>
 
       <List className={classes.navList} disablePadding>
-        {!isCollapsed && (
-          <ListSubheader disableSticky={true} className={classes.navListHeader}>
-            Misc
-          </ListSubheader>
-        )}
-        <SidebarNavItems isCollapsed={isCollapsed} items={itemsTheme} />
+        <ListSubheader disableSticky={true} className={classes.navListHeader}>
+          Misc
+        </ListSubheader>
+        <SidebarNavList isCollapsed={isCollapsed} items={itemsTheme} />
       </List>
     </div>
   )

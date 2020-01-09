@@ -1,6 +1,6 @@
 import React from 'react'
 
-import AppSidebarNavItem from './AppSidebarNavItem'
+import AppSidebarNavItem from './SidebarNavItem'
 
 const AppSidebarNavList = props => {
   const { items = [], isCollapsed = false, isNested = false } = props

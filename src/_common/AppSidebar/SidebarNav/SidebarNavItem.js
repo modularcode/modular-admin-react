@@ -48,7 +48,6 @@ const SidebarNavItem = props => {
     IconStyles = {},
     IconClassName = '',
     isCollapsed,
-    // isNested,
     nestingLevel = 0,
     nestingOffset = 16,
     className,

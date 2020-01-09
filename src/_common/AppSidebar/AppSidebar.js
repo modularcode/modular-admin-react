@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import Typography from '@material-ui/core/Typography'
 
 import Logo from '_common/BaseLogo/BaseLogo'
-import SidebarNav from './AppSidebarNav'
+import SidebarNav from './SidebarNav'
 
 const Sidebar = props => {
   const { isCollapsed } = props
