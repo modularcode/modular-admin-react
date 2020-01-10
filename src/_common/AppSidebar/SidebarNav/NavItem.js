@@ -18,7 +18,105 @@ import NavItemComponent from './NavItemComponent'
 
 // ----------------------------------------------------------------------
 
-const SidebarNavItem = props => {
+const NavItemCollapsed = props => {
+  const {
+    name,
+    link,
+    Icon,
+    IconStyles = {},
+    IconClassName = '',
+    isCollapsed,
+    className,
+    items = [],
+  } = props
+  const classes = useStyles()
+  const hasChildren = items && items.length > 0
+
+  const itemsAll = getItemsAll(items)
+  const hasChildrenAndIsActive =
+    hasChildren &&
+    itemsAll.filter(item => `#${item.link}` === window.location.hash).length > 0
+  const [open, setOpen] = React.useState(false)
+
+  function handleClick() {
+    setOpen(!open)
+  }
+
+  const ListItemIconInner =
+    (!!Icon && <Icon />) ||
+    (isCollapsed && <IconSpacer className={classes.iconSpacer} />) ||
+    ''
+
+  const ListItemRoot = (
+    <Tooltip
+      disableFocusListener={true}
+      disableHoverListener={true}
+      disableTouchListener={true}
+      title={name}
+      placement="right"
+    >
+      <NavItemComponent
+        link={link}
+        className={clsx(
+          classes.navItem,
+          classes.navItemCollapsed,
+          hasChildrenAndIsActive && 'active',
+          className,
+        )}
+        isCollapsed={true}
+        onClick={handleClick}
+      >
+        {!!ListItemIconInner && (
+          <ListItemIcon
+            style={IconStyles}
+            className={clsx(classes.navItemIcon, IconClassName)}
+          >
+            {ListItemIconInner}
+          </ListItemIcon>
+        )}
+        <ListItemText
+          primary={name}
+          disableTypography={true}
+          style={{ visibility: 'hidden' }}
+        />
+        {hasChildren && <IconExpandLess className={classes.iconToggle} />}
+      </NavItemComponent>
+    </Tooltip>
+  )
+
+  const ListItemChildren = hasChildren ? (
+    <div className={clsx(classes.navItemChildren)}>
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          {items.map(item => (
+            <NavItem
+              {...item}
+              isNested={true}
+              nestingLevel={0}
+              isCollapsed={false}
+              key={item.name || item.link}
+              isOpen={open}
+            />
+          ))}
+        </List>
+      </Collapse>
+    </div>
+  ) : null
+
+  return (
+    <div
+      className={clsx(
+        hasChildrenAndIsActive && classes.navItemWrapperActive,
+        hasChildrenAndIsActive && isCollapsed && classes.navItemWrapperActiveCollapsed,
+      )}
+    >
+      {ListItemRoot}
+      {ListItemChildren}
+    </div>
+  )
+}
+
+const NavItemDefault = props => {
   const {
     name,
     link,
@@ -31,22 +129,8 @@ const SidebarNavItem = props => {
     className,
     items = [],
   } = props
-  const isTooltipEnabeld = isCollapsed
   const classes = useStyles()
   const hasChildren = items && items.length > 0
-
-  // Flattened array of all children
-  function getItemsAll(items) {
-    return items.reduce((allItems, item) => {
-      // let res = allItems.concat([item])
-
-      if (item.items && item.items.length) {
-        return allItems.concat([item], getItemsAll(item.items))
-      } else {
-        return allItems.concat([item])
-      }
-    }, [])
-  }
 
   const itemsAll = getItemsAll(items)
   const hasChildrenAndIsActive =
@@ -66,13 +150,12 @@ const SidebarNavItem = props => {
 
   const nestingOffsetChildren = !isCollapsed ? nestingOffset + 16 : 16
 
-  const ListItemElement = (
+  const ListItemRoot = (
     <NavItemComponent
       link={link}
       className={clsx(
         classes.navItem,
         isCollapsed && classes.navItemCollapsed,
-        // isNested && !isCollapsed && classes.nested,
         hasChildrenAndIsActive && 'active',
         className,
       )}
@@ -97,27 +180,13 @@ const SidebarNavItem = props => {
     </NavItemComponent>
   )
 
-  const ListItemRoot = isTooltipEnabeld ? (
-    <Tooltip
-      disableFocusListener={!isTooltipEnabeld}
-      disableHoverListener={!isTooltipEnabeld}
-      disableTouchListener={!isTooltipEnabeld}
-      title={name}
-      placement="right"
-    >
-      {ListItemElement}
-    </Tooltip>
-  ) : (
-    ListItemElement
-  )
-
   const ListItemChildren = hasChildren ? (
     <div className={clsx(classes.navItemChildren)}>
       <Collapse in={open} timeout="auto" unmountOnExit>
         {/* <Divider /> */}
         <List component="div" disablePadding>
           {items.map(item => (
-            <SidebarNavItem
+            <NavItem
               {...item}
               isNested={true}
               nestingLevel={nestingLevel + 1}
@@ -143,6 +212,14 @@ const SidebarNavItem = props => {
       {ListItemChildren}
     </div>
   )
+}
+
+const NavItem = props => {
+  if (props.isCollapsed) {
+    return <NavItemCollapsed {...props} />
+  } else {
+    return <NavItemDefault {...props} />
+  }
 }
 
 const useStyles = makeStyles(theme =>
@@ -187,7 +264,9 @@ const useStyles = makeStyles(theme =>
         // bottom: -1,
         fontSize: 14,
         top: '50%',
-        margintop: '-0.5em',
+        marginTop: '-0.5em',
+        transform: 'rotate(90deg)',
+        right: '3px',
       },
       '&.active': {
         background: 'rgba(0, 0, 0, 0.08)',
@@ -205,4 +284,19 @@ const useStyles = makeStyles(theme =>
   }),
 )
 
-export default SidebarNavItem
+// ----------------------
+
+// Flattened array of all children
+function getItemsAll(items) {
+  return items.reduce((allItems, item) => {
+    // let res = allItems.concat([item])
+
+    if (item.items && item.items.length) {
+      return allItems.concat([item], getItemsAll(item.items))
+    } else {
+      return allItems.concat([item])
+    }
+  }, [])
+}
+
+export default NavItem

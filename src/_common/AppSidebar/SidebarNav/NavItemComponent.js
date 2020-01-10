@@ -6,19 +6,18 @@ import { makeStyles, createStyles } from '@material-ui/core/styles'
 
 import { NavLink } from 'react-router-dom'
 
-export const ListItemLink = forwardRef((props, ref) => (
+export const NavItemLink = forwardRef((props, ref) => (
   <NavLink exact {...props} innerRef={ref} />
 ))
 
 // Can be a link, or button
-export const ListItemComponent = forwardRef((props, ref) => {
-  // Omit isCollapsed
+export const NavItemComponent = forwardRef((props, ref) => {
   const { isCollapsed, ...newProps } = props
   const classes = useStyles()
 
   const component =
     typeof props.link === 'string' ? (
-      <ListItem {...newProps} button component={ListItemLink} to={props.link} />
+      <ListItem {...newProps} button component={NavItemLink} to={props.link} />
     ) : (
       <ListItem {...newProps} button />
     )
@@ -38,4 +37,4 @@ const useStyles = makeStyles(theme =>
   }),
 )
 
-export default ListItemComponent
+export default NavItemComponent

@@ -30,7 +30,7 @@ const Sidebar = props => {
           </Typography>
         </Link>
       </div>
-      <SidebarNav isCollapsed={isCollapsed} />
+      <SidebarNav isCollapsed={true} />
     </aside>
   )
 }
