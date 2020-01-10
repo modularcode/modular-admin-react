@@ -8,6 +8,7 @@ import List from '@material-ui/core/List'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import Tooltip from '@material-ui/core/Tooltip'
+import Popover from '@material-ui/core/Popover'
 import Collapse from '@material-ui/core/Collapse'
 
 import IconExpandLess from '@material-ui/icons/ExpandLess'
@@ -36,11 +37,23 @@ const NavItemCollapsed = props => {
   const hasChildrenAndIsActive =
     hasChildren &&
     itemsAll.filter(item => `#${item.link}` === window.location.hash).length > 0
-  const [open, setOpen] = React.useState(false)
 
-  function handleClick() {
-    setOpen(!open)
+  const [anchorEl, setAnchorEl] = React.useState(null)
+
+  const handlePopoverOpen = event => {
+    if (!hasChildren) {
+      return false
+    }
+
+    setAnchorEl(event.currentTarget)
   }
+
+  const handlePopoverClose = () => {
+    setAnchorEl(null)
+  }
+
+  const open = Boolean(anchorEl)
+  const id = open ? 'sidebar-nav-item-popper' : undefined
 
   const ListItemIconInner =
     (!!Icon && <Icon />) ||
@@ -50,7 +63,7 @@ const NavItemCollapsed = props => {
   const ListItemRoot = (
     <Tooltip
       disableFocusListener={true}
-      disableHoverListener={true}
+      disableHoverListener={false}
       disableTouchListener={true}
       title={name}
       placement="right"
@@ -61,10 +74,12 @@ const NavItemCollapsed = props => {
           classes.navItem,
           classes.navItemCollapsed,
           hasChildrenAndIsActive && 'active',
+          open && 'open',
           className,
         )}
         isCollapsed={true}
-        onClick={handleClick}
+        aria-describedby={id}
+        onClick={handlePopoverOpen}
       >
         {!!ListItemIconInner && (
           <ListItemIcon
@@ -79,14 +94,34 @@ const NavItemCollapsed = props => {
           disableTypography={true}
           style={{ visibility: 'hidden' }}
         />
-        {hasChildren && <IconExpandLess className={classes.iconToggle} />}
+        {hasChildren && (
+          <IconExpandLess
+            className={clsx(classes.iconToggle, !open && classes.iconToggleInactive)}
+          />
+        )}
       </NavItemComponent>
     </Tooltip>
   )
 
   const ListItemChildren = hasChildren ? (
-    <div className={clsx(classes.navItemChildren)}>
-      <Collapse in={open} timeout="auto" unmountOnExit>
+    <Popover
+      id={id}
+      open={open}
+      anchorEl={anchorEl}
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'left',
+      }}
+      onClose={handlePopoverClose}
+      classes={{
+        paper: classes.navItemPoper,
+      }}
+    >
+      <div className={clsx(classes.navItemChildren)}>
         <List component="div" disablePadding>
           {items.map(item => (
             <NavItem
@@ -96,11 +131,12 @@ const NavItemCollapsed = props => {
               isCollapsed={false}
               key={item.name || item.link}
               isOpen={open}
+              onClick={!item.items || !item.items.length ? handlePopoverClose : undefined}
             />
           ))}
         </List>
-      </Collapse>
-    </div>
+      </div>
+    </Popover>
   ) : null
 
   return (
@@ -128,6 +164,7 @@ const NavItemDefault = props => {
     nestingOffset = 16,
     className,
     items = [],
+    onClick = () => {},
   } = props
   const classes = useStyles()
   const hasChildren = items && items.length > 0
@@ -207,6 +244,7 @@ const NavItemDefault = props => {
         hasChildrenAndIsActive && classes.navItemWrapperActive,
         hasChildrenAndIsActive && isCollapsed && classes.navItemWrapperActiveCollapsed,
       )}
+      onClick={onClick}
     >
       {ListItemRoot}
       {ListItemChildren}
@@ -239,7 +277,7 @@ const useStyles = makeStyles(theme =>
     navItem: {
       position: 'relative',
       transition: 'background .23s ease',
-      '&.active': {
+      '&.active:not(.open)': {
         color: theme.palette.secondary.main,
         // background: 'rgba(0, 0, 0, 0.08)',
         '& .MuiListItemIcon-root': {
@@ -247,6 +285,17 @@ const useStyles = makeStyles(theme =>
           color: theme.palette.secondary.main,
         },
       },
+      '&.open': {
+        color: '#fff',
+        '& .MuiListItemIcon-root': {
+          color: '#fff',
+        },
+      },
+    },
+    navItemPoper: {
+      width: theme.sidebar.width,
+      color: theme.sidebar.color,
+      background: theme.sidebar.background,
     },
     navItemChildren: {
       transition: 'background .23s ease',
@@ -277,6 +326,9 @@ const useStyles = makeStyles(theme =>
       minWidth: 40,
     },
     iconToggle: {},
+    iconToggleInactive: {
+      opacity: 0.35,
+    },
     iconSpacer: {
       fontSize: 13,
       marginLeft: 6,
