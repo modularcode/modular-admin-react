@@ -1,10 +1,10 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
 import clsx from 'clsx'
 
 import { makeStyles, createStyles } from '@material-ui/core/styles'
-import { NavLink } from 'react-router-dom'
+
 import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
+
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import Tooltip from '@material-ui/core/Tooltip'
@@ -14,31 +14,9 @@ import IconExpandLess from '@material-ui/icons/ExpandLess'
 import IconExpandMore from '@material-ui/icons/ExpandMore'
 import IconSpacer from '@material-ui/icons/FiberManualRecord'
 
+import NavItemComponent from './NavItemComponent'
+
 // ----------------------------------------------------------------------
-
-export const ListItemLink = forwardRef((props, ref) => (
-  <NavLink exact {...props} innerRef={ref} />
-))
-
-// Can be a link, or button
-export const ListItemComponent = forwardRef((props, ref) => {
-  // Omit isCollapsed
-  const { isCollapsed, ...newProps } = props
-  const classes = useStyles()
-
-  const component =
-    typeof props.link === 'string' ? (
-      <ListItem {...newProps} button component={ListItemLink} to={props.link} />
-    ) : (
-      <ListItem {...newProps} button />
-    )
-
-  return (
-    <div ref={ref} className={clsx(isCollapsed && classes.navItemCollapsedWrapper)}>
-      {component}
-    </div>
-  )
-})
 
 const SidebarNavItem = props => {
   const {
@@ -89,7 +67,7 @@ const SidebarNavItem = props => {
   const nestingOffsetChildren = !isCollapsed ? nestingOffset + 16 : 16
 
   const ListItemElement = (
-    <ListItemComponent
+    <NavItemComponent
       link={link}
       className={clsx(
         classes.navItem,
@@ -116,7 +94,7 @@ const SidebarNavItem = props => {
       <ListItemText primary={name} disableTypography={true} />
       {hasChildren && !open && <IconExpandMore className={classes.iconToggle} />}
       {hasChildren && open && <IconExpandLess className={classes.iconToggle} />}
-    </ListItemComponent>
+    </NavItemComponent>
   )
 
   const ListItemRoot = isTooltipEnabeld ? (
@@ -215,9 +193,7 @@ const useStyles = makeStyles(theme =>
         background: 'rgba(0, 0, 0, 0.08)',
       },
     },
-    navItemCollapsedWrapper: {
-      width: theme.sidebar.widthCollapsed,
-    },
+
     navItemIcon: {
       minWidth: 40,
     },

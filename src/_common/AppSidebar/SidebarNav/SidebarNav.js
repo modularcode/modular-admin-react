@@ -32,7 +32,7 @@ import IconPreson from '@material-ui/icons/Person' //
 import IconStock from '@material-ui/icons/LocalShipping'
 import IconLocation from '@material-ui/icons/LocationOn'
 
-import SidebarNavList from './SidebarNavList'
+import NavList from './NavList'
 
 const SidebarNav = props => {
   const { isCollapsed } = props
@@ -235,28 +235,28 @@ const SidebarNav = props => {
         <ListSubheader disableSticky={true} className={classes.navListHeader}>
           Sales Management
         </ListSubheader>
-        <SidebarNavList isCollapsed={isCollapsed} items={itemsSales} />
+        <NavList isCollapsed={isCollapsed} items={itemsSales} />
       </List>
 
       <List className={classes.navList} disablePadding>
         <ListSubheader disableSticky={true} className={classes.navListHeader}>
           Content Management
         </ListSubheader>
-        <SidebarNavList isCollapsed={isCollapsed} items={itemsContent} />
+        <NavList isCollapsed={isCollapsed} items={itemsContent} />
       </List>
 
       <List className={classes.navList} disablePadding>
         <ListSubheader disableSticky={true} className={classes.navListHeader}>
           Core Modules
         </ListSubheader>
-        <SidebarNavList isCollapsed={isCollapsed} items={itemsCoreModules} />
+        <NavList isCollapsed={isCollapsed} items={itemsCoreModules} />
       </List>
 
       <List className={classes.navList} disablePadding>
         <ListSubheader disableSticky={true} className={classes.navListHeader}>
           Misc
         </ListSubheader>
-        <SidebarNavList isCollapsed={isCollapsed} items={itemsTheme} />
+        <NavList isCollapsed={isCollapsed} items={itemsTheme} />
       </List>
     </div>
   )

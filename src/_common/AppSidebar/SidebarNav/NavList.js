@@ -1,6 +1,6 @@
 import React from 'react'
 
-import AppSidebarNavItem from './SidebarNavItem'
+import NavItem from './NavItem'
 
 const AppSidebarNavList = props => {
   const { items = [], isCollapsed = false, isNested = false } = props
@@ -9,12 +9,7 @@ const AppSidebarNavList = props => {
   return (
     <>
       {items.map((item, index) => (
-        <AppSidebarNavItem
-          {...item}
-          isCollapsed={isCollapsed}
-          isNested={isNested}
-          key={index}
-        />
+        <NavItem {...item} isCollapsed={isCollapsed} isNested={isNested} key={index} />
       ))}
     </>
   )
