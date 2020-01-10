@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
 import clsx from 'clsx'
 
 import { makeStyles, createStyles } from '@material-ui/core/styles'
@@ -175,6 +175,11 @@ const NavItemDefault = props => {
     itemsAll.filter(item => `#${item.link}` === window.location.hash).length > 0
   const isOpen = hasChildrenAndIsActive || false
   const [open, setOpen] = React.useState(isOpen)
+
+  // This is a work around for fixing the collapsed item poper overflow bug
+  useLayoutEffect(() => {
+    window.dispatchEvent(new CustomEvent('resize'))
+  })
 
   function handleClick() {
     setOpen(!open)
