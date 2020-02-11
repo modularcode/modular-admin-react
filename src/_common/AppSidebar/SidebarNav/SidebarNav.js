@@ -126,33 +126,11 @@ const SidebarNav = props => {
   const itemsAccount = [
     {
       name: 'Profile',
-      items: [
-        {
-          name: 'My Profile',
-          link: '/profile/me',
-        },
-        {
-          name: 'User Profile',
-          link: '/profile/user/2',
-        },
-        {
-          name: 'Profile Settings',
-          link: '/profile/settings',
-        },
-      ],
+      link: '/profile/me',
     },
     {
       name: 'Organization',
-      items: [
-        {
-          name: 'My Organizations',
-          link: '/organizations',
-        },
-        {
-          name: 'Organization Settings',
-          link: '/organizations/1/settings',
-        },
-      ],
+      link: '/organization',
     },
   ]
 
@@ -176,6 +154,11 @@ const SidebarNav = props => {
 
   const itemsCoreModules = [
     {
+      name: 'Dashboard',
+      link: '/sales/dashboard',
+      Icon: IconDashboard,
+    },
+    {
       name: 'Auth',
       items: itemsAuth,
       Icon: IconPreson,
@@ -194,6 +177,11 @@ const SidebarNav = props => {
       name: 'Search',
       link: '/search',
       Icon: IconSearch,
+    },
+    {
+      name: 'Settings',
+      link: '/settings',
+      Icon: IconSettings,
     },
     {
       name: 'Error',
@@ -231,7 +219,11 @@ const SidebarNav = props => {
 
   return (
     <div>
-      <List className={classes.navList} disablePadding>
+      {/* <List className={classes.navList} disablePadding>
+        <NavList isCollapsed={isCollapsed} items={itemsDashboard} />
+      </List> */}
+
+      {/* <List className={classes.navList} disablePadding>
         <ListSubheader disableSticky={true} className={classes.navListHeader}>
           Sales Management
         </ListSubheader>
@@ -243,7 +235,7 @@ const SidebarNav = props => {
           Content Management
         </ListSubheader>
         <NavList isCollapsed={isCollapsed} items={itemsContent} />
-      </List>
+      </List> */}
 
       <List className={classes.navList} disablePadding>
         <ListSubheader disableSticky={true} className={classes.navListHeader}>

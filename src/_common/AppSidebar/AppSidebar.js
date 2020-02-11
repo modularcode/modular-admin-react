@@ -25,8 +25,8 @@ const Sidebar = props => {
             noWrap
             className={classes.title}
           >
-            <span className={classes.name}>Material Admin</span>
-            <span className={classes.tagline}>ReactJS + MaterialUI</span>
+            <span className={classes.name}>Modular Admin</span>
+            <span className={classes.tagline}>MaterialUI + ReactJS</span>
           </Typography>
         </Link>
       </div>
@@ -76,6 +76,9 @@ const useStyles = makeStyles(theme => ({
     overflow: 'visible',
     marginLeft: '5px',
     display: props.isCollapsed ? 'none' : 'block',
+    fontSize: '1.1rem',
+    letterSpacing: '.015em',
+    // fontWeight: 'bold',
   }),
   name: {},
   tagline: {
