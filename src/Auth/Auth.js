@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router-dom' //
+import { Route, Redirect } from 'react-router-dom' //
 // import { makeStyles } from '@material-ui/core/styles'
 
 import Container from '@material-ui/core/Container'
@@ -28,6 +28,7 @@ export default function Auth({ match }) {
 
   return (
     <Container component="main" maxWidth="xs">
+      <Redirect exact from={`${match.path}/`} to={`${match.path}/login`} />
       <Route path={`${match.path}/login`} component={Login} />
       <Route path={`${match.path}/signup`} component={Signup} />
       <Route path={`${match.path}/recover`} component={Recover} />
