@@ -4,6 +4,7 @@ import { HashRouter, BrowserRouter, Route, Redirect, Switch } from 'react-router
 import config from './_config'
 
 import DashboardLayout from '_layouts/DashboardLayout'
+import { Auth } from './Auth'
 
 // Use different router type depending on configuration
 const AppRouterComponent =
@@ -12,8 +13,8 @@ const AppRouterComponent =
 const AppRouter = () => (
   <AppRouterComponent>
     <Switch>
+      <Route path="/auth" component={Auth} />
       <Route path="/" component={DashboardLayout} />
-      {/* <Route path="/auth" component={Auth} /> */}
       {/* <RoutePrivate path="/" component={LoggedInRouter} /> */}
     </Switch>
   </AppRouterComponent>

@@ -29,7 +29,7 @@ const AppHeaderDemoButtons = props => {
           <span className={classes.demoName}>View on GitHub</span>
         </Button>
       </Tooltip>
-      <Tooltip title="Help me to keep the project active!">
+      {/* <Tooltip title="Help me to keep the project active!">
         <Button
           component={Link}
           size="small"
@@ -41,7 +41,7 @@ const AppHeaderDemoButtons = props => {
           <IconFavorite className={classes.demoIcon} />
           <span className={classes.demoName}>Support Me</span>
         </Button>
-      </Tooltip>
+      </Tooltip> */}
       <Tooltip title="Star the project on GitHub!">
         <Button
           size="small"
