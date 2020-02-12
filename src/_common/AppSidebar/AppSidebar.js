@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
 import Typography from '@material-ui/core/Typography'
 
+import AppSidebarBg from './AppSidebarBg.jpg'
 import Logo from '_common/BaseLogo/BaseLogo'
 import SidebarNav from './SidebarNav'
 
@@ -15,6 +16,7 @@ const Sidebar = props => {
 
   return (
     <aside className={classes.sidebar}>
+      <div className={classes.sidebarBackground} />
       <div className={classes.sidebarHeader}>
         <Link to="/" className={classes.sidebarTitleLink}>
           <Logo size={30} className={classes.logo} />
@@ -55,6 +57,18 @@ const useStyles = makeStyles(theme => ({
     overflowX: 'hidden',
     overflowY: 'auto',
   },
+  sidebarBackground: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    top: 0,
+    left: 0,
+    zIndex: 0,
+    backgroundImage: `url(${AppSidebarBg})`,
+    backgroundPosition: 'center',
+    backgroundRepeat: 'repeat',
+    backgroundSize: 'cover',
+  },
   sidebarHeader: {
     display: 'flex',
     alignItems: 'center',
@@ -69,7 +83,8 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
   },
   logo: {
-    color: theme.palette.primary.main,
+    color: theme.palette.secondary.main,
+    zIndex: 10,
   },
   title: props => ({
     position: 'relative',

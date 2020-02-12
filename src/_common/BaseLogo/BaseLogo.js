@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
     fill: 'currentColor',
   },
   letter: {
-    fill: 'currentColor',
+    fill: '#fff',
   },
 }))
 
