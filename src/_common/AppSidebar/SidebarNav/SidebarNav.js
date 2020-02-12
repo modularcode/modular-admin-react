@@ -6,31 +6,16 @@ import ListSubheader from '@material-ui/core/ListSubheader'
 import IconProfile from '@material-ui/icons/AccountBox'
 import IconAccount from '@material-ui/icons/AccountBalance' //
 import IconAdmin from '@material-ui/icons/VpnKey'
-import IconMisc from '@material-ui/icons/MoreHoriz'
-
 import IconDashboard from '@material-ui/icons/Dashboard'
-import IconProducts from '@material-ui/icons/LocalMall'
-import IconOrders from '@material-ui/icons/ShoppingCart'
-import IconPeople from '@material-ui/icons/People'
 import IconSearch from '@material-ui/icons/Search'
 import IconError from '@material-ui/icons/Error'
-import IconAdd from '@material-ui/icons/Add'
-import IconFolder from '@material-ui/icons/Folder'
-
-import IconItems from '@material-ui/icons/FilterNone'
-import IconPersonalVideo from '@material-ui/icons/PersonalVideo'
 import IconLibraryBooks from '@material-ui/icons/LibraryBooks'
 import IconQuestionAnswer from '@material-ui/icons/QuestionAnswer'
 import IconStars from '@material-ui/icons/Stars'
 import IconNewReleases from '@material-ui/icons/NewReleases'
 import IconSettings from '@material-ui/icons/Settings'
 import IconGroup from '@material-ui/icons/Group'
-import IconInfo from '@material-ui/icons/Info' //
 import IconPreson from '@material-ui/icons/Person' //
-// import IconSync from '@material-ui/icons/Sync'
-// import IconPhone from '@material-ui/icons/Phone'
-import IconStock from '@material-ui/icons/LocalShipping'
-import IconLocation from '@material-ui/icons/LocationOn'
 
 import NavList from './NavList'
 
@@ -84,11 +69,6 @@ const SidebarNav = props => {
       name: 'Administration',
       Icon: IconAdmin,
       items: [
-        {
-          name: 'Admin Dashboard',
-          link: '/admin/dashboard',
-          Icon: IconDashboard,
-        },
         {
           name: 'All Organizations',
           link: '/admin/accounts',

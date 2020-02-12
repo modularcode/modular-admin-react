@@ -7,8 +7,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "cross-env PUBLIC_PATH='/' npm run build && echo modular-material-admin-react.modularcode.io > ./build/CNAME  && gh-pages -d build --repo git@github.com:modularcode/modular-material-admin-react.git --branch gh-pages",
-    "build-docs": "build-storybook --docs -s ./public",
+    "deploy": "npm run build-preview && npm run build-docs && gh-pages -d build --repo git@github.com:modularcode/modular-material-admin-react.git --branch gh-pages",
+    "build-preview": "cross-env PUBLIC_PATH='/' npm run build && echo modular-material-admin-react.modularcode.io > ./build/CNAME",
+    "build-docs": "build-storybook --docs -s ./public -o build/docs",
     "build-storybook": "build-storybook",
     "storybook": "start-storybook -p 6060"
   },
