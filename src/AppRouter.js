@@ -5,6 +5,7 @@ import config from './_config'
 
 import DashboardLayout from '_layouts/DashboardLayout'
 import { Auth } from './Auth'
+import { Dashboard } from './Dashboard'
 
 // Use different router type depending on configuration
 const AppRouterComponent =
@@ -13,11 +14,30 @@ const AppRouterComponent =
 const AppRouter = () => (
   <AppRouterComponent>
     <Switch>
+      {/* <Route exact path="/" render={() => <Redirect to="/sales/dashboard" />} /> */}
       <Route path="/auth" component={Auth} />
-      <Route path="/" component={DashboardLayout} />
+      <RouteWithLayout path={`/`} component={Dashboard} layout={DashboardLayout} />
+      {/* <Route path="/" component={DashboardLayout} /> */}
       {/* <RoutePrivate path="/" component={LoggedInRouter} /> */}
     </Switch>
   </AppRouterComponent>
+)
+
+const RouteWithLayout = ({ component: Component, layout: Layout, ...rest }) => (
+  <Route
+    {...rest}
+    render={props => {
+      if (Layout) {
+        return (
+          <Layout>
+            <Component {...props} />
+          </Layout>
+        )
+      } else {
+        return <Component {...props} />
+      }
+    }}
+  />
 )
 
 export default AppRouter
