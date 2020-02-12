@@ -38,140 +38,68 @@ const SidebarNav = props => {
   const { isCollapsed } = props
   const classes = useStyles()
 
-  const itemsSales = [
-    {
-      name: 'Sales Dashboard',
-      link: '/sales/dashboard',
-      Icon: IconDashboard,
-    },
-    {
-      name: 'Orders',
-      link: '/sales/orders',
-      Icon: IconOrders,
-    },
-    {
-      name: 'Customers',
-      link: '/sales/customers',
-      Icon: IconPeople,
-    },
-    {
-      name: 'Products',
-      Icon: IconProducts,
-      items: [
-        {
-          name: 'All Products',
-          link: '/sales/products',
-        },
-        {
-          name: 'Add New',
-          link: '/sales/products/new',
-        },
-        {
-          name: 'Categories',
-          link: '/sales/products/categories',
-        },
-      ],
-    },
-    {
-      name: 'Stock',
-      link: '/sales/stock',
-      Icon: IconStock,
-    },
-    {
-      name: 'Locations',
-      link: '/sales/locations',
-      Icon: IconLocation,
-    },
-  ]
-
-  // eslint-disable-next-line
-  const itemsContent = [
-    {
-      name: 'All Items',
-      link: '/content/items',
-      Icon: IconItems,
-    },
-    {
-      name: 'Add New',
-      link: '/content/items/new',
-      Icon: IconAdd,
-    },
-
-    {
-      name: 'Categories',
-      link: '/content/categories',
-      Icon: IconFolder,
-    },
-  ]
-
-  const itemsAuth = [
-    {
-      name: 'Login',
-      link: '/auth/login',
-    },
-    {
-      name: 'Signup',
-      link: '/auth/signup',
-    },
-    {
-      name: 'Recover',
-      link: '/auth/recover',
-    },
-    {
-      name: 'Reset',
-      link: '/auth/reset',
-    },
-  ]
-
-  const itemsAccount = [
-    {
-      name: 'Profile',
-      link: '/profile/me',
-    },
-    {
-      name: 'Organization',
-      link: '/organization',
-    },
-  ]
-
-  const itemsAdmin = [
-    {
-      name: 'Admin Dashboard',
-      link: '/admin/dashboard',
-      Icon: IconDashboard,
-    },
-    {
-      name: 'All Organizations',
-      link: '/admin/accounts',
-      Icon: IconAccount,
-    },
-    {
-      name: 'All Users',
-      link: '/admin/users',
-      Icon: IconGroup,
-    },
-  ]
-
-  const itemsCoreModules = [
+  const itemsCore = [
     {
       name: 'Dashboard',
-      link: '/sales/dashboard',
+      link: '/',
       Icon: IconDashboard,
     },
     {
       name: 'Auth',
-      items: itemsAuth,
       Icon: IconPreson,
+      items: [
+        {
+          name: 'Login',
+          link: '/auth/login',
+        },
+        {
+          name: 'Signup',
+          link: '/auth/signup',
+        },
+        {
+          name: 'Recover',
+          link: '/auth/recover',
+        },
+        {
+          name: 'Reset',
+          link: '/auth/reset',
+        },
+      ],
     },
     {
       name: 'Account',
-      items: itemsAccount,
       Icon: IconProfile,
+      items: [
+        {
+          name: 'Profile',
+          link: '/profile/me',
+        },
+        {
+          name: 'Organization',
+          link: '/organization',
+        },
+      ],
     },
     {
       name: 'Administration',
-      items: itemsAdmin,
       Icon: IconAdmin,
+      items: [
+        {
+          name: 'Admin Dashboard',
+          link: '/admin/dashboard',
+          Icon: IconDashboard,
+        },
+        {
+          name: 'All Organizations',
+          link: '/admin/accounts',
+          Icon: IconAccount,
+        },
+        {
+          name: 'All Users',
+          link: '/admin/users',
+          Icon: IconGroup,
+        },
+      ],
     },
     {
       name: 'Search',
@@ -219,29 +147,11 @@ const SidebarNav = props => {
 
   return (
     <div>
-      {/* <List className={classes.navList} disablePadding>
-        <NavList isCollapsed={isCollapsed} items={itemsDashboard} />
-      </List> */}
-
-      {/* <List className={classes.navList} disablePadding>
-        <ListSubheader disableSticky={true} className={classes.navListHeader}>
-          Sales Management
-        </ListSubheader>
-        <NavList isCollapsed={isCollapsed} items={itemsSales} />
-      </List>
-
-      <List className={classes.navList} disablePadding>
-        <ListSubheader disableSticky={true} className={classes.navListHeader}>
-          Content Management
-        </ListSubheader>
-        <NavList isCollapsed={isCollapsed} items={itemsContent} />
-      </List> */}
-
       <List className={classes.navList} disablePadding>
         <ListSubheader disableSticky={true} className={classes.navListHeader}>
           Core Modules
         </ListSubheader>
-        <NavList isCollapsed={isCollapsed} items={itemsCoreModules} />
+        <NavList isCollapsed={isCollapsed} items={itemsCore} />
       </List>
 
       <List className={classes.navList} disablePadding>

@@ -17,22 +17,24 @@ const Sidebar = props => {
   return (
     <aside className={classes.sidebar}>
       <div className={classes.sidebarBackground} />
-      <div className={classes.sidebarHeader}>
-        <Link to="/" className={classes.sidebarTitleLink}>
-          <Logo size={30} className={classes.logo} />
-          <Typography
-            component="h2"
-            variant="h5"
-            color="inherit"
-            noWrap
-            className={classes.title}
-          >
-            <span className={classes.name}>Modular Admin</span>
-            <span className={classes.tagline}>MaterialUI + ReactJS</span>
-          </Typography>
-        </Link>
+      <div className={classes.sidebarBody}>
+        <div className={classes.sidebarHeader}>
+          <Link to="/" className={classes.sidebarTitleLink}>
+            <Logo size={30} className={classes.logo} />
+            <Typography
+              component="h2"
+              variant="h5"
+              color="inherit"
+              noWrap
+              className={classes.title}
+            >
+              <span className={classes.name}>Modular Admin</span>
+              <span className={classes.tagline}>MaterialUI + ReactJS</span>
+            </Typography>
+          </Link>
+        </div>
+        <SidebarNav isCollapsed={isCollapsed} />
       </div>
-      <SidebarNav isCollapsed={isCollapsed} />
     </aside>
   )
 }
@@ -54,8 +56,6 @@ const useStyles = makeStyles(theme => ({
     height: '100%',
     color: theme.sidebar.color,
     background: theme.sidebar.background,
-    overflowX: 'hidden',
-    overflowY: 'auto',
   },
   sidebarBackground: {
     position: 'absolute',
@@ -68,6 +68,15 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: 'center',
     backgroundRepeat: 'repeat',
     backgroundSize: 'cover',
+  },
+  sidebarBody: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    width: '100%',
+    height: '100%',
+    overflowX: 'hidden',
+    overflowY: 'auto',
   },
   sidebarHeader: {
     display: 'flex',

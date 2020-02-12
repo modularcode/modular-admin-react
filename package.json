@@ -12,6 +12,7 @@
     "build-storybook": "build-storybook",
     "storybook": "start-storybook -p 6060"
   },
+  "homepage": "http://modular-material-admin-react.modularcode.io",
   "dependencies": {
     "@material-ui/core": "^4.8.1",
     "@material-ui/icons": "^4.5.1",
