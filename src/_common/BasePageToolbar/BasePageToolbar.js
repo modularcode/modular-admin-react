@@ -27,7 +27,8 @@ const BasePageToolbar = props => {
     >
       <Grid
         item
-        xs
+        sm={4}
+        md={4}
         alignItems="center"
         container
         className={clsx(classes.titleContainer, externalClasses.titleContainer)}
@@ -37,7 +38,8 @@ const BasePageToolbar = props => {
       </Grid>
       <Grid
         item
-        xs
+        md={8}
+        sm={8}
         alignItems="center"
         container
         className={clsx(classes.actionsContainer, externalClasses.titleContainer)}
@@ -52,7 +54,7 @@ const BasePageToolbar = props => {
 const useStyles = makeStyles(theme =>
   createStyles({
     container: {
-      marginBottom: '1.5rem',
+      marginBottom: '1rem',
     },
     titleContainer: {},
     actionsContainer: {

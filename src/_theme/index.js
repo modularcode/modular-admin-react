@@ -59,13 +59,27 @@ const baseTheme = createMuiTheme({
         minWidth: 40,
       },
     },
+    MuiCardContent: {
+      root: {
+        '&:last-child': {
+          paddingBottom: 16,
+        },
+      },
+    },
+    MuiLinearProgress: {
+      root: {
+        background: '#f3f3f3 !important',
+      },
+    },
   },
   palette: {
     secondary: {
       main: '#8cd136', //indigo[600],
     },
     primary: {
-      main: blue[600], //'#619f30',
+      main: '#ae59e3', //'#619f30',
+      // main: '#9027d1', //'#619f30',
+      // main: blue[600], //'#619f30',
     },
   },
   typography: {
