@@ -9,13 +9,15 @@ const Footer = () => {
   return (
     <footer className={classes.footer}>
       <Typography variant="body2" color="textSecondary" align="left">
-        {'Find me on: '}
-        <Link color="primary" href="https://github.com/modularcoder">
-          GitHub
-        </Link>
+        {'Copyright your company 2020 '}
         {' | '}
         <Link color="primary" href="https://twitter.com/modularcoder">
-          Twitter
+          MIT License
+        </Link>
+      </Typography>
+      <Typography variant="body2" color="textSecondary" align="center">
+        <Link color="primary" href="https://github.com/modularcoder">
+          GitHub
         </Link>
         {' | '}
         <Link color="primary" href="https://www.linkedin.com/in/modularcoder/">

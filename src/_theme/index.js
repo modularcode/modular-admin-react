@@ -73,6 +73,7 @@ const baseTheme = createMuiTheme({
     },
   },
   palette: {
+    divider: 'rgba(30, 30, 30, 0.06)',
     secondary: {
       main: '#8cd136', //indigo[600],
     },
@@ -80,6 +81,9 @@ const baseTheme = createMuiTheme({
       main: '#ae59e3', //'#619f30',
       // main: '#9027d1', //'#619f30',
       // main: blue[600], //'#619f30',
+    },
+    text: {
+      secondary: 'rgba(102, 102, 102, 0.83)',
     },
   },
   typography: {
