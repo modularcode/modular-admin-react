@@ -11,7 +11,10 @@ const Footer = () => {
       <Typography variant="body2" color="textSecondary" align="left">
         {'Copyright your company 2020 '}
         {' | '}
-        <Link color="primary" href="https://twitter.com/modularcoder">
+        <Link
+          color="primary"
+          href="https://github.com/modularcode/modular-material-admin-react/blob/master/LICENSE"
+        >
           MIT License
         </Link>
       </Typography>
