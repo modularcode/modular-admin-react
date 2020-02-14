@@ -8,7 +8,7 @@ Free [MaterialUI](https://material-ui.com/) dashboard theme implemented by using
 
 </div>
 
-[![demo](https://repository-images.githubusercontent.com/195131407/ffa79c80-b806-11e9-8aa8-75d9609bb9e5)](https://modular-material-admin-react.modularcode.io/#/)
+[![demo](https://user-images.githubusercontent.com/3959008/74492959-13d10280-4eea-11ea-8765-408636115522.png)](https://modular-material-admin-react.modularcode.io/#/)
 
 <p align="center">
   <strong>
