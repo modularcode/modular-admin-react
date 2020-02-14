@@ -11,14 +11,9 @@ import {
   LinearProgress,
 } from '@material-ui/core'
 import { Timeline as IconTimeline, MoreVert as IconMoreVert } from '@material-ui/icons'
+import { Line } from 'react-chartjs-2'
 
-const subscriptionsItems = [
-  { name: 'GitHub', ratio: 55.3, value: Math.round(55.3 * 144) },
-  { name: 'MaterialUI', ratio: 25.7, value: Math.round(25.7 * 144) },
-  { name: 'Google', ratio: 15.6, value: Math.round(15.6 * 144) },
-  { name: 'ModularCode', ratio: 8.4, value: Math.round(8.4 * 144) },
-  { name: 'GH', ratio: 5.5, value: Math.round(5.5 * 144) },
-]
+import { subscriptionsItems, subscriptionsHistoryChart } from './data'
 
 const Subscriptions = props => {
   const classes = useStyles()
@@ -38,11 +33,18 @@ const Subscriptions = props => {
       <CardContent className={classes.cardContent}>
         <Grid container spacing={4}>
           <Grid item sm={9} className={classes.chartBox}>
-            <div className={classes.chart}></div>
+            <div className={classes.chartContainer}>
+              <div className={classes.chart}>
+                <Line
+                  data={subscriptionsHistoryChart.data}
+                  options={subscriptionsHistoryChart.options}
+                />
+              </div>
+            </div>
           </Grid>
           <Grid item sm={3} className={classes.ratingBox}>
             {subscriptionsItems.map(({ name, ratio, value }) => (
-              <div>
+              <div key={name}>
                 <Grid container>
                   <Grid item xs>
                     <Typography variant="body1">{name}</Typography>
@@ -99,10 +101,18 @@ const useStyles = makeStyles(theme => ({
     borderRight: '1px solid',
     borderRightColor: theme.palette.divider,
   },
-  chart: {
+  chartContainer: {
     width: '100%',
+    position: 'relative',
     paddingBottom: '25%',
-    background: '#efefef',
+    minHeight: 240,
+  },
+  chart: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    top: 0,
+    left: 0,
   },
   cardContent: {
     '&:last-child': {
