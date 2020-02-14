@@ -10,6 +10,15 @@ export const subscriptionsHistoryChart = {
   data: {
     datasets: [
       {
+        backgroundColor: '#b1cc90',
+        borderColor: '#8cd136',
+        borderWidth: 2,
+        label: 'Subscriptions',
+        fill: false,
+        data: [1545, 1350, 1270, 1830, 1955, 1865, 2034, 2544, 1956, 2211, 1540, 1670],
+        yAxisID: 'y1',
+      },
+      {
         backgroundColor: 'rgba(136, 151, 170, 0.1)',
         borderColor: '#8897aa',
         borderDash: [5, 5],
@@ -30,15 +39,6 @@ export const subscriptionsHistoryChart = {
         ],
         label: 'Visits',
         yAxisID: 'y2',
-      },
-      {
-        backgroundColor: '#b1cc90',
-        borderColor: '#8cd136',
-        borderWidth: 2,
-        label: 'Subscriptions',
-        fill: false,
-        data: [1545, 1350, 1270, 1830, 1955, 1865, 2034, 2544, 1956, 2211, 1540, 1670],
-        yAxisID: 'y1',
       },
     ],
     labels: [

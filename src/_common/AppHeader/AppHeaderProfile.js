@@ -21,7 +21,9 @@ import IconLogout from '@material-ui/icons/ExitToApp'
 const AppHeaderProfile = () => {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = React.useState(null)
-  const { user } = {}
+  const user = {
+    firstName: 'Gevorg',
+  }
 
   if (!user) {
     return <div className={clsx('headerProfile', classes.headerProfile)} />
