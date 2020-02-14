@@ -154,10 +154,10 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'stretch',
     position: 'absolute',
     zIndex: theme.zIndex.drawer + 1,
-    // transition: theme.transitions.create(['width', 'margin'], {
-    //   easing: theme.transitions.easing.sharp,
-    //   duration: theme.transitions.duration.leavingScreen,
-    // }),
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
   },
   sidebarContainer: {
     display: 'flex',
@@ -171,10 +171,10 @@ const useStyles = makeStyles(theme => ({
     //   width: theme.sidebar.width,
     //   flexShrink: 0,
     // },
-    // transition: theme.transitions.create('width', {
-    //   easing: theme.transitions.easing.sharp,
-    //   duration: theme.transitions.duration.leavingScreen,
-    // }),
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
   },
   sidebarContainerMobile: {
     width: 0,
