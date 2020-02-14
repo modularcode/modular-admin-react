@@ -12,7 +12,7 @@ Free [MaterialUI](https://material-ui.com/) dashboard theme implemented by using
 
 <p align="center">
   <strong>
-    <a href="https://modular-material-admin-react.modularcode.io/ target="_blank">🚀 View Demo</a>
+    <a href="https://modular-material-admin-react.modularcode.io/" target="_blank">🚀 View Demo</a>
   </strong>
   |
   <strong>
