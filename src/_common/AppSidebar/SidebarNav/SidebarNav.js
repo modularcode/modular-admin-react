@@ -155,6 +155,7 @@ const useStyles = makeStyles(theme =>
     },
     navListHeader: {
       textAlign: 'center',
+      color: 'rgba(255,255,255,0.5)',
     },
     iconFeatures: {
       color: '#95de3c',
