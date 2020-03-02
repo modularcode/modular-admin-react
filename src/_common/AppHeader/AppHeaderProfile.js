@@ -73,26 +73,26 @@ const AppHeaderProfile = () => {
         }}
       >
         <MenuItem onClick={handleClose} component={Link} to="/profile">
-          <ListItemIcon>
+          <ListItemIcon className={classes.profileMenuItemIcon}>
             <IconProfile />
           </ListItemIcon>
           <ListItemText primary="My Profile" />
         </MenuItem>
         <MenuItem onClick={handleClose} component={Link} to="/account">
-          <ListItemIcon>
+          <ListItemIcon className={classes.profileMenuItemIcon}>
             <IconAccount />
           </ListItemIcon>
           <ListItemText primary="My Accounts" />
         </MenuItem>
         <MenuItem onClick={handleClose} component={Link} to="/settings">
-          <ListItemIcon>
+          <ListItemIcon className={classes.profileMenuItemIcon}>
             <IconSettings />
           </ListItemIcon>
           <ListItemText primary="Settings" />
         </MenuItem>
         <Divider />
         <MenuItem onClick={handleClose} component={Link} to="/auth/logout">
-          <ListItemIcon>
+          <ListItemIcon className={classes.profileMenuItemIcon}>
             <IconLogout />
           </ListItemIcon>
           <ListItemText primary="Logout" />
@@ -125,6 +125,9 @@ const useStyles = makeStyles(theme => ({
   },
   profileMenu: {
     marginLeft: '-16px',
+  },
+  profileMenuItemIcon: {
+    color: theme.palette.primary.main,
   },
 }))
 
