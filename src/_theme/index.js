@@ -84,6 +84,8 @@ const baseTheme = createMuiTheme({
     },
     text: {
       secondary: 'rgba(102, 102, 102, 0.83)',
+      positive: '#8cd136',
+      negative: '#e35959',
     },
   },
   typography: {

@@ -32,7 +32,7 @@ const Subscriptions = props => {
       />
       <CardContent className={classes.cardContent}>
         <Grid container spacing={4}>
-          <Grid item sm={9} className={classes.chartBox}>
+          <Grid item xs={12} sm={8} md={9} className={classes.chartBox}>
             <div className={classes.chartContainer}>
               <div className={classes.chart}>
                 <Line
@@ -42,7 +42,7 @@ const Subscriptions = props => {
               </div>
             </div>
           </Grid>
-          <Grid item sm={3} className={classes.ratingBox}>
+          <Grid item xs={12} sm={4} md={3} className={classes.ratingBox}>
             {subscriptionsItems.map(({ name, ratio, value }) => (
               <div key={name}>
                 <Grid container>
