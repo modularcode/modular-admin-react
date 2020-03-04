@@ -167,6 +167,7 @@ const useStyles = makeStyles(theme => ({
     bottom: 0,
     flexDirection: 'row',
     width: theme.sidebar.width,
+    flexShrink: 0,
     // [theme.breakpoints.up('md')]: {
     //   width: theme.sidebar.width,
     //   flexShrink: 0,

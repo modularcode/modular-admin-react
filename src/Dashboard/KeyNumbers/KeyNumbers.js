@@ -2,106 +2,100 @@ import React from 'react'
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
-import { Paper, Grid, Typography } from '@material-ui/core'
+import { Paper, Box, Grid, Typography } from '@material-ui/core'
 import { Line } from 'react-chartjs-2'
 
-import { subscriptionsTrendChart } from './data'
+import { generateTrendChartData } from './data'
+
+const numbers = [
+  {
+    name: 'Monthly Revenue',
+    value: '24350$',
+    change: '+13%',
+    trend: 'positive',
+    chart: generateTrendChartData({
+      name: 'Monthly Revenue',
+      from: Math.round(24350 / 1.13),
+      to: 24350,
+      length: 15,
+    }),
+  },
+  {
+    name: 'Total Users',
+    value: 48205,
+    change: '+10%',
+    trend: 'positive',
+    chart: generateTrendChartData({
+      name: 'Total Users',
+      from: Math.round(48205 / 1.1),
+      to: 48205,
+    }),
+  },
+  {
+    name: 'Subscriptions',
+    value: 139,
+    change: '-5%',
+    trend: 'negative',
+    chart: generateTrendChartData({
+      name: 'Subscriptions',
+      from: 139,
+      to: Math.round(139 / 1.05),
+      length: 15,
+    }),
+  },
+  {
+    name: 'Monthly Churn',
+    value: 13,
+    change: '-10%',
+    trend: 'positive',
+    chart: generateTrendChartData({
+      name: 'Monthly Churn',
+      from: 13,
+      to: Math.random(13 / 1.1),
+      length: 15,
+    }),
+  },
+]
 
 const KeyNumbers = props => {
   const classes = useStyles()
 
   return (
     <>
-      <Grid item xs={6} sm={3}>
-        <Paper className={classes.paper}>
-          <Grid container spacing={0}>
-            <Grid item xs={6} md={12} lg={6}>
-              <Typography variant="body2">Subscriptions</Typography>
-              <Typography variant="body1" className={classes.value}>
-                139 <sup className={clsx(classes.valueChange, classes.positive)}>+5%</sup>
-              </Typography>
+      {numbers.map(({ name, value, change, trend, chart }) => (
+        <Grid item xs={12} sm={6} md={3} key={name}>
+          <Paper className={classes.paper}>
+            <Grid container spacing={0}>
+              <Grid item xs={6} sm={6} md={12} lg={6}>
+                <Box p={2}>
+                  <Typography variant="body2" className={classes.name}>
+                    {name}
+                  </Typography>
+                  <Typography variant="body1" className={classes.value}>
+                    {value}{' '}
+                    <sup
+                      className={clsx(
+                        classes.valueChange,
+                        trend === 'positive' && classes.positive,
+                        trend === 'negative' && classes.negative,
+                      )}
+                    >
+                      {change}
+                    </sup>
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item xs={6} sm={6} md={12} lg={6}>
+                <Box height="100%" position="relative" minHeight={70}>
+                  <div className={classes.chartContainer}>
+                    <Line data={chart.data} options={chart.options} />
+                  </div>
+                </Box>
+              </Grid>
             </Grid>
-            <Grid item xs={6} md={12} lg={6}>
-              <div className={classes.chartContainer}>
-                <div className={classes.chart}>
-                  <Line
-                    data={subscriptionsTrendChart.data}
-                    options={subscriptionsTrendChart.options}
-                  />
-                </div>
-              </div>
-            </Grid>
-          </Grid>
-        </Paper>
-      </Grid>
-      <Grid item xs={6} sm={3}>
-        <Paper className={classes.paper}>
-          <Grid container spacing={0}>
-            <Grid item xs={6} md={12} lg={6}>
-              <Typography variant="body2">Monthly Revenue</Typography>
-              <Typography variant="body1" className={classes.value}>
-                24350${' '}
-                <sup className={clsx(classes.valueChange, classes.positive)}>+13%</sup>
-              </Typography>
-            </Grid>
-            <Grid item xs={6} md={12} lg={6}>
-              <div className={classes.chartContainer}>
-                <div className={classes.chart}>
-                  <Line
-                    data={subscriptionsTrendChart.data}
-                    options={subscriptionsTrendChart.options}
-                  />
-                </div>
-              </div>
-            </Grid>
-          </Grid>
-        </Paper>
-      </Grid>
-      <Grid item xs={6} sm={3}>
-        <Paper className={classes.paper}>
-          <Grid container spacing={0}>
-            <Grid item xs={6} md={12} lg={6}>
-              <Typography variant="body2">Monthly Churn</Typography>
-              <Typography variant="body1" className={classes.value}>
-                13 <sup className={clsx(classes.valueChange, classes.negative)}>+10%</sup>
-              </Typography>
-            </Grid>
-            <Grid item xs={6} md={12} lg={6}>
-              <div className={classes.chartContainer}>
-                <div className={classes.chart}>
-                  <Line
-                    data={subscriptionsTrendChart.data}
-                    options={subscriptionsTrendChart.options}
-                  />
-                </div>
-              </div>
-            </Grid>
-          </Grid>
-        </Paper>
-      </Grid>
-      <Grid item xs={6} sm={3}>
-        <Paper className={classes.paper}>
-          <Grid container spacing={0}>
-            <Grid item xs={6} md={12} lg={6}>
-              <Typography variant="body2">Total Users</Typography>
-              <Typography variant="body1" className={classes.value}>
-                48205{' '}
-                <sup className={clsx(classes.valueChange, classes.positive)}>+30%</sup>
-              </Typography>
-            </Grid>
-            <Grid item xs={6} md={12} lg={6}>
-              <div className={classes.chartContainer}>
-                <div className={classes.chart}>
-                  <Line
-                    data={subscriptionsTrendChart.data}
-                    options={subscriptionsTrendChart.options}
-                  />
-                </div>
-              </div>
-            </Grid>
-          </Grid>
-        </Paper>
-      </Grid>
+          </Paper>
+        </Grid>
+      ))}
     </>
   )
 }
@@ -113,13 +107,19 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
   paper: {
-    padding: theme.spacing(2),
+    // padding: theme.spacing(2),
     textAlign: 'left',
     color: theme.palette.text.secondary,
     height: '100%',
   },
+  name: {
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+  },
   value: {
     fontWeight: 'bold',
+    whiteSpace: 'nowrap',
   },
   valueChange: {},
   negative: {
@@ -129,11 +129,6 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.positive,
   },
   chartContainer: {
-    width: '100%',
-    position: 'relative',
-    paddingBottom: '25%',
-  },
-  chart: {
     position: 'absolute',
     width: '100%',
     height: '100%',

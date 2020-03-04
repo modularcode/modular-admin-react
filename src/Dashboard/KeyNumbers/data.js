@@ -1,43 +1,72 @@
-export const subscriptionsTrendChart = {
-  data: {
-    datasets: [
-      {
-        backgroundColor: '#ae59e3',
-        borderColor: '#ae59e3',
-        // backgroundColor: 'rgba(136, 151, 170, 0.1)',
-        borderWidth: 2,
-        label: 'Subscriptions',
-        fill: false,
-        data: [1545, 1350, 1270, 1830, 1955, 1865, 2034, 2544, 1956, 2211, 1540, 1670],
+import moment from 'moment'
+import theme from '../../_theme'
+import utilsService from '../../_services/utilsService'
+
+export const generateTrendChartData = ({ name, from = 0, to = 1000, length = 30 }) => {
+  return {
+    data: {
+      datasets: [
+        {
+          backgroundColor: theme.palette.primary.main,
+          borderColor: theme.palette.primary.main,
+          borderWidth: 2,
+          pointRadius: 1,
+          pointHoverRadius: 3,
+          label: name,
+          fill: false,
+          data: utilsService.generateRandomeChartDataArray({ from, to, length }),
+        },
+      ],
+      labels: Array(length)
+        .fill(null)
+        .map((item, index) =>
+          moment()
+            .subtract(length - index, 'days')
+            .format('ll'),
+        ),
+    },
+    options: {
+      layout: {
+        padding: {
+          left: 10,
+          right: 10,
+          top: 10,
+          bottom: 10,
+        },
       },
-    ],
-    labels: Array(12).fill(''),
-  },
-  options: {
-    legend: {
-      display: false,
-    },
-    scales: {
-      xAxes: [
-        {
-          display: false,
+      legend: {
+        display: false,
+      },
+      scales: {
+        xAxes: [
+          {
+            display: false,
+          },
+        ],
+        yAxes: [
+          {
+            display: false,
+          },
+        ],
+      },
+      tooltips: {
+        mode: 'index',
+        intersect: false,
+        caretSize: 0,
+        callbacks: {
+          label: function(tooltipItem, data) {
+            // var datasetLabel = ''
+            // var label = data.labels[tooltipItem.index]
+            return data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]
+          },
         },
-      ],
-      yAxes: [
-        {
-          display: false,
-        },
-      ],
+      },
+      hover: {
+        mode: 'index',
+        intersect: false,
+      },
+      responsive: true,
+      maintainAspectRatio: false,
     },
-    tooltips: {
-      mode: 'index',
-      intersect: false,
-    },
-    hover: {
-      mode: 'index',
-      intersect: false,
-    },
-    responsive: true,
-    maintainAspectRatio: false,
-  },
+  }
 }

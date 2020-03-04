@@ -1,3 +1,5 @@
+import theme from '../../_theme'
+
 export const subscriptionsItems = [
   { name: 'GitHub', ratio: 55.3, value: Math.round(55.3 * 144) },
   { name: 'MaterialUI', ratio: 25.7, value: Math.round(25.7 * 144) },
@@ -10,8 +12,8 @@ export const subscriptionsHistoryChart = {
   data: {
     datasets: [
       {
-        backgroundColor: '#b1cc90',
-        borderColor: '#8cd136',
+        backgroundColor: theme.palette.secondary.main,
+        borderColor: theme.palette.secondary.main,
         borderWidth: 2,
         label: 'Subscriptions',
         fill: false,
