@@ -13,7 +13,7 @@ const AppHeaderDemoButtons = props => {
 
   return (
     <div className={classes.demo}>
-      <Tooltip title="View on GitHub">
+      <Tooltip title="View code on the GitHub">
         <Button
           size="small"
           variant="outlined"
@@ -25,7 +25,7 @@ const AppHeaderDemoButtons = props => {
           <span className={classes.demoName}>View on GitHub</span>
         </Button>
       </Tooltip>
-      <Tooltip title="View on GitHub">
+      <Tooltip title="View all releases">
         <Button
           size="small"
           variant="outlined"
@@ -37,20 +37,7 @@ const AppHeaderDemoButtons = props => {
           <span className={classes.demoName}>Download</span>
         </Button>
       </Tooltip>
-      {/* <Tooltip title="Help me to keep the project active!">
-        <Button
-          component={Link}
-          size="small"
-          variant="outlined"
-          color="primary"
-          className={classes.button}
-          to="/demo/supporters"
-        >
-          <IconFavorite className={classes.demoIcon} />
-          <span className={classes.demoName}>Support Me</span>
-        </Button>
-      </Tooltip> */}
-      <Tooltip title="Star the project on GitHub!">
+      <Tooltip title="Star the project on the GitHub!">
         <Button
           size="small"
           variant="outlined"

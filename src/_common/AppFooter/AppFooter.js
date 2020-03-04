@@ -2,6 +2,7 @@ import React from 'react'
 import Typography from '@material-ui/core/Typography'
 import Link from '@material-ui/core/Link'
 import { makeStyles } from '@material-ui/core/styles'
+import pkg from '../../../package.json'
 
 const Footer = () => {
   const classes = useStyles()
@@ -9,7 +10,13 @@ const Footer = () => {
   return (
     <footer className={classes.footer}>
       <Typography variant="body2" color="textSecondary" align="left">
-        {'Copyright your company 2020 '}
+        {`Modular Material Admin React`}{' '}
+        <Link
+          color="primary"
+          href="https://github.com/modularcode/modular-material-admin-react/releases"
+        >
+          v{pkg.version}
+        </Link>
         {' | '}
         <Link
           color="primary"

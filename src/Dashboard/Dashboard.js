@@ -6,8 +6,10 @@ import BasePageContainer from '../_common/BasePageContainer'
 import BasePageToolbar from '../_common/BasePageToolbar'
 
 import DashboardActions from './DashboardActions'
+import SubscriptionsHistory from './SubscriptionsHistory'
 import KeyNumbers from './KeyNumbers'
-import Subscriptions from './Subscriptions'
+import SubscriptionsRecent from './SubscriptionsRecent'
+import SubscriptionsBreakdown from './SubscriptionsBreakdown'
 
 const Dashboard = () => {
   return (
@@ -18,9 +20,11 @@ const Dashboard = () => {
       ></BasePageToolbar>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <Subscriptions />
+          <SubscriptionsHistory />
         </Grid>
         <KeyNumbers />
+        <SubscriptionsRecent />
+        <SubscriptionsBreakdown />
       </Grid>
     </BasePageContainer>
   )
