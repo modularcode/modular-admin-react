@@ -1,7 +1,26 @@
-export const customersByIntegrations = [
-  { name: 'Jira', ratio: 55.3, value: Math.round(55.3 * 144) },
-  { name: 'Trello', ratio: 25.7, value: Math.round(25.7 * 144) },
-  { name: 'Slack', ratio: 15.6, value: Math.round(15.6 * 144) },
-  { name: 'GitLab', ratio: 8.4, value: Math.round(8.4 * 144) },
-  { name: 'Heroku', ratio: 5.5, value: Math.round(5.5 * 144) },
+export const recentSubscriptions = [
+  {
+    organization: 'Apple',
+    plan: 'Pro',
+    numUsers: 144,
+    created: '2020-04-16T02:04:22.406Z',
+  },
+  {
+    organization: 'Google',
+    numUsers: 3673,
+    plan: 'Gold',
+    created: '2020-04-14T12:03:15.406Z',
+  },
+  {
+    organization: 'GitHub',
+    numUsers: 36730,
+    plan: 'Enterprise',
+    created: '2020-04-13T21:32:04.406Z',
+  },
+  {
+    organization: 'Microsoft',
+    numUsers: 124,
+    plan: 'Trial',
+    created: '2020-04-10T11:03:46.406Z',
+  },
 ]

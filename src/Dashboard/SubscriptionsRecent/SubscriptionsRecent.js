@@ -1,19 +1,26 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import {
   makeStyles,
   Box,
   Grid,
   Card,
+  Button,
   CardHeader,
-  CardContent,
-  Typography,
+  CardActions,
   IconButton,
-  LinearProgress,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
 } from '@material-ui/core'
 import { Notes as IconNotes, MoreVert as IconMoreVert } from '@material-ui/icons'
+import { FormattedDate } from 'react-intl'
 
-import { customersByIntegrations } from './data'
+import { recentSubscriptions } from './data'
 
 const Subscriptions = props => {
   const classes = useStyles()
@@ -31,41 +38,43 @@ const Subscriptions = props => {
           }
           title="Recent Subscriptions"
         />
-        <CardContent className={classes.cardContent}>
-          <Box className={classes.ratingBox}>
-            {customersByIntegrations.map(({ name, ratio, value }) => (
-              <div key={name}>
-                <Grid container>
-                  <Grid item xs>
-                    <Typography variant="body1">{name}</Typography>
-                  </Grid>
-                  <Grid item xs className={classes.ratingItemValueBox}>
-                    <Typography
-                      align="right"
-                      variant="body2"
-                      display="inline"
-                      className={classes.ratingItemValue}
-                    >
-                      {value}
-                    </Typography>
-                    <Typography
-                      align="left"
-                      variant="body2"
-                      color="textSecondary"
-                      className={classes.ratingItemRatio}
-                    >
-                      {ratio}%
-                    </Typography>
-                  </Grid>
-                </Grid>
-                <LinearProgress variant="determinate" value={ratio} color="primary" />
-              </div>
-            ))}
-          </Box>
-          <Box padding={2} justifyContent="center">
+        <TableContainer component={Paper}>
+          <Table className={classes.table} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Organization</TableCell>
+                <TableCell align="right">Users</TableCell>
+                <TableCell align="right">Plan</TableCell>
+                <TableCell align="right">Date</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {recentSubscriptions.map(subscription => (
+                <TableRow key={subscription.organization}>
+                  <TableCell component="th" scope="row">
+                    {subscription.organization}
+                  </TableCell>
+                  <TableCell align="right">{subscription.numUsers}</TableCell>
+                  <TableCell align="right">{subscription.plan}</TableCell>
+                  <TableCell align="right">
+                    <FormattedDate
+                      value={subscription.created}
+                      month="long"
+                      day="2-digit"
+                      hour="numeric"
+                      minute="numeric"
+                    ></FormattedDate>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <CardActions>
+          <Button size="small" color="primary">
             View All
-          </Box>
-        </CardContent>
+          </Button>
+        </CardActions>
       </Card>
     </Grid>
   )
@@ -92,47 +101,6 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.primary.main,
     verticalAlign: 'sub',
     marginRight: '.3em',
-  },
-  chartBox: {
-    borderRight: '1px solid',
-    borderRightColor: theme.palette.divider,
-  },
-  chartContainer: {
-    width: '100%',
-    position: 'relative',
-    paddingBottom: '25%',
-    minHeight: 240,
-  },
-  chart: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    top: 0,
-    left: 0,
-  },
-  cardContent: {
-    height: '100%',
-    '&:last-child': {
-      paddingBottom: 'default',
-    },
-  },
-  ratingBox: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-  },
-  ratingItemValueBox: {
-    textAlign: 'right',
-    fontSize: '0.7em',
-  },
-  ratingItemValue: {
-    display: 'inline-block',
-  },
-  ratingItemRatio: {
-    marginLeft: 4,
-    display: 'inline-block',
-    width: '3em',
-    // fontSize: '1em',
   },
 }))
 
