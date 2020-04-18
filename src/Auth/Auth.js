@@ -1,12 +1,9 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom' //
-// import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 
-import Container from '@material-ui/core/Container'
-import Typography from '@material-ui/core/Typography'
-import Link from '@material-ui/core/Link'
+import { Grid, Typography, Link, Box, Hidden } from '@material-ui/core/'
 import { Link as RouterLink } from 'react-router-dom'
-import Box from '@material-ui/core/Box'
 
 import Login from './Login'
 import Signup from './Signup'
@@ -24,38 +21,46 @@ function Footer() {
 }
 
 export default function Auth({ match }) {
-  // const classes = useStyles()
+  const classes = useStyles()
 
   return (
-    <Container component="main" maxWidth="xs">
-      <Redirect exact from={`${match.path}/`} to={`${match.path}/login`} />
-      <Route path={`${match.path}/login`} component={Login} />
-      <Route path={`${match.path}/signup`} component={Signup} />
-      <Route path={`${match.path}/recover`} component={Recover} />
-      <Route path={`${match.path}/reset`} component={Reset} />
-      <Box mt={8}>
-        <Footer />
-      </Box>
-    </Container>
+    <Grid container className={classes.container}>
+      <Grid item xs={12} sm={12} md={4} className={classes.formSection}>
+        <Box p={2}>
+          <Redirect exact from={`${match.path}/`} to={`${match.path}/login`} />
+          <Route path={`${match.path}/login`} component={Login} />
+          <Route path={`${match.path}/signup`} component={Signup} />
+          <Route path={`${match.path}/recover`} component={Recover} />
+          <Route path={`${match.path}/reset`} component={Reset} />
+          <Box mt={8}>
+            <Footer />
+          </Box>
+        </Box>
+      </Grid>
+      <Grid item xs={12} sm={12} md={8} className={classes.introSection}></Grid>
+    </Grid>
   )
 }
 
-// const useStyles = makeStyles(theme => ({
-//   paper: {
-//     marginTop: theme.spacing(8),
-//     display: 'flex',
-//     flexDirection: 'column',
-//     alignItems: 'center',
-//   },
-//   avatar: {
-//     margin: theme.spacing(1),
-//     backgroundColor: theme.palette.secondary.main,
-//   },
-//   form: {
-//     width: '100%', // Fix IE 11 issue.
-//     marginTop: theme.spacing(1),
-//   },
-//   submit: {
-//     margin: theme.spacing(3, 0, 2),
-//   },
-// }))
+const useStyles = makeStyles(theme => ({
+  container: {
+    minHeight: '100vh',
+  },
+  formSection: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  introSection: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundImage: 'url(/background-auth.jpg)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'right',
+    backgroundRepeat: 'no-repeat',
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+  },
+}))

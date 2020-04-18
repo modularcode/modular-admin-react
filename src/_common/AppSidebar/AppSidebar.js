@@ -20,7 +20,7 @@ const Sidebar = props => {
       <div className={classes.sidebarBody}>
         <div className={classes.sidebarHeader}>
           <Link to="/" className={classes.sidebarTitleLink}>
-            <Logo size={30} className={classes.logo} />
+            <Logo size={30} isInversed={true} className={classes.logo} />
             <Typography
               component="h2"
               variant="h5"
