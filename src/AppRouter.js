@@ -5,6 +5,7 @@ import config from './_config'
 
 import DashboardLayout from '_layouts/DashboardLayout'
 import { Auth } from './Auth'
+import { Administration } from './Administration'
 import { Dashboard } from './Dashboard'
 
 // Use different router type depending on configuration
@@ -16,7 +17,12 @@ const AppRouter = () => (
     <Switch>
       {/* <Route exact path="/" render={() => <Redirect to="/sales/dashboard" />} /> */}
       <Route path="/auth" component={Auth} />
-      <RouteWithLayout path={`/`} component={Dashboard} layout={DashboardLayout} />
+      <RouteWithLayout exact path={`/`} component={Dashboard} layout={DashboardLayout} />
+      <RouteWithLayout
+        path={`/administration`}
+        component={Administration}
+        layout={DashboardLayout}
+      />
       {/* <Route path="/" component={DashboardLayout} /> */}
       {/* <RoutePrivate path="/" component={LoggedInRouter} /> */}
     </Switch>
