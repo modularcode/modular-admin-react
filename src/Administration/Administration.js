@@ -115,7 +115,7 @@ const Administration = ({ match }) => {
     setRowsPerPage(parseInt(event.target.value, 10))
     setPage(0)
   }
-  console.log('usersData', usersData)
+
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="custom pagination table">
