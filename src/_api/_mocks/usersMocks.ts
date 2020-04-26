@@ -8,9 +8,7 @@ export default {
     })
 
     mock.onGet('/users').reply(200, {
-      users: {
-        ...usersData.list,
-      },
+      users: [...usersData.list],
       count: usersData.list.length,
     })
 
