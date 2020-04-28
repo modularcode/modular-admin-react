@@ -1,5 +1,5 @@
 {
-  "name": "modular-material-admin-react",
+  "name": "modular-admin-react",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,13 +7,13 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build-preview && npm run build-docs && gh-pages -d build --repo git@github.com:modularcode/modular-material-admin-react.git --branch gh-pages",
-    "build-preview": "cross-env PUBLIC_PATH='/' npm run build && echo modular-material-admin-react.modularcode.io > ./build/CNAME",
+    "deploy": "npm run build-preview && npm run build-docs && gh-pages -d build --repo git@github.com:modularcode/modular-admin-react.git --branch gh-pages",
+    "build-preview": "cross-env PUBLIC_PATH='/' npm run build && echo modular-admin-react.modularcode.io > ./build/CNAME",
     "build-docs": "build-storybook --docs -s ./public -o build/docs",
     "build-storybook": "build-storybook",
     "storybook": "start-storybook -p 6060"
   },
-  "homepage": "http://modular-material-admin-react.modularcode.io",
+  "homepage": "http://modular-admin-react.modularcode.io",
   "dependencies": {
     "@material-ui/core": "4.9.11",
     "@material-ui/icons": "4.9.1",
