@@ -1,4 +1,4 @@
-<h1 align="center">Modular Material Admin + React</h1>
+<h1 align="center">Modular Admin React</h1>
 
 <div align="center">
 
@@ -8,16 +8,16 @@ Free [MaterialUI](https://material-ui.com/) dashboard theme implemented by using
 
 </div>
 
-[![demo](https://user-images.githubusercontent.com/3959008/79408874-73f92900-7fad-11ea-9266-465637350d92.png)](https://modular-material-admin-react.modularcode.io/#/)
+[![demo](https://user-images.githubusercontent.com/3959008/79408874-73f92900-7fad-11ea-9266-465637350d92.png)](https://modular-admin-react.modularcode.io/#/)
 
 
 <p align="center">
   <strong>
-    <a href="https://modular-material-admin-react.modularcode.io/" target="_blank">🚀 View Demo</a>
+    <a href="https://modular-admin-react.modularcode.io/" target="_blank">🚀 View Demo</a>
   </strong>
   |
   <strong>
-    <a href="https://modular-material-admin-react.modularcode.io/docs" target="_blank">🤷🏼‍♂️ Read The Docs</a>
+    <a href="https://modular-admin-react.modularcode.io/docs" target="_blank">🤷🏼‍♂️ Read The Docs</a>
   </strong>
 </p>
 
