@@ -19,7 +19,7 @@ const AppHeaderDemoButtons = props => {
           variant="outlined"
           color="primary"
           className={classes.button}
-          href="https://github.com/modularcode/modular-material-admin-react"
+          href="https://github.com/modularcode/modular-admin-react"
         >
           <IconCode className={classes.demoIcon} />
           <span className={classes.demoName}>View on GitHub</span>
@@ -31,7 +31,7 @@ const AppHeaderDemoButtons = props => {
           variant="outlined"
           color="primary"
           className={classes.button}
-          href="https://github.com/modularcode/modular-material-admin-react/releases"
+          href="https://github.com/modularcode/modular-admin-react/releases"
         >
           <IconDownload className={classes.demoIcon} />
           <span className={classes.demoName}>Download</span>
@@ -43,7 +43,7 @@ const AppHeaderDemoButtons = props => {
           variant="outlined"
           color="primary"
           className={classes.button}
-          href="https://github.com/modularcode/modular-material-admin-react/stargazers"
+          href="https://github.com/modularcode/modular-admin-react/stargazers"
         >
           <IconStar className={classes.demoIcon} />
           <span className={classes.demoName}>Rate</span>
