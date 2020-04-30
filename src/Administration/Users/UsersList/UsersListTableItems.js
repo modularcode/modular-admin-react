@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { FormattedDate } from 'react-intl'
 
 import { makeStyles, TableBody, TableCell, TableRow, Avatar } from '@material-ui/core'
 import { Skeleton } from '@material-ui/lab'
@@ -39,6 +40,9 @@ const UsersListTableItems = ({ users, rowsPerPage = 10, rowsExpected = 10 }) => 
             <TableCell>
               <Skeleton variant="text" />
             </TableCell>
+            <TableCell>
+              <Skeleton variant="text" />
+            </TableCell>
           </TableRow>
         ))}
       {users.map(row => (
@@ -52,6 +56,14 @@ const UsersListTableItems = ({ users, rowsPerPage = 10, rowsExpected = 10 }) => 
           <TableCell>{row.lastName}</TableCell>
           <TableCell>{row.username}</TableCell>
           <TableCell>{row.email}</TableCell>
+          <TableCell>
+            <FormattedDate
+              value={new Date(row.createdAt)}
+              year="numeric"
+              month="long"
+              day="2-digit"
+            />
+          </TableCell>
           <TableCell>
             <EditIcon />
             <DeleteIcon />

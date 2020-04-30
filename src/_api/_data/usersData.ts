@@ -1,4 +1,5 @@
 import _keyBy from 'lodash/keyBy'
+import moment from 'moment'
 import User from '../_types/User'
 import organizationsToUsersData from './organizationsToUsersData'
 
@@ -150,7 +151,14 @@ const list: User[] = [
       'https://images-na.ssl-images-amazon.com/images/M/MV5BMTgxMTc1MTYzM15BMl5BanBnXkFtZTgwNzI5NjMwOTE@._V1_UY256_CR16,0,172,256_AL_.jpg',
     userToOrganizations: organizationsToUsersData.byUserId[5],
   },
-]
+].map(item => {
+  return {
+    ...item,
+    createdAt: moment()
+      .subtract(item.id, 'days')
+      .format(),
+  }
+})
 
 const byId: { [key: number]: User } = _keyBy(list, 'id')
 
