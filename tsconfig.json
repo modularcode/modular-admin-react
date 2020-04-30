@@ -19,7 +19,11 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
-    "typeRoots" : ["./node_modules/@types/", "./src/_types", "./src/_api/_types"]
+    "typeRoots": [
+      "./node_modules/@types/",
+      "./src/_types",
+      "./src/_api/_types"
+    ]
   },
   "include": [
     "src"
@@ -28,4 +32,3 @@
     "node_modules/@nivo/line/index.d.ts"
   ]
 }
-  

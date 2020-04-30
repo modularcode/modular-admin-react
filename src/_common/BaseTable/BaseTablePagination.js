@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { TablePagination, IconButton } from '@material-ui/core'
-import { useTheme } from '@material-ui/core/styles'
+import { useTheme, makeStyles } from '@material-ui/core/styles'
 
 import {
   FirstPage as FirstPageIcon,
@@ -11,6 +11,7 @@ import {
 } from '@material-ui/icons/'
 
 const BaseTablePaginationActions = props => {
+  const classes = useStyles()
   const theme = useTheme()
   const { count, page, itemsPerPage, onChangePage } = props
 
@@ -31,7 +32,7 @@ const BaseTablePaginationActions = props => {
   }
 
   return (
-    <div>
+    <div className={classes.root}>
       <IconButton
         onClick={handleFirstPageButtonClick}
         disabled={page === 0}
@@ -65,7 +66,7 @@ const BaseTablePaginationActions = props => {
 }
 
 const BaseTablePagination = props => {
-  const { count, page, rowsPerPage, onChangePage } = props
+  const { count, page, rowsPerPage, onChangePage, onChangeRowsPerPage = () => {} } = props
 
   return (
     <TablePagination
@@ -79,16 +80,25 @@ const BaseTablePagination = props => {
         native: true,
       }}
       onChangePage={onChangePage}
+      onChangeRowsPerPage={onChangeRowsPerPage}
       ActionsComponent={BaseTablePaginationActions}
     />
   )
 }
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexShrink: 0,
+    marginLeft: theme.spacing(2.5),
+  },
+}))
+
 BaseTablePagination.propTypes = {
   count: PropTypes.number.isRequired,
-  onChangePage: PropTypes.func.isRequired,
   page: PropTypes.number.isRequired,
   rowsPerPage: PropTypes.number.isRequired,
+  onChangePage: PropTypes.func.isRequired,
+  onChangeRowsPerPage: PropTypes.func,
 }
 
 export default BaseTablePagination

@@ -13,7 +13,7 @@ import {
   TableFooter,
 } from '@material-ui/core'
 
-import api from '../../../_api'
+import api from '@/_api'
 
 import BasePageContainer from '../../../_common/BasePageContainer'
 import BasePageToolbar from '../../../_common/BasePageToolbar'
@@ -23,21 +23,32 @@ import UsersListTableBody from './UsersListTableBody'
 
 const UsersList = ({ match }) => {
   const classes = useStyles()
-  const [usersData, setUsersData] = useState({ users: [], count: 0 })
-  useEffect(() => {
-    api.users.getList().then(res => setUsersData(res))
-  }, [])
 
   const [page, setPage] = React.useState(0)
+  const [usersData, setUsersData] = useState({ users: [], count: 0 })
   const [rowsPerPage, setRowsPerPage] = React.useState(10)
+
+  useEffect(() => {
+    async function fetchUsers() {
+      const userDataRes = await api.users.getList({
+        limit: rowsPerPage,
+        offset: page * rowsPerPage,
+      })
+
+      setUsersData(userDataRes)
+    }
+
+    fetchUsers()
+  }, [page, rowsPerPage])
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
   }
 
-  // const handleChangeRowsPerPage = event => {
-  //   setRowsPerPage(parseInt(event.target.value, 10))
-  //   setPage(0)
-  // }
+  const handleChangeRowsPerPage = event => {
+    setRowsPerPage(parseInt(event.target.value, 10))
+    setPage(0)
+  }
 
   const { users, count } = usersData
 
@@ -66,6 +77,7 @@ const UsersList = ({ match }) => {
                     rowsPerPage={rowsPerPage}
                     count={count}
                     onChangePage={handleChangePage}
+                    onChangeRowsPerPage={handleChangeRowsPerPage}
                   />
                 </TableRow>
               </TableFooter>
