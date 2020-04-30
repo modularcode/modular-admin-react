@@ -83,11 +83,12 @@ const UsersList = ({ match }) => {
         const userDataRes = await api.users.getList({
           limit: rowsPerPage,
           offset: page * rowsPerPage,
+          order,
         })
 
         // Make some artificial delay
         await new Promise(resolve => {
-          setTimeout(() => resolve(true), 1000)
+          setTimeout(() => resolve(true), 500)
         })
 
         setStatus('idle')
@@ -101,7 +102,7 @@ const UsersList = ({ match }) => {
     }
 
     fetchUsers()
-  }, [page, rowsPerPage, usersData.count])
+  }, [order, page, rowsPerPage, usersData.count])
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage)

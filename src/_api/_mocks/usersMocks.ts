@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import { AxiosInstance } from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 import usersData from '../_data/usersData'
@@ -9,22 +10,29 @@ export default {
     })
 
     mock.onGet('/users').reply(config => {
-      const { limit = 10, offset = 0, response } = config.params
+      const { limit = 10, offset = 0, order = {}, customResponse } = config.params
 
-      if (response) {
+      if (customResponse) {
         return [
-          response.status || 403,
+          customResponse.status || 403,
           {
-            message: response.message || 'Something went wrong...',
+            message: customResponse.message || 'Something went wrong...',
           },
         ]
+      }
+
+      const usersAll = order
+        ? _.orderBy(usersData.list, [order.orderBy], [order.order])
+        : usersData.list
+
+      if (order) {
       }
 
       return [
         200,
         {
-          users: usersData.list.slice(offset, offset + limit),
-          count: usersData.list.length,
+          users: usersAll.slice(offset, offset + limit),
+          count: usersAll.length,
         },
       ]
     })
