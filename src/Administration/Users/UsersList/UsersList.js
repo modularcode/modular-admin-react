@@ -88,7 +88,7 @@ const UsersList = ({ match }) => {
 
         // Make some artificial delay
         await new Promise(resolve => {
-          setTimeout(() => resolve(true), 500)
+          setTimeout(() => resolve(true), 300)
         })
 
         setStatus('idle')

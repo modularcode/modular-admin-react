@@ -40,9 +40,6 @@ const UsersListTableItems = ({ users, rowsPerPage = 10, rowsExpected = 10 }) => 
             <TableCell>
               <Skeleton variant="text" />
             </TableCell>
-            <TableCell>
-              <Skeleton variant="text" />
-            </TableCell>
           </TableRow>
         ))}
       {users.map(row => (
