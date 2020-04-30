@@ -13,14 +13,14 @@ const Footer = () => {
         {`Modular Material Admin React`}{' '}
         <Link
           color="primary"
-          href="https://github.com/modularcode/modular-material-admin-react/releases"
+          href="https://github.com/modularcode/modular-admin-react/releases"
         >
           v{pkg.version}
         </Link>
         {' | '}
         <Link
           color="primary"
-          href="https://github.com/modularcode/modular-material-admin-react/blob/master/LICENSE"
+          href="https://github.com/modularcode/modular-admin-react/blob/master/LICENSE"
         >
           MIT License
         </Link>
