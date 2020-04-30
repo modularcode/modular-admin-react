@@ -7,9 +7,16 @@ export default {
       ...usersData.current,
     })
 
-    mock.onGet('/users').reply(200, {
-      users: [...usersData.list],
-      count: usersData.list.length,
+    mock.onGet('/users').reply(config => {
+      const { limit = 10, offset = 0 } = config.params
+
+      return [
+        200,
+        {
+          users: usersData.list.slice(offset, offset + limit),
+          count: usersData.list.length,
+        },
+      ]
     })
 
     //
