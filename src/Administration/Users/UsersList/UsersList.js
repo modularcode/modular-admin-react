@@ -114,7 +114,8 @@ const UsersList = ({ match }) => {
 
   const handelChangeOrder = (event, columnId) => {
     setOrder({
-      order: order.order === 'asc' ? 'desc' : 'asc',
+      // If the sorting column has changed
+      order: columnId !== order.orderBy || order.order === 'desc' ? 'asc' : 'desc',
       orderBy: columnId,
     })
   }
@@ -138,13 +139,18 @@ const UsersList = ({ match }) => {
                   <TableRow>
                     {tableColumns.map(column => (
                       <TableCell key={column.id}>
-                        <TableSortLabel
-                          active={order.orderBy === column.id}
-                          direction={order.orderBy === column.id ? order.order : 'asc'}
-                          onClick={event => handelChangeOrder(event, column.id)}
-                        >
-                          {column.label}
-                        </TableSortLabel>
+                        {/* Sortable */}
+                        {column.isSortable && (
+                          <TableSortLabel
+                            active={order.orderBy === column.id}
+                            direction={order.orderBy === column.id ? order.order : 'asc'}
+                            onClick={event => handelChangeOrder(event, column.id)}
+                          >
+                            {column.label}
+                          </TableSortLabel>
+                        )}
+                        {/* Non-sortable */}
+                        {!column.isSortable && column.label}
                       </TableCell>
                     ))}
                     <TableCell>Actions</TableCell>
