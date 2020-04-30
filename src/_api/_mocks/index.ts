@@ -7,8 +7,8 @@ import organizationsMocks from './organizationsMocks'
 const init = (instance: AxiosInstance) => {
   const mockAdapter = new MockAdapter(instance, { delayResponse: 200 })
 
-  usersMocks.init(mockAdapter)
-  organizationsMocks.init(mockAdapter)
+  usersMocks.init(mockAdapter, instance)
+  organizationsMocks.init(mockAdapter, instance)
 
   return mockAdapter
 }

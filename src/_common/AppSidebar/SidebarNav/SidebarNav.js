@@ -70,11 +70,6 @@ const SidebarNav = props => {
       Icon: IconAdmin,
       items: [
         {
-          name: 'All Organizations',
-          link: '/administration/accounts',
-          Icon: IconAccount,
-        },
-        {
           name: 'All Users',
           link: '/administration/users',
           Icon: IconGroup,
