@@ -2,14 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { FormattedDate } from 'react-intl'
 
-import { makeStyles, TableBody, TableCell, TableRow, Avatar } from '@material-ui/core'
+import { makeStyles, TableCell, TableRow, Avatar } from '@material-ui/core'
 import { Skeleton } from '@material-ui/lab'
 
 import { Edit as EditIcon, Delete as DeleteIcon } from '@material-ui/icons/'
 
 const UsersListTableItems = ({ users, rowsPerPage = 10, rowsExpected = 10 }) => {
-  // const classes = useStyles()
-
   // Count how many empty rows needs to be filled
   const usersVisible = users.length || rowsExpected
   const usersArrayExpected = Array.from({ length: usersVisible }).map(
