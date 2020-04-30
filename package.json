@@ -17,6 +17,7 @@
   "dependencies": {
     "@material-ui/core": "4.9.11",
     "@material-ui/icons": "4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.51",
     "@rehooks/component-size": "^1.0.3",
     "@types/lodash": "^4.14.149",
     "@types/uuid": "^3.4.6",

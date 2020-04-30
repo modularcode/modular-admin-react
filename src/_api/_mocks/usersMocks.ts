@@ -1,14 +1,24 @@
+import { AxiosInstance } from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 import usersData from '../_data/usersData'
 
 export default {
-  init(mock: MockAdapter) {
+  init(mock: MockAdapter, instance: AxiosInstance) {
     mock.onGet('/users/profile').reply(200, {
       ...usersData.current,
     })
 
     mock.onGet('/users').reply(config => {
-      const { limit = 10, offset = 0 } = config.params
+      const { limit = 10, offset = 0, response } = config.params
+
+      if (response) {
+        return [
+          response.status || 403,
+          {
+            message: response.message || 'Something went wrong...',
+          },
+        ]
+      }
 
       return [
         200,

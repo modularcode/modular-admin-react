@@ -4,42 +4,63 @@ import React, { useEffect, useState } from 'react'
 import Grid from '@material-ui/core/Grid'
 import {
   makeStyles,
+  Paper,
   TableContainer,
   Table,
   TableCell,
   TableRow,
   TableHead,
-  Paper,
+  TableBody,
   TableFooter,
 } from '@material-ui/core'
 
+import { Alert, AlertTitle } from '@material-ui/lab'
+
 import api from '@/_api'
 
-import BasePageContainer from '../../../_common/BasePageContainer'
-import BasePageToolbar from '../../../_common/BasePageToolbar'
-import { BaseTablePagination } from '../../../_common/BaseTable'
+import BasePageContainer from '@/_common/BasePageContainer'
+import BasePageToolbar from '@/_common/BasePageToolbar'
+import { BaseTablePagination } from '@/_common/BaseTable'
 
-import UsersListTableBody from './UsersListTableBody'
+import UsersListTableItems from './UsersListTableItems'
 
 const UsersList = ({ match }) => {
   const classes = useStyles()
 
+  const [status, setStatus] = React.useState('idle')
+  const [statusMessage, setStatusMessage] = React.useState('')
   const [page, setPage] = React.useState(0)
   const [usersData, setUsersData] = useState({ users: [], count: 0 })
   const [rowsPerPage, setRowsPerPage] = React.useState(10)
 
+  // Request users
   useEffect(() => {
     async function fetchUsers() {
-      const userDataRes = await api.users.getList({
-        limit: rowsPerPage,
-        offset: page * rowsPerPage,
-      })
+      setStatus('loading')
 
-      setUsersData(userDataRes)
+      try {
+        const userDataRes = await api.users.getList({
+          limit: rowsPerPage,
+          offset: page * rowsPerPage,
+        })
+
+        // Make some artificial delay
+        await new Promise(resolve => {
+          setTimeout(() => resolve(true), 1000)
+        })
+
+        setStatus('idle')
+        setUsersData(userDataRes)
+      } catch (err) {
+        console.log('error', err.message)
+
+        setStatus('error')
+        setStatusMessage(err.message)
+      }
     }
 
     fetchUsers()
-  }, [page, rowsPerPage])
+  }, [page, rowsPerPage, usersData.count])
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
@@ -51,38 +72,54 @@ const UsersList = ({ match }) => {
   }
 
   const { users, count } = usersData
+  const rowsExpected = count ? Math.max(count - rowsPerPage * page, 0) : rowsPerPage
 
   return (
     <BasePageContainer>
       <BasePageToolbar title={'Users Adminstration'}></BasePageToolbar>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <TableContainer component={Paper}>
-            <Table className={classes.table} aria-label="custom pagination table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Avatar</TableCell>
-                  <TableCell>First Name</TableCell>
-                  <TableCell>Last Name</TableCell>
-                  <TableCell>Username</TableCell>
-                  <TableCell>Email</TableCell>
-                  <TableCell>Actions</TableCell>
-                </TableRow>
-              </TableHead>
-              <UsersListTableBody users={users} count={count} rowsPerPage={rowsPerPage} />
-              <TableFooter>
-                <TableRow>
-                  <BaseTablePagination
-                    page={page}
+          {status === 'error' && (
+            <Alert severity="error">
+              <AlertTitle>Error</AlertTitle>
+              {statusMessage}
+            </Alert>
+          )}
+
+          {status !== 'error' && (
+            <TableContainer component={Paper}>
+              <Table className={classes.table} aria-label="custom pagination table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Avatar</TableCell>
+                    <TableCell>First Name</TableCell>
+                    <TableCell>Last Name</TableCell>
+                    <TableCell>Username</TableCell>
+                    <TableCell>Email</TableCell>
+                    <TableCell>Actions</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  <UsersListTableItems
+                    users={status === 'loading' ? [] : users}
                     rowsPerPage={rowsPerPage}
-                    count={count}
-                    onChangePage={handleChangePage}
-                    onChangeRowsPerPage={handleChangeRowsPerPage}
+                    rowsExpected={rowsExpected}
                   />
-                </TableRow>
-              </TableFooter>
-            </Table>
-          </TableContainer>
+                </TableBody>
+                <TableFooter>
+                  <TableRow>
+                    <BaseTablePagination
+                      page={page}
+                      rowsPerPage={rowsPerPage}
+                      count={count}
+                      onChangePage={handleChangePage}
+                      onChangeRowsPerPage={handleChangeRowsPerPage}
+                    />
+                  </TableRow>
+                </TableFooter>
+              </Table>
+            </TableContainer>
+          )}
         </Grid>
       </Grid>
     </BasePageContainer>
