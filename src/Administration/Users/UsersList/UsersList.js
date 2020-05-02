@@ -39,7 +39,7 @@ const UsersList = ({ match }) => {
   })
 
   const { users, count } = usersData
-  const rowsExpected = count ? Math.max(count - rowsPerPage * page, 0) : rowsPerPage
+  // const rowsExpected = count ? Math.max(count - rowsPerPage * page, 0) : rowsPerPage
 
   const tableColumns = [
     {
@@ -161,7 +161,6 @@ const UsersList = ({ match }) => {
                   <UsersListTableItems
                     users={status === 'loading' ? [] : users}
                     rowsPerPage={rowsPerPage}
-                    rowsExpected={rowsExpected}
                   />
                 </TableBody>
                 <TableFooter>
