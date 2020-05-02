@@ -23,6 +23,7 @@ import BasePageContainer from '@/_common/BasePageContainer'
 import BasePageToolbar from '@/_common/BasePageToolbar'
 import { BaseTablePagination } from '@/_common/BaseTable'
 
+import UsersListAction from './UsersListActions'
 import UsersListTableItems from './UsersListTableItems'
 
 const UsersList = ({ match }) => {
@@ -39,7 +40,7 @@ const UsersList = ({ match }) => {
   })
 
   const { users, count } = usersData
-  const rowsExpected = count ? Math.max(count - rowsPerPage * page, 0) : rowsPerPage
+  // const rowsExpected = count ? Math.max(count - rowsPerPage * page, 0) : rowsPerPage
 
   const tableColumns = [
     {
@@ -123,7 +124,10 @@ const UsersList = ({ match }) => {
 
   return (
     <BasePageContainer>
-      <BasePageToolbar title={'Users Adminstration'}></BasePageToolbar>
+      <BasePageToolbar
+        title={'Users Adminstration'}
+        actionsComponent={UsersListAction}
+      ></BasePageToolbar>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           {status === 'error' && (
@@ -161,7 +165,6 @@ const UsersList = ({ match }) => {
                   <UsersListTableItems
                     users={status === 'loading' ? [] : users}
                     rowsPerPage={rowsPerPage}
-                    rowsExpected={rowsExpected}
                   />
                 </TableBody>
                 <TableFooter>

@@ -9,38 +9,37 @@ import { Edit as EditIcon, Delete as DeleteIcon } from '@material-ui/icons/'
 
 const UsersListTableItems = ({ users, rowsPerPage = 10, rowsExpected = 10 }) => {
   const classes = useStyles()
+  const UsersListTableItems = ({ users, rowsPerPage = 10 }) => {
   // Count how many empty rows needs to be filled
-  const usersVisible = users.length || rowsExpected
-  const usersArrayExpected = Array.from({ length: usersVisible }).map(
-    (item, index) => index,
-  )
-  const emptyRows = rowsPerPage - usersVisible
+  const usersLoading = users.length
+    ? []
+    : Array.from({ length: rowsPerPage }).map((item, index) => index)
+  const emptyRows = users.length ? rowsPerPage - users.length : []
 
   return (
     <>
-      {!users.length &&
-        usersArrayExpected.map(item => (
-          <TableRow key={item}>
-            <TableCell>
-              <Skeleton variant="circle" width={40} height={40} />
-            </TableCell>
-            <TableCell>
-              <Skeleton variant="text" />
-            </TableCell>
-            <TableCell>
-              <Skeleton variant="text" />
-            </TableCell>
-            <TableCell>
-              <Skeleton variant="text" />
-            </TableCell>
-            <TableCell>
-              <Skeleton variant="text" />
-            </TableCell>
-            <TableCell>
-              <Skeleton variant="text" />
-            </TableCell>
-          </TableRow>
-        ))}
+      {usersLoading.map(item => (
+        <TableRow key={item}>
+          <TableCell>
+            <Skeleton variant="circle" width={40} height={40} />
+          </TableCell>
+          <TableCell>
+            <Skeleton variant="text" />
+          </TableCell>
+          <TableCell>
+            <Skeleton variant="text" />
+          </TableCell>
+          <TableCell>
+            <Skeleton variant="text" />
+          </TableCell>
+          <TableCell>
+            <Skeleton variant="text" />
+          </TableCell>
+          <TableCell>
+            <Skeleton variant="text" />
+          </TableCell>
+        </TableRow>
+      ))}
       {users.map(row => (
         <TableRow key={row.id}>
           <TableCell>
