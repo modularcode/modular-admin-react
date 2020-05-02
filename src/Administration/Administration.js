@@ -8,7 +8,14 @@ const Administration = ({ match }) => {
   return (
     <>
       <Route exact path={`${match.path}/users`} component={UsersList} />
-      <Route path={`${match.path}/users/:userId/edit`} component={UserEditor} />
+      <Route
+        path={`${match.path}/users/new`}
+        render={(props) => <UserEditor {...props} />}
+      />
+      <Route
+        path={`${match.path}/users/:userId/edit`}
+        render={(props) => <UserEditor {...props} userId={parseInt(props.match.params.userId)} />}
+      />
     </>
   )
 }

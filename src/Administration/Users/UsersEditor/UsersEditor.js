@@ -3,12 +3,20 @@ import PropTypes from 'prop-types'
 
 import api from '@/_api'
 
-const UserEditor = ({ match }) => {
-  const [user, setUser] = useState([])
+import BasePageContainer from '@/_common/BasePageContainer'
+import BasePageToolbar from '@/_common/BasePageToolbar'
+import Grid from "@material-ui/core/Grid";
+
+const UserEditor = (props) => {
+
+  const { userId } = props
+  const [user, setUser] = useState({})
 
   useEffect(() => {
+    if(!userId) {
+      return
+    }
     async function fetchUser() {
-      const userId = match.params.userId;
       try {
         const userDataRes = await api.users.getOne(userId)
         setUser(userDataRes)
@@ -17,15 +25,20 @@ const UserEditor = ({ match }) => {
       }
     }
     fetchUser()
-  }, [])
+  }, [userId])
 
   return (
-    <>
-      UserEditor
-    </>
+    <BasePageContainer>
+      <BasePageToolbar title={'Edit user'}></BasePageToolbar>
+      <Grid container spacing={3}>
+        UserEditor
+      </Grid>
+    </BasePageContainer>
   )
 }
 
-UserEditor.propTypes = {}
+UserEditor.propTypes = {
+  userId: PropTypes.number
+}
 
 export default UserEditor
