@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import clsx from 'clsx'
 
 import { makeStyles, createStyles } from '@material-ui/core/styles'
@@ -63,5 +64,13 @@ const useStyles = makeStyles(theme =>
     },
   }),
 )
+
+BasePageToolbar.propTypes = {
+  classes: PropTypes.object,
+  title: PropTypes.elementType,
+  titleComponent: PropTypes.elementType,
+  actions: PropTypes.element,
+  actionsComponent: PropTypes.elementType,
+}
 
 export default BasePageToolbar
