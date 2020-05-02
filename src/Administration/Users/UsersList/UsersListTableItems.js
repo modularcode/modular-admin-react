@@ -8,6 +8,7 @@ import { Skeleton } from '@material-ui/lab'
 import { Edit as EditIcon, Delete as DeleteIcon } from '@material-ui/icons/'
 
 const UsersListTableItems = ({ users, rowsPerPage = 10, rowsExpected = 10 }) => {
+  const classes = useStyles()
   // Count how many empty rows needs to be filled
   const usersVisible = users.length || rowsExpected
   const usersArrayExpected = Array.from({ length: usersVisible }).map(
@@ -60,7 +61,7 @@ const UsersListTableItems = ({ users, rowsPerPage = 10, rowsExpected = 10 }) => 
             />
           </TableCell>
           <TableCell>
-            <Link to={{ pathname: `users/${row.id}/edit` }}>
+            <Link to={{ pathname: `users/${row.id}/edit` }} className={classes.link}>
               <EditIcon />
             </Link>
             <DeleteIcon />
@@ -83,6 +84,9 @@ const useStyles = makeStyles(theme => ({
     flexShrink: 0,
     marginLeft: theme.spacing(2.5),
   },
+  link: {
+    color: 'inherit'
+  }
 }))
 
 export default UsersListTableItems
