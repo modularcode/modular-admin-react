@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { FormattedDate } from 'react-intl'
-
+import { Link } from 'react-router-dom'
 import { makeStyles, TableCell, TableRow, Avatar } from '@material-ui/core'
 import { Skeleton } from '@material-ui/lab'
 
@@ -60,7 +60,9 @@ const UsersListTableItems = ({ users, rowsPerPage = 10, rowsExpected = 10 }) => 
             />
           </TableCell>
           <TableCell>
-            <EditIcon />
+            <Link to={{ pathname: `users/${row.id}/edit` }}>
+              <EditIcon />
+            </Link>
             <DeleteIcon />
           </TableCell>
         </TableRow>
