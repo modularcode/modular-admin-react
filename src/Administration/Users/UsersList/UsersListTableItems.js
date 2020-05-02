@@ -9,37 +9,38 @@ import { Edit as EditIcon, Delete as DeleteIcon } from '@material-ui/icons/'
 
 const UsersListTableItems = ({ users, rowsPerPage = 10, rowsExpected = 10 }) => {
   const classes = useStyles()
-  const UsersListTableItems = ({ users, rowsPerPage = 10 }) => {
   // Count how many empty rows needs to be filled
-  const usersLoading = users.length
-    ? []
-    : Array.from({ length: rowsPerPage }).map((item, index) => index)
-  const emptyRows = users.length ? rowsPerPage - users.length : []
+  const usersVisible = users.length || rowsExpected
+  const usersArrayExpected = Array.from({ length: usersVisible }).map(
+    (item, index) => index,
+  )
+  const emptyRows = rowsPerPage - usersVisible
 
   return (
     <>
-      {usersLoading.map(item => (
-        <TableRow key={item}>
-          <TableCell>
-            <Skeleton variant="circle" width={40} height={40} />
-          </TableCell>
-          <TableCell>
-            <Skeleton variant="text" />
-          </TableCell>
-          <TableCell>
-            <Skeleton variant="text" />
-          </TableCell>
-          <TableCell>
-            <Skeleton variant="text" />
-          </TableCell>
-          <TableCell>
-            <Skeleton variant="text" />
-          </TableCell>
-          <TableCell>
-            <Skeleton variant="text" />
-          </TableCell>
-        </TableRow>
-      ))}
+      {!users.length &&
+        usersArrayExpected.map(item => (
+          <TableRow key={item}>
+            <TableCell>
+              <Skeleton variant="circle" width={40} height={40} />
+            </TableCell>
+            <TableCell>
+              <Skeleton variant="text" />
+            </TableCell>
+            <TableCell>
+              <Skeleton variant="text" />
+            </TableCell>
+            <TableCell>
+              <Skeleton variant="text" />
+            </TableCell>
+            <TableCell>
+              <Skeleton variant="text" />
+            </TableCell>
+            <TableCell>
+              <Skeleton variant="text" />
+            </TableCell>
+          </TableRow>
+        ))}
       {users.map(row => (
         <TableRow key={row.id}>
           <TableCell>
@@ -79,12 +80,8 @@ const UsersListTableItems = ({ users, rowsPerPage = 10, rowsExpected = 10 }) => 
 UsersListTableItems.propTypes = {}
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    flexShrink: 0,
-    marginLeft: theme.spacing(2.5),
-  },
   link: {
-    color: 'inherit'
+    color: "inherit"
   }
 }))
 
