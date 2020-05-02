@@ -59,6 +59,7 @@ const useStyles = makeStyles(theme =>
     },
     titleContainer: {},
     actionsContainer: {
+      color: theme.palette.grey[600],
       display: 'flex',
       justifyContent: 'flex-end',
     },

@@ -9,6 +9,7 @@ import {
   // ArrowDropDown as IconDropDown,
   Add as IconNew,
   Search as IconSearch,
+  Clear as IconClear,
 } from '@material-ui/icons'
 
 // import usersListContext from './usersListContext'
@@ -22,6 +23,10 @@ const DashboardActions = () => {
     setSearch(event.target.value)
   }
 
+  const handelClickSearchClearButton = () => {
+    setSearch('')
+  }
+
   return (
     <div className={classes.root}>
       <div className={classes.search}>
@@ -29,25 +34,32 @@ const DashboardActions = () => {
           <IconSearch />
         </div>
         <InputBase
-          placeholder="Search…"
+          placeholder="Search users…"
           classes={{
             root: classes.searchInputRoot,
-            input: clsx(
-              classes.searchInputInput,
-              search && classes.searchInputInputActive,
-            ),
+            input: clsx(classes.searchInputInput, search && '-active'),
           }}
           inputProps={{ 'aria-label': 'search' }}
+          value={search}
           onChange={handleChangeSearchInput}
         />
+        {search && (
+          <div className={classes.searchButtonClear}>
+            <Tooltip title="Clear search">
+              <Button color="secondary" onClick={handelClickSearchClearButton}>
+                <IconClear />
+              </Button>
+            </Tooltip>
+          </div>
+        )}
       </div>
-      <Tooltip title="Create new">
+      <Tooltip title="Create new user">
         <Button color="secondary">
           <IconNew className={classes.iconNew} />
           New
         </Button>
       </Tooltip>
-      <Tooltip title="Filter">
+      <Tooltip title="Filter users">
         <Button color="secondary">
           <IconFilter />
         </Button>
@@ -63,7 +75,8 @@ const DashboardActions = () => {
 
 const useStyles = makeStyles(theme => ({
   root: {
-    color: theme.palette.secondary.main,
+    // color: theme.palette.secondary.main,
+    color: theme.palette.grey[600],
   },
   iconNew: {
     marginRight: 5,
@@ -93,6 +106,15 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  searchButtonClear: {
+    position: 'absolute',
+    height: '100%',
+    top: 0,
+    right: 0,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   searchInputRoot: {
     color: 'inherit',
   },
@@ -100,11 +122,12 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    paddingRight: '2.2em',
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       width: '12ch',
-      '&:focus, &.active': {
+      '&:focus, &.-active': {
         width: '20ch',
       },
     },
