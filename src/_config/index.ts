@@ -12,7 +12,7 @@ const config: Config = {
   useSampleData: true,
   api: {
     useMocks: true,
-    url: process.env.API_URL || 'http://localhost:4000/api',
+    url: process.env.API_URL || '/api',
   },
 }
 
