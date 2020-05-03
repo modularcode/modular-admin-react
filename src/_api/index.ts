@@ -11,6 +11,11 @@ if (config.api.useMocks) {
 
 const init = async () => {
   if (apiMocks) {
+    // Remove all SW caches
+    const cachesNames = await caches.keys()
+
+    await Promise.all(cachesNames.map(name => caches.delete(name)))
+
     await apiMocks.default.init()
   }
 
