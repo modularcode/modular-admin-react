@@ -283,11 +283,11 @@ const useStyles = makeStyles(theme =>
       position: 'relative',
       transition: 'background .23s ease',
       '&.active:not(.open)': {
-        color: theme.palette.secondary.main,
+        color: theme.palette.primary.main,
         // background: 'rgba(0, 0, 0, 0.08)',
         '& .MuiListItemIcon-root': {
           // color: '#fff',
-          color: theme.palette.secondary.main,
+          color: theme.palette.primary.main,
         },
       },
       '&.open': {

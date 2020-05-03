@@ -26,18 +26,18 @@ const DashboardActions = () => {
         </Button>
       </Tooltip>
       <Tooltip title="Create new">
-        <Button color="secondary">
+        <Button color="primary">
           <IconNew className={classes.iconNew} />
           New
         </Button>
       </Tooltip>
       <Tooltip title="Filter">
-        <Button color="secondary">
+        <Button color="primary">
           <IconFilter />
         </Button>
       </Tooltip>
       <Tooltip title="More actions">
-        <Button color="secondary">
+        <Button color="primary">
           <IconMore />
         </Button>
       </Tooltip>

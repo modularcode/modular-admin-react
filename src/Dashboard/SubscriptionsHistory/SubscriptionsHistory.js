@@ -61,14 +61,14 @@ const Subscriptions = props => {
                     <Typography
                       align="left"
                       variant="body2"
-                      color="textSecondary"
+                      color="textPrimary"
                       className={classes.ratingItemRatio}
                     >
                       {ratio}%
                     </Typography>
                   </Grid>
                 </Grid>
-                <LinearProgress variant="determinate" value={ratio} color="primary" />
+                <LinearProgress variant="determinate" value={ratio} color="secondary" />
               </div>
             ))}
           </Grid>
@@ -93,7 +93,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'right',
   },
   headerIcon: {
-    color: theme.palette.primary.main,
+    color: theme.palette.secondary.main,
     verticalAlign: 'sub',
     marginRight: '.3em',
   },

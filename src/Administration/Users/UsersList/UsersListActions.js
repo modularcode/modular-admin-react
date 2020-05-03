@@ -75,7 +75,7 @@ const DashboardActions = () => {
 
 const useStyles = makeStyles(theme => ({
   root: {
-    // color: theme.palette.secondary.main,
+    // color: theme.palette.primary.main,
     color: theme.palette.grey[600],
   },
   iconNew: {

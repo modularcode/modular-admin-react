@@ -74,10 +74,10 @@ const baseTheme = createMuiTheme({
   },
   palette: {
     divider: 'rgba(30, 30, 30, 0.06)',
-    secondary: {
+    primary: {
       main: '#8cd136', //indigo[600],
     },
-    primary: {
+    secondary: {
       main: '#ae59e3', //'#619f30',
       // main: '#9027d1', //'#619f30',
       // main: blue[600], //'#619f30',

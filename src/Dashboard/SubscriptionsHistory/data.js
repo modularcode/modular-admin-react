@@ -12,8 +12,8 @@ export const subscriptionsHistoryChart = {
   data: {
     datasets: [
       {
-        backgroundColor: theme.palette.secondary.main,
-        borderColor: theme.palette.secondary.main,
+        backgroundColor: theme.palette.primary.main,
+        borderColor: theme.palette.primary.main,
         borderWidth: 2,
         label: 'Subscriptions',
         fill: false,
