@@ -11,8 +11,11 @@ export default [
     return res(ctx.json(usersData.current))
   }),
 
-  rest.get(`${apiUrl}/users`, (req, res, ctx) => {
-    const { limit = 10, offset = 0, order = {} } = req.params
+  rest.get(`${apiUrl}/users`, async (req, res, ctx) => {
+    let limit = parseInt(req.query.get('limit') || '0')
+    let offset = parseInt(req.query.get('offset') || '10')
+    let order = JSON.parse(req.query.get('order') || '{}')
+
     const usersAll = order
       ? _.orderBy(usersData.list, [order.orderBy], [order.order])
       : usersData.list
@@ -26,7 +29,7 @@ export default [
       // Set custom status
       ctx.status(200),
       // Delay the response
-      ctx.delay(1000),
+      ctx.delay(500),
       // send JSON response body
       ctx.json(result),
     )

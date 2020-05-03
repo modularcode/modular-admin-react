@@ -87,11 +87,6 @@ const UsersList = ({ match }) => {
           order,
         })
 
-        // Make some artificial delay
-        await new Promise(resolve => {
-          setTimeout(() => resolve(true), 300)
-        })
-
         setStatus('idle')
         setUsersData(userDataRes)
       } catch (err) {
