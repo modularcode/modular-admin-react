@@ -103,7 +103,7 @@ const UsersList = ({ match }) => {
     }
 
     fetchUsers()
-  }, [order, page, rowsPerPage, usersData.count])
+  }, [order, page, rowsPerPage])
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
