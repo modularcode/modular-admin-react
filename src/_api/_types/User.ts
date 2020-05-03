@@ -18,6 +18,7 @@ export interface UserSubmissionData {
   password?: string
   avatarUrl?: string
   globalRole?: string
+  status?: string
 }
 
 export default interface User extends UserSubmissionData, Entity {

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { FormattedDate } from 'react-intl'
 import { Link } from 'react-router-dom'
-import { makeStyles, TableCell, TableRow, Avatar } from '@material-ui/core'
+import { makeStyles, TableCell, TableRow, Avatar, Chip } from '@material-ui/core'
 import { Skeleton } from '@material-ui/lab'
 
 import { Edit as EditIcon, Delete as DeleteIcon } from '@material-ui/icons/'
@@ -39,6 +39,9 @@ const UsersListTableItems = ({ users, rowsPerPage = 10, rowsExpected = 10 }) => 
             <TableCell>
               <Skeleton variant="text" />
             </TableCell>
+            <TableCell>
+              <Skeleton variant="text" />
+            </TableCell>
           </TableRow>
         ))}
       {users.map(row => (
@@ -52,6 +55,14 @@ const UsersListTableItems = ({ users, rowsPerPage = 10, rowsExpected = 10 }) => 
           <TableCell>{row.lastName}</TableCell>
           <TableCell>{row.username}</TableCell>
           <TableCell>{row.email}</TableCell>
+          <TableCell>
+            <Chip
+              label={row.status}
+              variant="outlined"
+              size="small"
+              color={row.status === 'active' ? 'secondary' : 'default'}
+            />
+          </TableCell>
           <TableCell>
             <FormattedDate
               value={new Date(row.createdAt)}
@@ -81,8 +92,8 @@ UsersListTableItems.propTypes = {}
 
 const useStyles = makeStyles(theme => ({
   link: {
-    color: "inherit"
-  }
+    color: 'inherit',
+  },
 }))
 
 export default UsersListTableItems

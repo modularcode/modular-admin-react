@@ -69,6 +69,11 @@ const UsersList = ({ match }) => {
       isSortable: true,
     },
     {
+      id: 'status',
+      label: 'Status',
+      isSortable: true,
+    },
+    {
       id: 'createdAt',
       label: 'Created',
       isSortable: true,
