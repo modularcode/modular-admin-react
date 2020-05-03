@@ -1,18 +1,8 @@
-import { AxiosInstance } from 'axios'
-import MockAdapter from 'axios-mock-adapter'
-
+import { setupWorker } from 'msw'
 import usersMocks from './usersMocks'
-import organizationsMocks from './organizationsMocks'
 
-const init = (instance: AxiosInstance) => {
-  const mockAdapter = new MockAdapter(instance, { delayResponse: 200 })
-
-  usersMocks.init(mockAdapter, instance)
-  organizationsMocks.init(mockAdapter, instance)
-
-  return mockAdapter
-}
+const { start } = setupWorker(...usersMocks)
 
 export default {
-  init,
+  init: start,
 }

@@ -1,51 +1,96 @@
-import { AxiosInstance } from 'axios'
-import MockAdapter from 'axios-mock-adapter'
-import organizationsData from '../_data/organizationsData'
+import _ from 'lodash'
+import { rest } from 'msw'
 
-export default {
-  init(mock: MockAdapter, instance: AxiosInstance) {
-    mock.onGet('/organizations').reply(200, {
-      organizations: {
-        ...organizationsData.list,
-      },
-      count: organizationsData.list.length,
-    })
+import config from '_config'
+import organizationsData from './_data/organizationsData'
 
-    //
-    mock.onGet(/\/organizations\/\d+/).reply((config: any) => {
-      // console.log(config)
-      const urlPaths = config.url.split('/')
-      const organizationId = urlPaths[urlPaths.length - 1]
-      const organization = organizationsData.byId[organizationId]
+const apiUrl = config.api.url
 
-      if (organization) {
-        return [200, { ...organization }]
-      } else {
-        return [404, { message: 'Organization not found ' }]
-      }
-    })
+export default [
+  rest.get(`${apiUrl}/organizations`, (req, res, ctx) => {
+    const { limit = 10, offset = 0, order = {} } = req.params
+    const organizationsAll = order
+      ? _.orderBy(organizationsData.list, [order.orderBy], [order.order])
+      : organizationsData.list
 
-    mock.onPut(/\/organizations\/\d+/).reply((config: any) => {
-      const urlPaths = config.url.split('/')
-      const organizationId = urlPaths[urlPaths.length - 1]
-      const organizationData = JSON.parse(config.data)
-      const organization = organizationsData.byId[organizationId]
+    const result = {
+      organizations: organizationsAll.slice(offset, offset + limit),
+      count: organizationsAll.length,
+    }
 
-      if (organization) {
-        return [200, { ...organization, ...organizationData }]
-      } else {
-        return [403, { message: 'Update not permitted' }]
-      }
-    })
+    return res(
+      // Set custom status
+      ctx.status(200),
+      // Delay the response
+      ctx.delay(1000),
+      // send JSON response body
+      ctx.json(result),
+    )
+  }),
 
-    mock.onPost(/\/organizations/).reply((config: any) => {
-      const organizationData = JSON.parse(config.data)
+  rest.get(`${apiUrl}/organizations/:organizationId`, (req, res, ctx) => {
+    const { organizationId } = req.params
+    const organization = organizationsData.byId[organizationId]
 
-      return [200, { id: 100, ...organizationData }]
-    })
+    if (organization) {
+      return res(ctx.status(200), ctx.delay(200), ctx.json(organization))
+    } else {
+      return res(
+        ctx.status(404),
+        ctx.status(200),
+        ctx.json({
+          message: 'organization not found',
+        }),
+      )
+    }
+  }),
 
-    mock.onDelete(/\/organizations\/\d+/).reply((config: any) => {
-      return [200, { message: 'Organization deleted' }]
-    })
-  },
-}
+  rest.post(`${apiUrl}/organizations`, (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.delay(200),
+      ctx.json({
+        // @ts-ignore
+        ...req.body,
+      }),
+    )
+  }),
+
+  rest.put(`${apiUrl}/organizations/:organizationId`, (req, res, ctx) => {
+    const { organizationId } = req.params
+    const organization = organizationsData.byId[organizationId]
+
+    if (organization) {
+      return res(
+        ctx.status(200),
+        ctx.delay(200),
+        ctx.json({
+          ...organization,
+          // ...req.body,
+        }),
+      )
+    } else {
+      return res(ctx.status(403), ctx.json({ message: 'Update not permitted' }))
+    }
+  }),
+
+  rest.delete(`${apiUrl}/organizations/:organizationId`, (req, res, ctx) => {
+    const { organizationId } = req.params
+    const organization = organizationsData.byId[organizationId]
+
+    if (organization) {
+      return res(
+        ctx.status(200),
+        ctx.delay(200),
+        ctx.json({
+          message: 'Organization removed',
+        }),
+      )
+    } else {
+      return res(
+        ctx.status(403),
+        ctx.json({ message: 'Organization not found or forbidden' }),
+      )
+    }
+  }),
+]

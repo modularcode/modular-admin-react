@@ -3,7 +3,7 @@ import config from '../_config'
 import authService from '../_services/authService'
 
 const apiService = axios.create({
-  baseURL: config.api.baseUrl,
+  baseURL: config.api.url,
 })
 
 // Use the Token header for all requests

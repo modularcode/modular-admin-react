@@ -2,7 +2,8 @@ interface Config {
   navigationType: 'hash' | 'history'
   useSampleData?: boolean
   api: {
-    baseUrl: string
+    useMocks?: boolean
+    url: string
   }
 }
 
@@ -10,7 +11,8 @@ const config: Config = {
   navigationType: 'hash',
   useSampleData: true,
   api: {
-    baseUrl: 'http://localhost:4000/api',
+    useMocks: true,
+    url: process.env.API_URL || 'http://localhost:4000/api',
   },
 }
 
