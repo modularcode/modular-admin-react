@@ -73,52 +73,48 @@ const UserEditor = (props) => {
   return (
     <BasePageContainer>
       <BasePageToolbar title={'Edit user'}></BasePageToolbar>
-      <Grid container xs={12}>
-        <Grid item xs={6}>
-          <Paper>
-            <form onSubmit={handleSubmit}>
-              <FormControl className={classes.control}>
-                <InputLabel>First Name</InputLabel>
-                <Input value={user.firstName} name="firstName" className={classes.width} onChange={e => onChangeHandler(e)}/>
-              </FormControl>
-              <FormControl className={classes.control}>
-                <InputLabel>Last Name</InputLabel>
-                <Input value={user.lastName} name="lastName" className={classes.width} onChange={e => onChangeHandler(e)}/>
-              </FormControl>
-              <FormControl className={classes.control}>
-                <InputLabel>User Name</InputLabel>
-                <Input value={user.username} name="username" className={classes.width} onChange={e => onChangeHandler(e)}/>
-              </FormControl>
-              <FormControl className={classes.control}>
-                <InputLabel>Email</InputLabel>
-                <Input value={user.email} name="email" className={classes.width} onChange={e => onChangeHandler(e)}/>
-              </FormControl>
-              <FormControl className={classes.control}>
-                <InputLabel>Global Role</InputLabel>
-                <Select
-                  labelId="Set Global Role"
-                  id="globalRole"
-                  value={user.globalRole}
-                  onChange={setGlobalRole}
-                  className={classes.width}
-                >
-                  <MenuItem value={user.globalRole}>{user.globalRole}</MenuItem>
-                  <MenuItem value='user'>user</MenuItem>
-                  <MenuItem value='support'>support</MenuItem>
-                </Select>
-              </FormControl>
-              <Button
-                variant="contained"
-                color="primary"
-                type="submit"
-                className={`${classes.margin} ${classes.width}`}
-                startIcon={<SaveIcon />}
-              >
-                Edit User
-              </Button>
-            </form>
-          </Paper>
-        </Grid>
+      <Grid container xs={12} component={Paper} className={classes.box}>
+        <form onSubmit={handleSubmit}>
+          <FormControl className={classes.control}>
+            <InputLabel>First Name</InputLabel>
+            <Input value={user.firstName} name="firstName" className={classes.width} onChange={e => onChangeHandler(e)}/>
+          </FormControl>
+          <FormControl className={classes.control}>
+            <InputLabel>Last Name</InputLabel>
+            <Input value={user.lastName} name="lastName" className={classes.width} onChange={e => onChangeHandler(e)}/>
+          </FormControl>
+          <FormControl className={classes.control}>
+            <InputLabel>User Name</InputLabel>
+            <Input value={user.username} name="username" className={classes.width} onChange={e => onChangeHandler(e)}/>
+          </FormControl>
+          <FormControl className={classes.control}>
+            <InputLabel>Email</InputLabel>
+            <Input value={user.email} name="email" className={classes.width} onChange={e => onChangeHandler(e)}/>
+          </FormControl>
+          <FormControl className={classes.control}>
+            <InputLabel>Global Role</InputLabel>
+            <Select
+              labelId="Set Global Role"
+              id="globalRole"
+              value={user.globalRole}
+              onChange={setGlobalRole}
+              className={classes.width}
+            >
+              <MenuItem value={user.globalRole}>{user.globalRole}</MenuItem>
+              <MenuItem value='user'>user</MenuItem>
+              <MenuItem value='support'>support</MenuItem>
+            </Select>
+          </FormControl>
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+            className={`${classes.margin} ${classes.width}`}
+            startIcon={<SaveIcon />}
+          >
+            Edit User
+          </Button>
+        </form>
       </Grid>
     </BasePageContainer>
   )
@@ -129,8 +125,12 @@ UserEditor.propTypes = {
 }
 
 const useStyles = makeStyles(theme => ({
+  box: {
+    padding: 16
+  },
   control: {
-    display: 'block'
+    display: 'block',
+    marginTop: 16
   },
   margin: {
     marginTop: 16
