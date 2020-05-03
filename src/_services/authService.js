@@ -4,14 +4,15 @@
  */
 
 import store from 'store'
+import config from '../_config'
 
 const sampleToken =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.Db8fjZU7MkBZoJDjmjuvv2EeDgG9RSaZ1xKm__qHelw'
 
 const authService = {
   token: null,
-  init({ useSampleData = false }) {
-    if (useSampleData) {
+  init() {
+    if (config.api.useMocks) {
       this.token = sampleToken
     } else {
       // Read the token from local storage

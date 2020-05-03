@@ -1,17 +1,22 @@
 import instance from './client'
-import mocks from './_mocks'
 import organizations from './organizations'
 import users from './users'
+import config from '_config'
 
-export interface ApiInitOptions {
-  useSampleData?: boolean
+let apiMocks: any
+
+if (config.api.useMocks) {
+  apiMocks = require('./_mocks/')
 }
 
-const init = (options: ApiInitOptions = {}) => {
-  // const mockAdapter = options.useSampleData ? mocks.init(instance) : undefined
+const init = async () => {
+  if (apiMocks) {
+    // Remove all SW caches
+    const cachesNames = await caches.keys()
 
-  if (options.useSampleData) {
-    mocks.init(instance)
+    await Promise.all(cachesNames.map(name => caches.delete(name)))
+
+    await apiMocks.default.init()
   }
 
   return instance

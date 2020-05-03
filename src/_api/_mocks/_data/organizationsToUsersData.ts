@@ -1,5 +1,5 @@
 import _groupBy from 'lodash/groupBy'
-import OrganizationToUser from '../_types/OrganizationToUser'
+import OrganizationToUser from '../../_types/OrganizationToUser'
 
 // import organizationsData from './organizationsData'
 // import usersData from './usersData'

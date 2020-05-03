@@ -1,80 +1,97 @@
 import _ from 'lodash'
-import { AxiosInstance } from 'axios'
-import MockAdapter from 'axios-mock-adapter'
-import usersData from '../_data/usersData'
+import { rest } from 'msw'
 
-export default {
-  init(mock: MockAdapter, instance: AxiosInstance) {
-    mock.onGet('/users/profile').reply(200, {
-      ...usersData.current,
-    })
+import config from '_config'
+import usersData from './_data/usersData'
 
-    mock.onGet('/users').reply(config => {
-      const { limit = 10, offset = 0, order = {}, customResponse } = config.params
+const apiUrl = config.api.url
 
-      if (customResponse) {
-        return [
-          customResponse.status || 403,
-          {
-            message: customResponse.message || 'Something went wrong...',
-          },
-        ]
-      }
+export default [
+  rest.get(`${apiUrl}/users/profile`, (rex, res, ctx) => {
+    return res(ctx.json(usersData.current))
+  }),
 
-      const usersAll = order
-        ? _.orderBy(usersData.list, [order.orderBy], [order.order])
-        : usersData.list
+  rest.get(`${apiUrl}/users`, (req, res, ctx) => {
+    const { limit = 10, offset = 0, order = {} } = req.params
+    const usersAll = order
+      ? _.orderBy(usersData.list, [order.orderBy], [order.order])
+      : usersData.list
 
-      if (order) {
-      }
+    const result = {
+      users: usersAll.slice(offset, offset + limit),
+      count: usersAll.length,
+    }
 
-      return [
-        200,
-        {
-          users: usersAll.slice(offset, offset + limit),
-          count: usersAll.length,
-        },
-      ]
-    })
+    return res(
+      // Set custom status
+      ctx.status(200),
+      // Delay the response
+      ctx.delay(1000),
+      // send JSON response body
+      ctx.json(result),
+    )
+  }),
 
-    //
-    mock.onGet(/\/users\/\d+/).reply((config: any) => {
-      // console.log(config)
-      const urlPaths = config.url.split('/')
-      const userId = urlPaths[urlPaths.length - 1]
-      const user = usersData.byId[userId]
+  rest.get(`${apiUrl}/users/:userId`, (req, res, ctx) => {
+    const { userId } = req.params
+    const user = usersData.byId[userId]
 
-      if (user) {
-        return [200, { ...user }]
-      } else {
-        return [404, { message: 'User not found ' }]
-      }
-    })
+    if (user) {
+      return res(ctx.status(200), ctx.delay(200), ctx.json(user))
+    } else {
+      return res(
+        ctx.status(404),
+        ctx.status(200),
+        ctx.json({
+          message: 'User not found',
+        }),
+      )
+    }
+  }),
 
-    mock.onPut(/\/users\/\d+/).reply((config: any) => {
-      const urlPaths = config.url.split('/')
-      const userId = urlPaths[urlPaths.length - 1]
-      const userData = JSON.parse(config.data)
-      const user = usersData.byId[userId]
+  rest.post(`${apiUrl}/users`, (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.delay(200),
+      ctx.json({
+        // @ts-ignore
+        ...req.body,
+      }),
+    )
+  }),
 
-      if (user) {
-        return [200, { ...user, ...userData }]
-      } else {
-        return [403, { message: 'Update not permitted' }]
-      }
-    })
+  rest.put(`${apiUrl}/users/:userId`, (req, res, ctx) => {
+    const { userId } = req.params
+    const user = usersData.byId[userId]
 
-    mock.onPost(/\/users/).reply((config: any) => {
-      const userData = JSON.parse(config.data)
+    if (user) {
+      return res(
+        ctx.status(200),
+        ctx.delay(200),
+        ctx.json({
+          ...user,
+          // ...req.body,
+        }),
+      )
+    } else {
+      return res(ctx.status(403), ctx.json({ message: 'Update not permitted' }))
+    }
+  }),
 
-      console.log('config', config)
-      console.log('userData', userData)
+  rest.delete(`${apiUrl}/users/:userId`, (req, res, ctx) => {
+    const { userId } = req.params
+    const user = usersData.byId[userId]
 
-      return [200, { id: 100, ...userData }]
-    })
-
-    mock.onDelete(/\/users\/\d+/).reply((config: any) => {
-      return [200, { message: 'User removed' }]
-    })
-  },
-}
+    if (user) {
+      return res(
+        ctx.status(200),
+        ctx.delay(200),
+        ctx.json({
+          message: 'User removed',
+        }),
+      )
+    } else {
+      return res(ctx.status(403), ctx.json({ message: 'User not found or forbidden' }))
+    }
+  }),
+]

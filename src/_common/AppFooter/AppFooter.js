@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <footer className={classes.footer}>
       <Typography variant="body2" color="textSecondary" align="left">
-        {`Modular Material Admin React`}{' '}
+        {`Modular Admin React`}{' '}
         <Link
           color="primary"
           href="https://github.com/modularcode/modular-admin-react/releases"
