@@ -13,7 +13,7 @@ declare global {
 let mockServer: any
 
 if (config.api.useMocks) {
-  mockServer = require('./_mocksSW')
+  mockServer = require('./_mocksSW+lowdb')
 }
 
 const init = async () => {

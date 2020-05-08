@@ -19,19 +19,33 @@ export default [
     let order = JSON.parse(req.query.get('order') || '{}')
 
     try {
-      let table = db.users
-      let selection = table.toCollection()
+      let selection = db.get('users')
+      // .filter({ published: true })
+      // .sortBy('views')
+      // .take(5)
 
-      if (order && order.order === 'desc') {
-        selection = table.orderBy(order.orderBy).reverse()
-      } else if (order && order.order !== 'desc') {
-        selection = table.orderBy(order.orderBy)
-      }
+      console.log('selection', selection)
 
-      selection = selection.limit(limit).offset(offset)
+      // let table = db.users
+      // let selection = table.toCollection()
+      // let selectionResult = table.toCollection()
 
-      const users = await selection.toArray()
-      const count = await selection.count()
+      // if (order && order.order === 'desc') {
+      //   selectionResult = table.orderBy(order.orderBy).reverse()
+      // } else if (order && order.order !== 'desc') {
+      //   selectionResult = table.orderBy(order.orderBy)
+      // }
+
+      // selectionResult = selection.limit(limit).offset(offset)
+
+      // const users = await selectionResult
+      //   .limit(limit)
+      //   .offset(offset)
+      //   .toArray()
+      // const count = await selection.count()
+
+      // console.log('users', users)
+      // console.log('count', count)
 
       return res(
         // Set custom status
@@ -40,8 +54,8 @@ export default [
         ctx.delay(500),
         // send JSON response body
         ctx.json({
-          users,
-          count,
+          users: [],
+          count: [],
         }),
       )
     } catch (err) {
