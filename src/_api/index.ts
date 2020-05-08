@@ -1,21 +1,24 @@
+import config from '@/_config'
+
 import instance from './client'
 import organizations from './organizations'
 import users from './users'
-import config from '_config'
+
+declare global {
+  interface Window {
+    server: any
+  }
+}
 
 let mockServer: any
 
-if (process.env.NODE_ENV === 'development') {
-  mockServer = require('./_mocksMirage')
-}
-
 if (config.api.useMocks) {
-  // apiMocks = require('./_mocks/')
+  mockServer = require('./_mocksMirage')
 }
 
 const init = async () => {
   if (config.api.useMocks) {
-    await mockServer.default.init({ environment: 'development' })
+    window.server = await mockServer.default.init({ environment: 'development' })
   }
 
   return instance

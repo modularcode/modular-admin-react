@@ -1,44 +1,41 @@
 import { Server, Model } from 'miragejs'
-import config from '_config'
+import config from '@/_config/index'
 import usersData from './_data/usersData'
+import usersToOrganizationsData from './_data/usersToOrganizationsData'
 import organizationsData from './_data/organizationsData'
+
+import usersRoutes from './users'
+import organizationsRoutes from './organizations'
 
 export function init({ environment }: { environment: 'development' }) {
   return new Server({
     environment,
+    logging: true,
 
     models: {
       user: Model,
+      usersToOrganization: Model,
       organization: Model,
     },
 
     routes() {
+      // this.namespace = 'api'
       this.urlPrefix = config.api.url
+      this.timing = 200
 
-      // this.resource("movie")
+      usersRoutes(this)
+      organizationsRoutes(this)
     },
     seeds(server) {
       server.db.loadData({
-        movies: [{ title: 'Interstellar' }, { title: 'Inception' }, { title: 'Dunkirk' }],
+        users: usersData.list,
+        usersToOrganizations: usersToOrganizationsData.list,
+        organizations: organizationsData.list,
       })
     },
   })
 }
 
-export default init
-
-// new Server({
-//   routes() {
-//     this.namespace = 'api'
-
-//     this.get('/movies', () => {
-//       return {
-//         movies: [
-//           { id: 1, name: 'Inception', year: 2010 },
-//           { id: 2, name: 'Interstellar', year: 2014 },
-//           { id: 3, name: 'Dunkirk', year: 2017 },
-//         ],
-//       }
-//     })
-//   },
-// })
+export default {
+  init,
+}

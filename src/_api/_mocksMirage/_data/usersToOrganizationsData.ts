@@ -1,10 +1,10 @@
 import _groupBy from 'lodash/groupBy'
-import OrganizationToUser from '../../_types/OrganizationToUser'
+import UserToOrganization from '../../_types/UserToOrganization'
 
 // import organizationsData from './organizationsData'
 // import usersData from './usersData'
 
-const list: OrganizationToUser[] = [
+const list: UserToOrganization[] = [
   {
     id: 1,
     organizationId: 1,
