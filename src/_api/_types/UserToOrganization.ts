@@ -3,14 +3,14 @@ import Entity, { EntityId } from './Entity'
 import Organization, { OrganizationId } from './Organization'
 import User, { UserId } from './User'
 
-export type OrganizationToUserId = EntityId
-export type OrganizationUserRole = 'member' | 'admin' | 'owner'
+export type UserToOrganizationId = EntityId
+export type UserRole = 'member' | 'admin' | 'owner'
 
-export default interface OrganizationToUser extends Entity {
-  id: OrganizationToUserId
+export default interface UserToOrganization extends Entity {
+  id: UserToOrganizationId
   organizationId: OrganizationId
   userId: UserId
-  role: OrganizationUserRole
+  role: UserRole
   organization?: Organization
   user?: User
 }

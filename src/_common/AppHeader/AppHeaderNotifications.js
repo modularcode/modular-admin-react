@@ -62,7 +62,7 @@ const AppHeaderNotifications = () => {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <Badge badgeContent={3} color="secondary" classes={{ badge: classes.badge }}>
+        <Badge badgeContent={3} color="primary" classes={{ badge: classes.badge }}>
           <IconNotifications />
         </Badge>
       </IconButton>

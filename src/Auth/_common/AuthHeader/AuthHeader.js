@@ -20,7 +20,7 @@ AuthHeader.propTypes = {
 
 const useStyles = makeStyles(theme => ({
   logo: {
-    color: theme.palette.primary.main,
+    color: theme.palette.secondary.main,
     position: 'relative',
     top: '1px',
   },

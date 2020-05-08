@@ -7,8 +7,8 @@ export const generateTrendChartData = ({ name, from = 0, to = 1000, length = 30 
     data: {
       datasets: [
         {
-          backgroundColor: theme.palette.primary.main,
-          borderColor: theme.palette.primary.main,
+          backgroundColor: theme.palette.secondary.main,
+          borderColor: theme.palette.secondary.main,
           borderWidth: 2,
           pointRadius: 1,
           pointHoverRadius: 3,

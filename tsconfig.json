@@ -30,5 +30,6 @@
   ],
   "exclude": [
     "node_modules/@nivo/line/index.d.ts"
-  ]
+  ],
+  "extends": "./tsconfig.custom.json"
 }

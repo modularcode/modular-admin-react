@@ -1,15 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { FormattedDate } from 'react-intl'
-
-import { makeStyles, TableBody, TableCell, TableRow, Avatar } from '@material-ui/core'
+import { Link } from 'react-router-dom'
+import { makeStyles, TableCell, TableRow, Avatar, Chip } from '@material-ui/core'
 import { Skeleton } from '@material-ui/lab'
 
 import { Edit as EditIcon, Delete as DeleteIcon } from '@material-ui/icons/'
 
 const UsersListTableItems = ({ users, rowsPerPage = 10, rowsExpected = 10 }) => {
-  // const classes = useStyles()
-
+  const classes = useStyles()
   // Count how many empty rows needs to be filled
   const usersVisible = users.length || rowsExpected
   const usersArrayExpected = Array.from({ length: usersVisible }).map(
@@ -40,6 +39,9 @@ const UsersListTableItems = ({ users, rowsPerPage = 10, rowsExpected = 10 }) => 
             <TableCell>
               <Skeleton variant="text" />
             </TableCell>
+            <TableCell>
+              <Skeleton variant="text" />
+            </TableCell>
           </TableRow>
         ))}
       {users.map(row => (
@@ -54,6 +56,14 @@ const UsersListTableItems = ({ users, rowsPerPage = 10, rowsExpected = 10 }) => 
           <TableCell>{row.username}</TableCell>
           <TableCell>{row.email}</TableCell>
           <TableCell>
+            <Chip
+              label={row.status}
+              variant="outlined"
+              size="small"
+              color={row.status === 'active' ? 'secondary' : 'default'}
+            />
+          </TableCell>
+          <TableCell>
             <FormattedDate
               value={new Date(row.createdAt)}
               year="numeric"
@@ -62,7 +72,9 @@ const UsersListTableItems = ({ users, rowsPerPage = 10, rowsExpected = 10 }) => 
             />
           </TableCell>
           <TableCell>
-            <EditIcon />
+            <Link to={{ pathname: `users/${row.id}/edit` }} className={classes.link}>
+              <EditIcon />
+            </Link>
             <DeleteIcon />
           </TableCell>
         </TableRow>
@@ -79,9 +91,8 @@ const UsersListTableItems = ({ users, rowsPerPage = 10, rowsExpected = 10 }) => 
 UsersListTableItems.propTypes = {}
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    flexShrink: 0,
-    marginLeft: theme.spacing(2.5),
+  link: {
+    color: 'inherit',
   },
 }))
 

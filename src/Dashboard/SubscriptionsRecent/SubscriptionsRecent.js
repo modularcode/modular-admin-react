@@ -98,7 +98,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'right',
   },
   headerIcon: {
-    color: theme.palette.primary.main,
+    color: theme.palette.secondary.main,
     verticalAlign: 'sub',
     marginRight: '.3em',
   },

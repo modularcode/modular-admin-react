@@ -92,7 +92,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
   },
   logo: {
-    color: theme.palette.secondary.main,
+    color: theme.palette.primary.main,
     zIndex: 10,
   },
   title: props => ({
@@ -111,7 +111,7 @@ const useStyles = makeStyles(theme => ({
     position: 'absolute',
     top: '100%',
     marginTop: -5,
-    background: theme.palette.primary.main,
+    background: theme.palette.secondary.main,
     color: '#fff',
     borderRadius: 2,
     padding: '1px 3px',

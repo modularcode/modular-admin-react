@@ -1,6 +1,6 @@
 import Entity, { EntityId } from './Entity'
 import User from './User'
-import OrganizationToUser from './OrganizationToUser'
+import UserToOrganization from './UserToOrganization'
 
 export type OrganizationId = EntityId
 export interface OrganizationPlan {
@@ -18,5 +18,5 @@ export default interface Organization extends OrganizationSubmissionData, Entity
   id: OrganizationId
   plan: OrganizationPlan
   users?: User[]
-  organizationToUsers?: OrganizationToUser[]
+  organizationUsers?: UserToOrganization[]
 }
