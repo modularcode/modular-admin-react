@@ -1,6 +1,8 @@
 export type EntityId = number | string
 
-export default interface Entity {
+export interface Entity {
   createdAt?: string
   updatedAt?: string
 }
+
+export default Entity

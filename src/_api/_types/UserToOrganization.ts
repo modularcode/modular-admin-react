@@ -6,7 +6,7 @@ import User, { UserId } from './User'
 export type UserToOrganizationId = EntityId
 export type UserRole = 'member' | 'admin' | 'owner'
 
-export default interface UserToOrganization extends Entity {
+export interface UserToOrganization extends Entity {
   id: UserToOrganizationId
   organizationId: OrganizationId
   userId: UserId
@@ -14,3 +14,5 @@ export default interface UserToOrganization extends Entity {
   organization?: Organization
   user?: User
 }
+
+export default UserToOrganization

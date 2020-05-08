@@ -14,9 +14,11 @@ export interface OrganizationSubmissionData {
   username?: string
 }
 
-export default interface Organization extends OrganizationSubmissionData, Entity {
+export interface Organization extends OrganizationSubmissionData, Entity {
   id: OrganizationId
   plan: OrganizationPlan
   users?: User[]
   organizationUsers?: UserToOrganization[]
 }
+
+export default Organization

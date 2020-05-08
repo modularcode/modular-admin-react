@@ -1,7 +1,9 @@
 import _ from 'lodash'
 import { AxiosInstance } from 'axios'
 import MockAdapter from 'axios-mock-adapter'
-import usersData from '../_data/usersData'
+import { create as createUsersData } from '../_data/usersData'
+
+const usersData = createUsersData({ includeOrganizations: true })
 
 export default {
   init(mock: MockAdapter, instance: AxiosInstance) {

@@ -2,9 +2,10 @@ import _ from 'lodash'
 import { rest } from 'msw'
 
 import config from '_config'
-import organizationsData from '../_data/organizationsData'
+import { create as createOrganizationsData } from '../_data/organizationsData'
 
 const apiUrl = config.api.url
+const organizationsData = createOrganizationsData({ includeUsers: true })
 
 export default [
   rest.get(`${apiUrl}/organizations`, (req, res, ctx) => {

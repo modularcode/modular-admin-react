@@ -1,11 +1,15 @@
 import { Server, Model } from 'miragejs'
 import config from '@/_config/index'
-import usersData from '../_data/usersData'
-import usersToOrganizationsData from '../_data/usersToOrganizationsData'
-import organizationsData from '../_data/organizationsData'
+import { create as createUsersData } from '../_data/usersData'
+import { create as createUsersToOrganizationsData } from '../_data/usersToOrganizationsData'
+import { create as createOrganizationsData } from '../_data/organizationsData'
 
 import usersRoutes from './users'
 import organizationsRoutes from './organizations'
+
+const usersData = createUsersData({ includeOrganizations: false })
+const usersToOrganizationsData = createUsersToOrganizationsData()
+const organizationsData = createOrganizationsData({ includeUsers: false })
 
 export function init({ environment }: { environment: 'development' }) {
   return new Server({
