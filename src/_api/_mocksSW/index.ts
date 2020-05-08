@@ -4,5 +4,12 @@ import usersMocks from './usersMocks'
 const { start } = setupWorker(...usersMocks)
 
 export default {
-  init: start,
+  async init() {
+    // Remove all SW caches
+    const cachesNames = await caches.keys()
+
+    await Promise.all(cachesNames.map(name => caches.delete(name)))
+
+    return start()
+  },
 }
