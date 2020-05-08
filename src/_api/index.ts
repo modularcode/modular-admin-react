@@ -13,12 +13,13 @@ declare global {
 let mockServer: any
 
 if (config.api.useMocks) {
-  mockServer = require('./_mocksMirage')
+  mockServer = require('./_mocksSW')
 }
 
 const init = async () => {
   if (config.api.useMocks) {
-    window.server = await mockServer.default.init({ environment: 'development' })
+    // window.server = await mockServer.default.init({ environment: 'development' })
+    await mockServer.default.init()
   }
 
   return instance

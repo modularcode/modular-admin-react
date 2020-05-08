@@ -2,7 +2,7 @@ import _ from 'lodash'
 import { rest } from 'msw'
 
 import config from '_config'
-import organizationsData from './_data/organizationsData'
+import organizationsData from '../_data/organizationsData'
 
 const apiUrl = config.api.url
 

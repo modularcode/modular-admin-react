@@ -1,5 +1,5 @@
 import _keyBy from 'lodash/keyBy'
-import Organization from '../../_types/Organization'
+import Organization from '../_types/Organization'
 // import organizationsToUsersData from './organizationsToUsersData'
 
 const list: Organization[] = [

@@ -1,7 +1,7 @@
 import { get as _get, keyBy as _keyBy } from 'lodash'
 import moment from 'moment'
-import User from '../../_types/User'
-import UserToOrganization from '../../_types/UserToOrganization'
+import User from '../_types/User'
+import UserToOrganization from '../_types/UserToOrganization'
 import usersToOrganizationsData from './usersToOrganizationsData'
 import organizationsData from './organizationsData'
 

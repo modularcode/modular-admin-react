@@ -1,8 +1,8 @@
 import { Server, Model } from 'miragejs'
 import config from '@/_config/index'
-import usersData from './_data/usersData'
-import usersToOrganizationsData from './_data/usersToOrganizationsData'
-import organizationsData from './_data/organizationsData'
+import usersData from '../_data/usersData'
+import usersToOrganizationsData from '../_data/usersToOrganizationsData'
+import organizationsData from '../_data/organizationsData'
 
 import usersRoutes from './users'
 import organizationsRoutes from './organizations'
