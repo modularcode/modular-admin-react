@@ -1,6 +1,6 @@
 import { AxiosInstance } from 'axios'
 import MockAdapter from 'axios-mock-adapter'
-import organizationsData from './../_data/organizationsData'
+import organizationsData from '../_data/organizationsData'
 
 export default {
   init(mock: MockAdapter, instance: AxiosInstance) {

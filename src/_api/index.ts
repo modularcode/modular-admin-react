@@ -3,20 +3,19 @@ import organizations from './organizations'
 import users from './users'
 import config from '_config'
 
-let apiMocks: any
+let mockServer: any
+
+if (process.env.NODE_ENV === 'development') {
+  mockServer = require('./_mocksMirage')
+}
 
 if (config.api.useMocks) {
-  apiMocks = require('./_mocks/')
+  // apiMocks = require('./_mocks/')
 }
 
 const init = async () => {
-  if (apiMocks) {
-    // Remove all SW caches
-    const cachesNames = await caches.keys()
-
-    await Promise.all(cachesNames.map(name => caches.delete(name)))
-
-    await apiMocks.default.init()
+  if (config.api.useMocks) {
+    await mockServer.default.init({ environment: 'development' })
   }
 
   return instance
