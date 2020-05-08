@@ -13,13 +13,13 @@ declare global {
 let mockServer: any
 
 if (config.api.useMocks) {
-  mockServer = require('./_mocksSW+lowdb')
+  mockServer = require('./_mocksMirage')
 }
 
 const init = async () => {
   if (config.api.useMocks) {
-    // window.server = await mockServer.default.init({ environment: 'development' })
-    await mockServer.default.init()
+    window.server = await mockServer.default.init({ environment: 'development' })
+    // await mockServer.default.init()
   }
 
   return instance

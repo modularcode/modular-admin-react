@@ -165,14 +165,20 @@ export const create = function(
       ? usersToOrganizationsDataSet.byUserId[user.id] || []
       : []
 
+    const userOrganizations = includeOrganizations
+      ? {
+          userOgranizations: userToOrganization.map((relation: UserToOrganization) => {
+            return {
+              ...relation,
+              organization: _get(organizationsDataSet.byId, relation.organizationId, {}),
+            }
+          }),
+        }
+      : {}
+
     return {
       ...user,
-      userOgranizations: userToOrganization.map((relation: UserToOrganization) => {
-        return {
-          ...relation,
-          organization: _get(organizationsDataSet.byId, relation.organizationId, {}),
-        }
-      }),
+      ...userOrganizations,
       createdAt: moment()
         .subtract(user.id, 'days')
         .format(),

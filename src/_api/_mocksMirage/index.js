@@ -1,4 +1,4 @@
-import { Server, Model } from 'miragejs'
+import { Server, Model, hasMany, belongsTo } from 'miragejs'
 import config from '@/_config/index'
 import { create as createUsersData } from '../_data/usersData'
 import { create as createUsersToOrganizationsData } from '../_data/usersToOrganizationsData'
@@ -17,9 +17,16 @@ export function init({ environment }) {
     logging: true,
 
     models: {
-      user: Model,
-      usersToOrganization: Model,
-      organization: Model,
+      user: Model.extend({
+        usersToOrganization: hasMany(),
+      }),
+      usersToOrganization: Model.extend({
+        user: belongsTo(),
+        // organization: belongsTo(),
+      }),
+      // organization: Model.extend({
+      //   usersToOrganization: hasMany(),
+      // }),
     },
 
     routes() {
