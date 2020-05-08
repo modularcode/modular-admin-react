@@ -2,6 +2,7 @@ import _ from 'lodash'
 import { rest } from 'msw'
 
 import config from '_config'
+import db from './db'
 import { create as createUsersData } from '../_data/usersData'
 
 const apiUrl = config.api.url
@@ -17,23 +18,42 @@ export default [
     let offset = parseInt(req.query.get('offset') || '10')
     let order = JSON.parse(req.query.get('order') || '{}')
 
-    const usersAll = order
-      ? _.orderBy(usersData.list, [order.orderBy], [order.order])
-      : usersData.list
+    try {
+      let table = db.users
+      let selection = table.toCollection()
 
-    const result = {
-      users: usersAll.slice(offset, offset + limit),
-      count: usersAll.length,
+      if (order && order.order === 'desc') {
+        selection = table.orderBy(order.orderBy).reverse()
+      } else if (order && order.order !== 'desc') {
+        selection = table.orderBy(order.orderBy)
+      }
+
+      selection = selection.limit(limit).offset(offset)
+
+      const users = await selection.toArray()
+      const count = await selection.count()
+
+      return res(
+        // Set custom status
+        ctx.status(200),
+        // Delay the response
+        ctx.delay(500),
+        // send JSON response body
+        ctx.json({
+          users,
+          count,
+        }),
+      )
+    } catch (err) {
+      console.error(err)
+
+      return res(
+        ctx.status(400),
+        ctx.json({
+          message: err.message,
+        }),
+      )
     }
-
-    return res(
-      // Set custom status
-      ctx.status(200),
-      // Delay the response
-      ctx.delay(500),
-      // send JSON response body
-      ctx.json(result),
-    )
   }),
 
   rest.get(`${apiUrl}/users/:userId`, (req, res, ctx) => {

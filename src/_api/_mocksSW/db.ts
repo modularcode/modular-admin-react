@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import Dexie from 'dexie'
 
 import { User } from '../_types/User'
@@ -13,6 +12,8 @@ const usersData = createUsersData({ includeOrganizations: false })
 const usersToOrganizationsData = createUsersToOrganizationsData()
 const organizationsData = createOrganizationsData({ includeUsers: false })
 
+console.log('usersData', usersData)
+
 //
 // Declare Database
 //
@@ -24,10 +25,10 @@ class ModularAdminDatabase extends Dexie {
   public constructor() {
     super('ModularAdminDatabase')
     this.version(1).stores({
-      organizations: '++id,name,username',
+      organizations: '++id,name,username,updatedAt,createdAt',
       users:
-        '++id,firstName,lastName,displayName,username,email,password,avatarUrl,globalRole,status',
-      usersToOrganizations: '++id,organizationId,userId,role',
+        '++id,firstName,lastName,displayName,username,email,password,avatarUrl,globalRole,status,updatedAt,createdAt',
+      usersToOrganizations: '++id,organizationId,userId,role,updatedAt,createdAt',
     })
     this.organizations = this.table('organizations')
     this.users = this.table('users')
@@ -46,6 +47,7 @@ export const init = async function() {
     await db.users.clear()
     await db.usersToOrganizations.clear()
 
+    // Add the data
     await db.users.bulkAdd(usersData.list)
     await db.organizations.bulkAdd(organizationsData.list)
     await db.usersToOrganizations.bulkAdd(usersToOrganizationsData.list)
