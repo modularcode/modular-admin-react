@@ -136,7 +136,8 @@ self.addEventListener('fetch', async function (event) {
         case 'MOCK_SUCCESS': {
           setTimeout(
             resolve.bind(this, createResponse(clientMessage)),
-            clientMessage.delay,
+            // clientMessage.delay,
+            clientMessage.payload.delay,
           )
           break
         }
