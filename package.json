@@ -59,7 +59,7 @@
     "gh-pages": "^2.2.0",
     "msw": "^0.15.4",
     "prettier": "1.18.2",
-    "react-app-rewired": "^2.1.5",
+    "react-app-rewired": "^2.1.7",
     "react-docgen-typescript-loader": "^3.6.0",
     "ts-loader": "^6.2.1"
   },
