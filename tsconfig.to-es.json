@@ -4,7 +4,8 @@
     "baseUrl": "src",
     "target": "ES2020",
     "noEmit": false,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "declaration": false
   },
   "include": [
     "src"
