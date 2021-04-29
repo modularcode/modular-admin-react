@@ -5,7 +5,7 @@ import Organization, {
 } from './_types/Organization'
 import apiClient from './client'
 
-export interface OrganizationsService {
+export interface IOrganizationsService {
   getOne(organizationId: OrganizationId): Promise<Organization>
   getList(params: any): Promise<OrganizationsListResponse>
   create(organization: OrganizationSubmissionData): Promise<Organization>
@@ -21,7 +21,7 @@ export interface OrganizationsListResponse {
   count: number
 }
 
-const OrganizationsService: OrganizationsService = {
+const OrganizationsService: IOrganizationsService = {
   getOne(organizationId) {
     return apiClient
       .get(`/organizations/${organizationId}`)

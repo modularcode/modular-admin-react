@@ -123,7 +123,7 @@ const useStyles = makeStyles((theme) =>
   createStyles({
     navList: {
       width: theme.sidebar.width,
-      fontSize: '1.1em',
+      fontSize: '1em',
       fontWeight: 400,
       lineHeight: 1.5,
       letterSpacing: '0.00938em',

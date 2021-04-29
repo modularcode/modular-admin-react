@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { FormattedDate } from 'react-intl'
 import { Link } from 'react-router-dom'
 import { makeStyles, TableCell, TableRow, Avatar, Chip } from '@material-ui/core'

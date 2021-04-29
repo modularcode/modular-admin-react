@@ -1,5 +1,5 @@
 import React from 'react'
-import moment, { Moment } from 'moment'
+import moment from 'moment'
 
 // The default context, which is used when there is no provider
 // (might be used for components testing)

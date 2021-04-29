@@ -11,8 +11,8 @@ import IconMenu from '@material-ui/icons/Menu'
 
 import HeaderDemo from './AppHeaderDemoButtons'
 
-import HeaderSearch from './AppHeaderSearch'
-import HeaderNotifications from './AppHeaderNotifications'
+// import HeaderSearch from './AppHeaderSearch'
+// import HeaderNotifications from './AppHeaderNotifications'
 import HeaderProfile from './AppHeaderProfile'
 
 const AppHeader = ({ onToggleClick }) => {

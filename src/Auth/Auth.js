@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Redirect } from 'react-router-dom' //
 import { makeStyles } from '@material-ui/core/styles'
 
-import { Grid, Typography, Link, Box, Hidden } from '@material-ui/core/'
+import { Grid, Typography, Link, Box } from '@material-ui/core/'
 import { Link as RouterLink } from 'react-router-dom'
 
 import Login from './Login'

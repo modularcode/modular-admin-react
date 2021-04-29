@@ -29,6 +29,8 @@ export const generateRandomeChartDataArray = ({
     .map((item, index) => getPointData(index))
 }
 
-export default {
+const utilsService = {
   generateRandomeChartDataArray,
 }
+
+export default utilsService

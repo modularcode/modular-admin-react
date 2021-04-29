@@ -1,5 +1,5 @@
 import React from 'react'
-import { HashRouter, BrowserRouter, Route, Redirect, Switch } from 'react-router-dom' //
+import { HashRouter, BrowserRouter, Route, Switch } from 'react-router-dom' //
 
 import config from './_config'
 

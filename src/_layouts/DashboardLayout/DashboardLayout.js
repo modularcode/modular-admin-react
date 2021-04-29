@@ -26,7 +26,7 @@ const DashboardLayout = (
 
   const [headerHeight, setHeaderHeight] = useState(0)
   const [isSidebarOpenMobile, setIsSidebarOpenMobile] = useState(false)
-  const [isSidebarOpenDesktop, setIsSidebarOpenDesktop] = useState(true)
+  const [isSidebarOpenDesktop /* setIsSidebarOpenDesktop */] = useState(true)
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
 
   useEffect(() => {
@@ -63,9 +63,9 @@ const DashboardLayout = (
     }
   }
 
-  function handleSidebarToggleCollapse() {
-    setIsSidebarCollapsed(!isSidebarCollapsed)
-  }
+  // function handleSidebarToggleCollapse() {
+  //   setIsSidebarCollapsed(!isSidebarCollapsed)
+  // }
 
   return (
     <div className={classes.dashboardContainer}>
