@@ -17,6 +17,8 @@ import { subscriptionsItems, subscriptionsHistoryChart } from './data'
 const Subscriptions = () => {
   const classes = useStyles()
 
+  console.log('subscriptionsHistoryChart', subscriptionsHistoryChart)
+
   return (
     <Card>
       <CardHeader
@@ -68,7 +70,7 @@ const Subscriptions = () => {
                     </Typography>
                   </Grid>
                 </Grid>
-                <LinearProgress variant="determinate" value={ratio} color="secondary" />
+                <LinearProgress variant="determinate" value={ratio} color="primary" />
               </div>
             ))}
           </Grid>
@@ -93,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'right',
   },
   headerIcon: {
-    color: theme.palette.secondary.main,
+    color: theme.palette.grey[300],
     verticalAlign: 'sub',
     marginRight: '.3em',
   },

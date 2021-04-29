@@ -10,7 +10,7 @@ export const chart = {
         label: 'Customers',
         fill: false,
         data: [1545, 540, 749, 310, 56],
-        yAxisID: 'y1',
+        yAxisID: 'y',
       },
       {
         backgroundColor: 'rgba(136, 151, 170, 0.1)',
@@ -19,32 +19,26 @@ export const chart = {
         borderWidth: 1,
         data: [23686, 30820, 59622, 146465, 78160],
         label: 'Total Monthly Revenue, $',
-        yAxisID: 'y2',
+        yAxisID: 'y1',
       },
     ],
     labels: ['Trial', 'Starter', 'Pro', 'Silver', 'Gold'],
   },
   options: {
     scales: {
-      xAxes: [
-        {
-          gridLines: { display: false },
-          ticks: { fontColor: '#aaa', autoSkipPadding: 50 },
-        },
-      ],
-      yAxes: [
-        {
-          id: 'y1',
-          gridLines: { display: false },
-          ticks: { fontColor: '#aaa', maxTicksLimit: 5 },
-        },
-        {
-          position: 'right',
-          id: 'y2',
-          gridLines: { display: false },
-          ticks: { fontColor: '#aaa', maxTicksLimit: 5 },
-        },
-      ],
+      x: {
+        grid: { display: false },
+        ticks: { fontColor: '#aaa', autoSkipPadding: 50 },
+      },
+      y: {
+        grid: { display: false },
+        ticks: { fontColor: '#aaa', maxTicksLimit: 5 },
+      },
+      y1: {
+        position: 'right',
+        grid: { display: false },
+        ticks: { fontColor: '#aaa', maxTicksLimit: 5 },
+      },
     },
     tooltips: {
       mode: 'index',

@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'right',
   },
   headerIcon: {
-    color: theme.palette.secondary.main,
+    color: theme.palette.grey[300],
     verticalAlign: 'sub',
     marginRight: '.3em',
   },

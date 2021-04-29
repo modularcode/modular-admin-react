@@ -18,9 +18,12 @@ export const subscriptionsHistoryChart = {
         label: 'Subscriptions',
         fill: false,
         data: [1545, 1350, 1270, 1830, 1955, 1865, 2034, 2544, 1956, 2211, 1540, 1670],
-        yAxisID: 'y1',
+        yAxisID: 'y',
+        cubicInterpolationMode: 'monotone',
+        tension: 0.4,
       },
       {
+        fill: true,
         backgroundColor: 'rgba(136, 151, 170, 0.1)',
         borderColor: '#8897aa',
         borderDash: [5, 5],
@@ -40,7 +43,9 @@ export const subscriptionsHistoryChart = {
           86895,
         ],
         label: 'Visits',
-        yAxisID: 'y2',
+        yAxisID: 'y1',
+        cubicInterpolationMode: 'monotone',
+        tension: 0.4,
       },
     ],
     labels: [
@@ -59,32 +64,27 @@ export const subscriptionsHistoryChart = {
     ],
   },
   options: {
+    stacked: false,
     scales: {
-      xAxes: [
-        {
-          gridLines: { display: false },
-          ticks: { fontColor: '#aaa', autoSkipPadding: 50 },
-        },
-      ],
-      yAxes: [
-        {
-          id: 'y1',
-          gridLines: { display: false },
-          ticks: { fontColor: '#aaa', maxTicksLimit: 5 },
-        },
-        {
-          position: 'right',
-          id: 'y2',
-          gridLines: { display: false },
-          ticks: { fontColor: '#aaa', maxTicksLimit: 5 },
-        },
-      ],
+      x: {
+        grid: { display: false },
+        ticks: { fontColor: '#aaa', autoSkipPadding: 50 },
+      },
+      y: {
+        grid: { display: false },
+        ticks: { fontColor: '#aaa', maxTicksLimit: 5 },
+      },
+      y1: {
+        position: 'right',
+        grid: { display: false },
+        ticks: { fontColor: '#aaa', maxTicksLimit: 5 },
+      },
     },
     tooltips: {
       mode: 'index',
       intersect: false,
     },
-    hover: {
+    interaction: {
       mode: 'index',
       intersect: false,
     },
