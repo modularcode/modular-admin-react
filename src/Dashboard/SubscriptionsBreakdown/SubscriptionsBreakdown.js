@@ -13,7 +13,7 @@ import { Bar } from 'react-chartjs-2'
 
 import { chart } from './data'
 
-const SubscriptionsBreakdown = props => {
+const SubscriptionsBreakdown = (props) => {
   const classes = useStyles()
 
   return (
@@ -43,7 +43,7 @@ const SubscriptionsBreakdown = props => {
 
 SubscriptionsBreakdown.propTypes = {}
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   card: {
     height: '100%',
   },

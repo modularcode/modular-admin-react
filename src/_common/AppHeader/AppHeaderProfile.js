@@ -102,7 +102,7 @@ const AppHeaderProfile = () => {
   )
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   headerProfile: {
     display: 'inline-flex',
   },

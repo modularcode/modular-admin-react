@@ -8,7 +8,7 @@ const PageContainer = ({ children }) => {
   return <article className={classes.container}>{children}</article>
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   container: {
     flex: 1,
     paddingTop: theme.spacing(4),

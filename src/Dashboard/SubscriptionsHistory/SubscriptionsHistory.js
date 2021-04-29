@@ -15,7 +15,7 @@ import { Line } from 'react-chartjs-2'
 
 import { subscriptionsItems, subscriptionsHistoryChart } from './data'
 
-const Subscriptions = props => {
+const Subscriptions = (props) => {
   const classes = useStyles()
 
   return (
@@ -80,7 +80,7 @@ const Subscriptions = props => {
 
 Subscriptions.propTypes = {}
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   cardHeader: {
     borderBottom: '1px solid',
     borderBottomColor: theme.palette.divider,

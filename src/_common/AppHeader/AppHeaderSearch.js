@@ -70,7 +70,7 @@ const AppHeaderSearch = () => {
   )
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   searchButton: {
     marginRight: 20,
   },

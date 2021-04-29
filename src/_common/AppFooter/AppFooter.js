@@ -48,7 +48,7 @@ const Footer = () => {
   )
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   footer: {
     display: 'flex',
     background: '#fff',

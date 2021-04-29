@@ -19,7 +19,7 @@ const UsersListTableItems = ({ users, rowsPerPage = 10, rowsExpected = 10 }) => 
   return (
     <>
       {!users.length &&
-        usersArrayExpected.map(item => (
+        usersArrayExpected.map((item) => (
           <TableRow key={item}>
             <TableCell>
               <Skeleton variant="circle" width={40} height={40} />
@@ -44,7 +44,7 @@ const UsersListTableItems = ({ users, rowsPerPage = 10, rowsExpected = 10 }) => 
             </TableCell>
           </TableRow>
         ))}
-      {users.map(row => (
+      {users.map((row) => (
         <TableRow key={row.id}>
           <TableCell>
             <Avatar alt={row.firstName} src={row.avatarUrl} />
@@ -90,7 +90,7 @@ const UsersListTableItems = ({ users, rowsPerPage = 10, rowsExpected = 10 }) => 
 
 UsersListTableItems.propTypes = {}
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   link: {
     color: 'inherit',
   },

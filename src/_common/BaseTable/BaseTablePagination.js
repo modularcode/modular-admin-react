@@ -10,24 +10,24 @@ import {
   LastPage as LastPageIcon,
 } from '@material-ui/icons/'
 
-const BaseTablePaginationActions = props => {
+const BaseTablePaginationActions = (props) => {
   const classes = useStyles()
   const theme = useTheme()
   const { count, page, itemsPerPage, onChangePage } = props
 
-  const handleFirstPageButtonClick = event => {
+  const handleFirstPageButtonClick = (event) => {
     onChangePage(event, 0)
   }
 
-  const handleBackButtonClick = event => {
+  const handleBackButtonClick = (event) => {
     onChangePage(event, page - 1)
   }
 
-  const handleNextButtonClick = event => {
+  const handleNextButtonClick = (event) => {
     onChangePage(event, page + 1)
   }
 
-  const handleLastPageButtonClick = event => {
+  const handleLastPageButtonClick = (event) => {
     onChangePage(event, Math.max(0, Math.ceil(count / itemsPerPage) - 1))
   }
 
@@ -65,7 +65,7 @@ const BaseTablePaginationActions = props => {
   )
 }
 
-const BaseTablePagination = props => {
+const BaseTablePagination = (props) => {
   const { count, page, rowsPerPage, onChangePage, onChangeRowsPerPage = () => {} } = props
 
   return (
@@ -86,7 +86,7 @@ const BaseTablePagination = props => {
   )
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexShrink: 0,
     marginLeft: theme.spacing(2.5),

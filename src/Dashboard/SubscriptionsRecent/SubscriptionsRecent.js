@@ -22,7 +22,7 @@ import { FormattedDate } from 'react-intl'
 
 import { recentSubscriptions } from './data'
 
-const Subscriptions = props => {
+const Subscriptions = (props) => {
   const classes = useStyles()
 
   return (
@@ -49,7 +49,7 @@ const Subscriptions = props => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {recentSubscriptions.map(subscription => (
+              {recentSubscriptions.map((subscription) => (
                 <TableRow key={subscription.organization}>
                   <TableCell component="th" scope="row">
                     {subscription.organization}
@@ -82,7 +82,7 @@ const Subscriptions = props => {
 
 Subscriptions.propTypes = {}
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   card: {
     height: '100%',
   },

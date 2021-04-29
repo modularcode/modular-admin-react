@@ -18,7 +18,7 @@ AuthHeader.propTypes = {
   title: PropTypes.string,
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   logo: {
     color: theme.palette.secondary.main,
     position: 'relative',

@@ -8,7 +8,7 @@ interface LogoProps {
   size?: number
 }
  */
-const Logo = props => {
+const Logo = (props) => {
   const classes = useStyles(props)
 
   return (
@@ -35,8 +35,8 @@ const Logo = props => {
   )
 }
 
-const useStyles = makeStyles(theme => ({
-  Logo: props => ({
+const useStyles = makeStyles((theme) => ({
+  Logo: (props) => ({
     display: 'inline-block',
     verticalAlign: 'text-bottom',
     width: props.size,
@@ -45,10 +45,10 @@ const useStyles = makeStyles(theme => ({
   path: {
     transition: 'all .3s ease',
   },
-  outline: props => ({
+  outline: (props) => ({
     fill: props.isInversedOutline ? '#fff' : 'currentColor',
   }),
-  letter: props => ({
+  letter: (props) => ({
     fill: props.isInversed ? '#fff' : 'currentColor',
   }),
 }))

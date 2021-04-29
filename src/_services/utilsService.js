@@ -11,10 +11,10 @@ export const generateRandomeChartDataArray = ({
   noize = 0.3,
 }) => {
   const getLineEquation = ({ x1, y1, x2, y2 }) => {
-    return x => (x * (y2 - y1) + (x2 * y1 - x1 * y2)) / (x2 - x1)
+    return (x) => (x * (y2 - y1) + (x2 * y1 - x1 * y2)) / (x2 - x1)
   }
   const lineEquation = getLineEquation({ x1: 0, y1: from, x2: length - 1, y2: to })
-  const getPointData = index => {
+  const getPointData = (index) => {
     const amplitude = Math.abs(Math.round(noize * (to - from)))
     const diff =
       index === 0 || index === length - 1

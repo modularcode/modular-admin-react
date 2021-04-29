@@ -8,7 +8,7 @@ import IconCode from '@material-ui/icons/Code'
 import IconStar from '@material-ui/icons/Star'
 import IconDownload from '@material-ui/icons/GetApp'
 
-const AppHeaderDemoButtons = props => {
+const AppHeaderDemoButtons = (props) => {
   const classes = useStyles(props)
 
   return (
@@ -53,7 +53,7 @@ const AppHeaderDemoButtons = props => {
   )
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   demo: {
     flex: 1,
     display: 'flex',

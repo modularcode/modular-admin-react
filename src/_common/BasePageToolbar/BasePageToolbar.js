@@ -6,7 +6,7 @@ import { makeStyles, createStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 
-const BasePageToolbar = props => {
+const BasePageToolbar = (props) => {
   const classes = useStyles()
   const externalClasses = props.classes || {}
 
@@ -52,7 +52,7 @@ const BasePageToolbar = props => {
   )
 }
 
-const useStyles = makeStyles(theme =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     container: {
       marginBottom: '1rem',

@@ -141,7 +141,7 @@ DashboardLayout.propTypes = {
   footer: PropTypes.elementType,
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   dashboardContainer: {
     display: 'flex',
     background: '#f5f5f5',

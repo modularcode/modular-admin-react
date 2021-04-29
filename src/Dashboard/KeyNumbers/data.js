@@ -54,7 +54,7 @@ export const generateTrendChartData = ({ name, from = 0, to = 1000, length = 30 
         intersect: false,
         caretSize: 0,
         callbacks: {
-          label: function(tooltipItem, data) {
+          label: function (tooltipItem, data) {
             // var datasetLabel = ''
             // var label = data.labels[tooltipItem.index]
             return data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]

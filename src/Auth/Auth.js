@@ -42,7 +42,7 @@ export default function Auth({ match }) {
   )
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   container: {
     minHeight: '100vh',
   },

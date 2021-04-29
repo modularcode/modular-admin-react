@@ -14,7 +14,7 @@ const init = async () => {
     // Remove all SW caches
     const cachesNames = await caches.keys()
 
-    await Promise.all(cachesNames.map(name => caches.delete(name)))
+    await Promise.all(cachesNames.map((name) => caches.delete(name)))
 
     await apiMocks.default.init()
   }

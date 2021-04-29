@@ -120,7 +120,7 @@ const AppHeaderNotifications = () => {
 //   return <List className={classes.notifications}></List>
 // }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   headerNotifications: {
     marginRight: 23,
     // position: 'relative',

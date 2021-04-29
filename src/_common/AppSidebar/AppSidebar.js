@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography'
 import Logo from '_common/BaseLogo/BaseLogo'
 import SidebarNav from './SidebarNav'
 
-const Sidebar = props => {
+const Sidebar = (props) => {
   const { isCollapsed } = props
 
   const classes = useStyles(props)
@@ -47,7 +47,7 @@ Sidebar.propTypes = {
   isCollapsed: PropTypes.bool,
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   sidebar: {
     position: 'absolute',
     top: 0,
@@ -95,7 +95,7 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.primary.main,
     zIndex: 10,
   },
-  title: props => ({
+  title: (props) => ({
     position: 'relative',
     overflow: 'visible',
     marginLeft: '5px',

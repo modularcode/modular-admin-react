@@ -15,7 +15,7 @@ import IconPreson from '@material-ui/icons/Person' //
 
 import NavList from './NavList'
 
-const SidebarNav = props => {
+const SidebarNav = (props) => {
   const { isCollapsed } = props
   const classes = useStyles()
 
@@ -119,7 +119,7 @@ const SidebarNav = props => {
   )
 }
 
-const useStyles = makeStyles(theme =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     navList: {
       width: theme.sidebar.width,

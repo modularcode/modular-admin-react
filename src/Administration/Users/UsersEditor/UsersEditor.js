@@ -15,7 +15,7 @@ import {
   FormControl,
   InputLabel,
   makeStyles,
-  Grid
+  Grid,
 } from '@material-ui/core'
 
 const UserEditor = (props) => {
@@ -29,11 +29,11 @@ const UserEditor = (props) => {
     globalRole: '',
     lastName: '',
     userToOrganizations: [{}],
-    username: ''
+    username: '',
   })
 
   useEffect(() => {
-    if(!userId) {
+    if (!userId) {
       return
     }
     async function fetchUser() {
@@ -47,20 +47,22 @@ const UserEditor = (props) => {
     fetchUser()
   }, [userId])
 
-  const onChangeHandler = (e) => setUser({
-    ...user,
-    [e.target.name]: e.target.value
-  })
+  const onChangeHandler = (e) =>
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+    })
 
-  const setGlobalRole = (e) => setUser({
-    ...user,
-    globalRole: e.target.value
-  })
+  const setGlobalRole = (e) =>
+    setUser({
+      ...user,
+      globalRole: e.target.value,
+    })
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      if(userId) {
+      if (userId) {
         await api.users.update(userId, user)
       } else {
         await api.users.create(user)
@@ -77,19 +79,39 @@ const UserEditor = (props) => {
         <form onSubmit={handleSubmit}>
           <FormControl className={classes.control}>
             <InputLabel>First Name</InputLabel>
-            <Input value={user.firstName} name="firstName" className={classes.width} onChange={e => onChangeHandler(e)}/>
+            <Input
+              value={user.firstName}
+              name="firstName"
+              className={classes.width}
+              onChange={(e) => onChangeHandler(e)}
+            />
           </FormControl>
           <FormControl className={classes.control}>
             <InputLabel>Last Name</InputLabel>
-            <Input value={user.lastName} name="lastName" className={classes.width} onChange={e => onChangeHandler(e)}/>
+            <Input
+              value={user.lastName}
+              name="lastName"
+              className={classes.width}
+              onChange={(e) => onChangeHandler(e)}
+            />
           </FormControl>
           <FormControl className={classes.control}>
             <InputLabel>User Name</InputLabel>
-            <Input value={user.username} name="username" className={classes.width} onChange={e => onChangeHandler(e)}/>
+            <Input
+              value={user.username}
+              name="username"
+              className={classes.width}
+              onChange={(e) => onChangeHandler(e)}
+            />
           </FormControl>
           <FormControl className={classes.control}>
             <InputLabel>Email</InputLabel>
-            <Input value={user.email} name="email" className={classes.width} onChange={e => onChangeHandler(e)}/>
+            <Input
+              value={user.email}
+              name="email"
+              className={classes.width}
+              onChange={(e) => onChangeHandler(e)}
+            />
           </FormControl>
           <FormControl className={classes.control}>
             <InputLabel>Global Role</InputLabel>
@@ -101,8 +123,8 @@ const UserEditor = (props) => {
               className={classes.width}
             >
               <MenuItem value={user.globalRole}>{user.globalRole}</MenuItem>
-              <MenuItem value='user'>user</MenuItem>
-              <MenuItem value='support'>support</MenuItem>
+              <MenuItem value="user">user</MenuItem>
+              <MenuItem value="support">support</MenuItem>
             </Select>
           </FormControl>
           <Button
@@ -121,23 +143,23 @@ const UserEditor = (props) => {
 }
 
 UserEditor.propTypes = {
-  userId: PropTypes.number
+  userId: PropTypes.number,
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   box: {
-    padding: 16
+    padding: 16,
   },
   control: {
     display: 'block',
-    marginTop: 16
+    marginTop: 16,
   },
   margin: {
-    marginTop: 16
+    marginTop: 16,
   },
   width: {
-    minWidth: 200
-  }
+    minWidth: 200,
+  },
 }))
 
 export default UserEditor

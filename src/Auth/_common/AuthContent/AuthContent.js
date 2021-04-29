@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core'
 
-const AuthContent = props => {
+const AuthContent = (props) => {
   const classes = useStyles()
 
   return <div className={classes.paper}>{props.children}</div>
@@ -10,7 +10,7 @@ const AuthContent = props => {
 
 AuthContent.propTypes = {}
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   paper: {
     display: 'flex',
     flexDirection: 'column',

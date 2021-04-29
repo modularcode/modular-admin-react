@@ -29,7 +29,7 @@ export const NavItemComponent = forwardRef((props, ref) => {
   )
 })
 
-const useStyles = makeStyles(theme =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     navItemCollapsedWrapper: {
       width: theme.sidebar.widthCollapsed,

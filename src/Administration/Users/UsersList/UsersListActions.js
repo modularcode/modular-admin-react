@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 
 import { fade, makeStyles, Button, Tooltip, InputBase } from '@material-ui/core'
 
@@ -19,7 +19,7 @@ const DashboardActions = () => {
   const [search, setSearch] = useState('')
   // const { filter } = useContext(usersListContext)
 
-  const handleChangeSearchInput = event => {
+  const handleChangeSearchInput = (event) => {
     setSearch(event.target.value)
   }
 
@@ -73,7 +73,7 @@ const DashboardActions = () => {
   )
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     // color: theme.palette.primary.main,
     color: theme.palette.grey[600],

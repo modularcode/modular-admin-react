@@ -5,9 +5,7 @@ import moment, { Moment } from 'moment'
 // (might be used for components testing)
 export const dashboardContextDefault = {
   filter: {
-    dateFrom: moment()
-      .subtract(14, 'day')
-      .startOf('day'),
+    dateFrom: moment().subtract(14, 'day').startOf('day'),
     dateTo: moment().startOf('day'),
   },
 }

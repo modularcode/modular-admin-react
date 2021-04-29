@@ -43,7 +43,7 @@ AppHeader.propTypes = {
   onToggleClick: PropTypes.func,
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   header: {
     background: '#fff',
     color: '#7b7b7b',

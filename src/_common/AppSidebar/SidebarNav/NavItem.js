@@ -19,7 +19,7 @@ import NavItemComponent from './NavItemComponent'
 
 // ----------------------------------------------------------------------
 
-const NavItemCollapsed = props => {
+const NavItemCollapsed = (props) => {
   const {
     name,
     link,
@@ -36,11 +36,11 @@ const NavItemCollapsed = props => {
   const itemsAll = getItemsAll(items)
   const hasChildrenAndIsActive =
     hasChildren &&
-    itemsAll.filter(item => `#${item.link}` === window.location.hash).length > 0
+    itemsAll.filter((item) => `#${item.link}` === window.location.hash).length > 0
 
   const [anchorEl, setAnchorEl] = React.useState(null)
 
-  const handlePopoverOpen = event => {
+  const handlePopoverOpen = (event) => {
     if (!hasChildren) {
       return false
     }
@@ -123,7 +123,7 @@ const NavItemCollapsed = props => {
     >
       <div className={clsx(classes.navItemChildren)}>
         <List component="div" disablePadding>
-          {items.map(item => (
+          {items.map((item) => (
             <NavItem
               {...item}
               isNested={true}
@@ -152,7 +152,7 @@ const NavItemCollapsed = props => {
   )
 }
 
-const NavItemDefault = props => {
+const NavItemDefault = (props) => {
   const {
     name,
     link,
@@ -172,7 +172,7 @@ const NavItemDefault = props => {
   const itemsAll = getItemsAll(items)
   const hasChildrenAndIsActive =
     hasChildren &&
-    itemsAll.filter(item => `#${item.link}` === window.location.hash).length > 0
+    itemsAll.filter((item) => `#${item.link}` === window.location.hash).length > 0
   const isOpen = hasChildrenAndIsActive || false
   const [open, setOpen] = React.useState(isOpen)
 
@@ -227,7 +227,7 @@ const NavItemDefault = props => {
       <Collapse in={open} timeout="auto" unmountOnExit>
         {/* <Divider /> */}
         <List component="div" disablePadding>
-          {items.map(item => (
+          {items.map((item) => (
             <NavItem
               {...item}
               isNested={true}
@@ -257,7 +257,7 @@ const NavItemDefault = props => {
   )
 }
 
-const NavItem = props => {
+const NavItem = (props) => {
   if (props.isCollapsed) {
     return <NavItemCollapsed {...props} />
   } else {
@@ -265,7 +265,7 @@ const NavItem = props => {
   }
 }
 
-const useStyles = makeStyles(theme =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     // nested: {
     //   paddingLeft: theme.spacing(10),

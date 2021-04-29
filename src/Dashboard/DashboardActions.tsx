@@ -45,7 +45,7 @@ const DashboardActions = () => {
   )
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   iconNew: {
     marginRight: 5,
   },

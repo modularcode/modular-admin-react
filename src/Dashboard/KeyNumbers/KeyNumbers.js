@@ -56,7 +56,7 @@ const numbers = [
   },
 ]
 
-const KeyNumbers = props => {
+const KeyNumbers = (props) => {
   const classes = useStyles()
 
   return (
@@ -101,7 +101,7 @@ const KeyNumbers = props => {
 
 KeyNumbers.propTypes = {}
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },

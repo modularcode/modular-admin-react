@@ -32,7 +32,7 @@ const AppRouter = () => (
 const RouteWithLayout = ({ component: Component, layout: Layout, ...rest }) => (
   <Route
     {...rest}
-    render={props => {
+    render={(props) => {
       if (Layout) {
         return (
           <Layout>

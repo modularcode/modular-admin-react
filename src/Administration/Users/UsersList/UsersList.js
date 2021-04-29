@@ -109,7 +109,7 @@ const UsersList = ({ match }) => {
     setPage(newPage)
   }
 
-  const handleChangeRowsPerPage = event => {
+  const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10))
     setPage(0)
   }
@@ -142,14 +142,14 @@ const UsersList = ({ match }) => {
               <Table className={classes.table} aria-label="custom pagination table">
                 <TableHead>
                   <TableRow>
-                    {tableColumns.map(column => (
+                    {tableColumns.map((column) => (
                       <TableCell key={column.id}>
                         {/* Sortable */}
                         {column.isSortable && (
                           <TableSortLabel
                             active={order.orderBy === column.id}
                             direction={order.orderBy === column.id ? order.order : 'asc'}
-                            onClick={event => handelChangeOrder(event, column.id)}
+                            onClick={(event) => handelChangeOrder(event, column.id)}
                           >
                             {column.label}
                           </TableSortLabel>
@@ -188,7 +188,7 @@ const UsersList = ({ match }) => {
   )
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexShrink: 0,
     marginLeft: theme.spacing(2.5),
