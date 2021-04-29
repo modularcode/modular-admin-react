@@ -1,6 +1,5 @@
 import React from 'react'
 import clsx from 'clsx'
-import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import { Paper, Box, Grid, Typography } from '@material-ui/core'
 import { Line } from 'react-chartjs-2'
@@ -109,7 +108,7 @@ const useStyles = makeStyles(theme => ({
   paper: {
     // padding: theme.spacing(2),
     textAlign: 'left',
-    color: theme.palette.text.secondary,
+    color: theme.palette.text.primary,
     height: '100%',
   },
   name: {

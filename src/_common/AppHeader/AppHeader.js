@@ -32,8 +32,6 @@ const AppHeader = ({ onToggleClick }) => {
         </IconButton>
         <HeaderDemo />
         <div className={classes.actions}>
-          <HeaderSearch />
-          <HeaderNotifications />
           <HeaderProfile />
         </div>
       </Toolbar>

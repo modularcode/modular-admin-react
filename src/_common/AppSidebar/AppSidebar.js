@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
 import Typography from '@material-ui/core/Typography'
 
-import AppSidebarBg from './AppSidebarBg.jpg'
+// import AppSidebarBg from './AppSidebarBg.jpg'
 import Logo from '_common/BaseLogo/BaseLogo'
 import SidebarNav from './SidebarNav'
 
@@ -64,7 +64,7 @@ const useStyles = makeStyles(theme => ({
     top: 0,
     left: 0,
     zIndex: 0,
-    backgroundImage: `url(${AppSidebarBg})`,
+    // backgroundImage: `url(${AppSidebarBg})`,
     backgroundPosition: 'center',
     backgroundRepeat: 'repeat',
     backgroundSize: 'cover',

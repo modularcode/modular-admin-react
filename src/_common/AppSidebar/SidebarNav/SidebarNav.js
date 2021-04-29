@@ -77,19 +77,9 @@ const SidebarNav = props => {
       ],
     },
     {
-      name: 'Search',
-      link: '/search',
-      Icon: IconSearch,
-    },
-    {
       name: 'Settings',
       link: '/settings',
       Icon: IconSettings,
-    },
-    {
-      name: 'Error',
-      link: '/error',
-      Icon: IconError,
     },
   ]
 
@@ -107,14 +97,8 @@ const SidebarNav = props => {
       IconClassName: classes.iconDocs,
     },
     {
-      name: 'Supporters',
-      link: '/demo/supporters',
-      Icon: IconStars,
-      IconClassName: classes.iconSupporters,
-    },
-    {
       name: 'Discuss',
-      link: '/demo/discuss',
+      link: 'https://github.com/modularcode/modular-admin-react/discussions',
       Icon: IconQuestionAnswer,
       IconClassName: classes.iconDiscuss,
     },

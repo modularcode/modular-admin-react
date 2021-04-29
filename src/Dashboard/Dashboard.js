@@ -19,10 +19,10 @@ const Dashboard = () => {
         actionsComponent={DashboardActions}
       ></BasePageToolbar>
       <Grid container spacing={3}>
+        <KeyNumbers />
         <Grid item xs={12}>
           <SubscriptionsHistory />
         </Grid>
-        <KeyNumbers />
         <SubscriptionsRecent />
         <SubscriptionsBreakdown />
       </Grid>
