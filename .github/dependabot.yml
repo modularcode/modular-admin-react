@@ -1,0 +1,79 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "01:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: ssri
+    versions:
+    - 6.0.2
+  - dependency-name: "@storybook/addon-storysource"
+    versions:
+    - 6.1.15
+    - 6.1.17
+    - 6.1.18
+    - 6.1.20
+    - 6.1.21
+    - 6.2.2
+    - 6.2.7
+  - dependency-name: "@storybook/addon-a11y"
+    versions:
+    - 6.1.15
+    - 6.1.17
+    - 6.1.18
+    - 6.1.20
+    - 6.1.21
+    - 6.2.2
+    - 6.2.7
+  - dependency-name: "@storybook/addon-actions"
+    versions:
+    - 6.1.15
+    - 6.1.17
+    - 6.1.18
+    - 6.1.20
+    - 6.1.21
+    - 6.2.2
+    - 6.2.7
+  - dependency-name: "@storybook/addon-knobs"
+    versions:
+    - 6.1.15
+    - 6.1.17
+    - 6.1.18
+    - 6.1.20
+    - 6.1.21
+    - 6.2.2
+    - 6.2.7
+  - dependency-name: y18n
+    versions:
+    - 3.2.2
+  - dependency-name: elliptic
+    versions:
+    - 6.5.3
+    - 6.5.4
+  - dependency-name: pug-code-gen
+    versions:
+    - 2.0.3
+  - dependency-name: ini
+    versions:
+    - 1.3.8
+  - dependency-name: disqus-react
+    versions:
+    - 1.0.10
+  - dependency-name: http-proxy
+    versions:
+    - 1.18.1
+  - dependency-name: markdown-to-jsx
+    versions:
+    - 6.11.4
+  - dependency-name: dot-prop
+    versions:
+    - 4.2.1
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
+  - dependency-name: websocket-extensions
+    versions:
+    - 0.1.4
