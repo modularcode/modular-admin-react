@@ -6,12 +6,19 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject",
     "deploy": "npm run build-preview && npm run build-docs && gh-pages -d build --repo git@github.com:modularcode/modular-admin-react.git --branch gh-pages",
+
     "build-preview": "cross-env PUBLIC_PATH='/' npm run build && echo modular-admin-react.modularcode.io > ./build/CNAME",
     "build-docs": "build-storybook --docs -s ./public -o build/docs",
     "build-storybook": "build-storybook",
-    "storybook": "start-storybook -p 6060"
+    "storybook": "start-storybook -p 6060",
+
+    "es:init": "npm run es:clean && npm run es:build && npm run es:prettify",
+    "es:clean": "rimraf src-es/",
+    "es:build": "tsc --project ./tsconfig.to-es.json",
+    "es:prettify": "prettier --config ./.prettierrc.js --write \"src-es/**/*.(js|jsx)\"",
+
+    "eject": "react-scripts eject"
   },
   "homepage": "http://modular-admin-react.modularcode.io",
   "dependencies": {
@@ -63,6 +70,7 @@
     "prettier": "2.2.1",
     "react-app-rewired": "^2.1.8",
     "react-docgen-typescript-loader": "^3.7.2",
+    "rimraf": "^3.0.2",
     "ts-loader": "^9.1.1"
   },
   "eslintConfig": {
