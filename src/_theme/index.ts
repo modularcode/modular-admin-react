@@ -1,5 +1,11 @@
 import { createMuiTheme } from '@material-ui/core/styles'
 
+// Allow configuration using `createMuiTheme`
+// ref: https://material-ui.com/guides/typescript/
+declare module '@material-ui/core/styles/createMuiTheme' {
+  interface ThemeOptions {}
+}
+
 const baseTheme = createMuiTheme({
   props: {
     MuiPaper: {
@@ -78,13 +84,9 @@ const baseTheme = createMuiTheme({
     },
     secondary: {
       main: '#ae59e3', //'#619f30',
-      // main: '#9027d1', //'#619f30',
-      // main: blue[600], //'#619f30',
     },
     text: {
       secondary: 'rgba(102, 102, 102, 0.83)',
-      positive: '#8cd136',
-      negative: '#e35959',
     },
   },
   typography: {

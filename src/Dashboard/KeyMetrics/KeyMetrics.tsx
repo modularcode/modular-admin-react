@@ -50,13 +50,13 @@ const numbers = [
     chart: generateTrendChartData({
       name: 'Monthly Churn',
       from: 13,
-      to: Math.random(13 / 1.1),
+      to: Math.random() / 1.1,
       length: 15,
     }),
   },
 ]
 
-const KeyNumbers = (props) => {
+const KeyMetrics = () => {
   const classes = useStyles()
 
   return (
@@ -87,7 +87,7 @@ const KeyNumbers = (props) => {
               <Grid item xs={6} sm={6} md={12} lg={6}>
                 <Box height="100%" position="relative" minHeight={70}>
                   <div className={classes.chartContainer}>
-                    <Line data={chart.data} options={chart.options} />
+                    <Line type="line" data={chart.data} options={chart.options} />
                   </div>
                 </Box>
               </Grid>
@@ -99,7 +99,7 @@ const KeyNumbers = (props) => {
   )
 }
 
-KeyNumbers.propTypes = {}
+KeyMetrics.propTypes = {}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -122,10 +122,10 @@ const useStyles = makeStyles((theme) => ({
   },
   valueChange: {},
   negative: {
-    color: theme.palette.text.negative,
+    color: theme.palette.error.main,
   },
   positive: {
-    color: theme.palette.text.positive,
+    color: theme.palette.success.main,
   },
   chartContainer: {
     position: 'absolute',
@@ -136,4 +136,4 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default KeyNumbers
+export default KeyMetrics

@@ -14,7 +14,7 @@ import { Line } from 'react-chartjs-2'
 
 import { subscriptionsItems, subscriptionsHistoryChart } from './data'
 
-const Subscriptions = (props) => {
+const Subscriptions = () => {
   const classes = useStyles()
 
   return (
@@ -35,6 +35,7 @@ const Subscriptions = (props) => {
             <div className={classes.chartContainer}>
               <div className={classes.chart}>
                 <Line
+                  type="line"
                   data={subscriptionsHistoryChart.data}
                   options={subscriptionsHistoryChart.options}
                 />

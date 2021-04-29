@@ -2,8 +2,14 @@ import moment from 'moment'
 import theme from '../../_theme'
 import utilsService from '../../_services/utilsService'
 
-export const generateTrendChartData = ({ name, from = 0, to = 1000, length = 30 }) => {
+export const generateTrendChartData = ({
+  name = '',
+  from = 0,
+  to = 1000,
+  length = 30,
+}) => {
   return {
+    type: 'line',
     data: {
       datasets: [
         {
@@ -34,34 +40,32 @@ export const generateTrendChartData = ({ name, from = 0, to = 1000, length = 30 
           bottom: 10,
         },
       },
-      legend: {
-        display: false,
-      },
       scales: {
-        xAxes: [
-          {
-            display: false,
-          },
-        ],
-        yAxes: [
-          {
-            display: false,
-          },
-        ],
+        x: {
+          display: false,
+        },
+        y: {
+          display: false,
+        },
+      },
+      plugins: {
+        legend: {
+          display: false,
+        },
       },
       tooltips: {
         mode: 'index',
         intersect: false,
         caretSize: 0,
         callbacks: {
-          label: function (tooltipItem, data) {
+          label: function (tooltipItem: any, data: any) {
             // var datasetLabel = ''
             // var label = data.labels[tooltipItem.index]
             return data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]
           },
         },
       },
-      hover: {
+      interaction: {
         mode: 'index',
         intersect: false,
       },

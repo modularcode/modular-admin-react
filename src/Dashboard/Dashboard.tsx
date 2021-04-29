@@ -7,7 +7,7 @@ import BasePageToolbar from '../_common/BasePageToolbar'
 
 import DashboardActions from './DashboardActions'
 import SubscriptionsHistory from './SubscriptionsHistory'
-import KeyNumbers from './KeyNumbers'
+import KeyMetrics from './KeyMetrics'
 import SubscriptionsRecent from './SubscriptionsRecent'
 import SubscriptionsBreakdown from './SubscriptionsBreakdown'
 
@@ -19,7 +19,7 @@ const Dashboard = () => {
         actionsComponent={DashboardActions}
       ></BasePageToolbar>
       <Grid container spacing={3}>
-        <KeyNumbers />
+        <KeyMetrics />
         <Grid item xs={12}>
           <SubscriptionsHistory />
         </Grid>

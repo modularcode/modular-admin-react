@@ -12,7 +12,7 @@ import { Bar } from 'react-chartjs-2'
 
 import { chart } from './data'
 
-const SubscriptionsBreakdown = (props) => {
+const SubscriptionsBreakdown = () => {
   const classes = useStyles()
 
   return (
@@ -31,7 +31,7 @@ const SubscriptionsBreakdown = (props) => {
         <CardContent className={classes.cardContent}>
           <div className={classes.chartContainer}>
             <div className={classes.chart}>
-              <Bar data={chart.data} options={chart.options} />
+              <Bar type="bar" data={chart.data} options={chart.options} />
             </div>
           </div>
         </CardContent>

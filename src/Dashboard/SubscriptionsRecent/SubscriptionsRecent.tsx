@@ -20,7 +20,7 @@ import { FormattedDate } from 'react-intl'
 
 import { recentSubscriptions } from './data'
 
-const Subscriptions = (props) => {
+const Subscriptions = () => {
   const classes = useStyles()
 
   return (
@@ -37,7 +37,7 @@ const Subscriptions = (props) => {
           title="Recent Subscriptions"
         />
         <TableContainer component={Paper}>
-          <Table className={classes.table} aria-label="simple table">
+          <Table aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell>Organization</TableCell>
