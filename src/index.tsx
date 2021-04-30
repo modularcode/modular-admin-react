@@ -6,7 +6,7 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 
 import authService from './_services/authService'
-import api from './_api'
+import api from './_api/'
 
 // Mount the app only when auth services and api services are ready
 // this solves api mocks issue

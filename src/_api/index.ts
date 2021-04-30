@@ -5,7 +5,7 @@ import config from '_config'
 
 let apiMocks: any
 
-if (config.api.useMocks) {
+if (config.api.useMocks || process.env.NODE_ENV === 'test') {
   apiMocks = require('./_mocks/')
 }
 
