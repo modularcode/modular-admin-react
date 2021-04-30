@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { MouseEvent } from 'react'
 import clsx from 'clsx'
 
 import { Link } from 'react-router-dom'
@@ -18,9 +18,9 @@ import IconAccount from '@material-ui/icons/AccountBalance'
 import IconSettings from '@material-ui/icons/Settings'
 import IconLogout from '@material-ui/icons/ExitToApp'
 
-const AppHeaderProfile = () => {
+const AppHeaderProfile: React.FC = () => {
   const classes = useStyles()
-  const [anchorEl, setAnchorEl] = React.useState(null)
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement>()
   const user = {
     firstName: 'Gevorg',
   }
@@ -29,12 +29,12 @@ const AppHeaderProfile = () => {
     return <div className={clsx('headerProfile', classes.headerProfile)} />
   }
 
-  function handleClick(event) {
+  function handleClick(event: MouseEvent<HTMLButtonElement>) {
     setAnchorEl(event.currentTarget)
   }
 
   function handleClose() {
-    setAnchorEl(null)
+    setAnchorEl(undefined)
   }
 
   return (

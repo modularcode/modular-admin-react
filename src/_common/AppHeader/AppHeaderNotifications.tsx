@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { MouseEvent } from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
 import IconButton from '@material-ui/core/IconButton'
@@ -11,6 +11,8 @@ import ListItemText from '@material-ui/core/ListItemText'
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 import Avatar from '@material-ui/core/Avatar'
 import Typography from '@material-ui/core/Typography'
+
+import { ITheme } from '_theme/'
 
 const notifications = [
   {
@@ -39,16 +41,16 @@ const notifications = [
   },
 ]
 
-const AppHeaderNotifications = () => {
+const AppHeaderNotifications: React.FC = () => {
   const classes = useStyles()
-  const [anchorEl, setAnchorEl] = React.useState(null)
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement>()
 
-  function handleClick(event) {
+  function handleClick(event: MouseEvent<HTMLButtonElement>) {
     setAnchorEl(event.currentTarget)
   }
 
   function handleClose() {
-    setAnchorEl(null)
+    setAnchorEl(undefined)
   }
 
   return (
@@ -120,7 +122,7 @@ const AppHeaderNotifications = () => {
 //   return <List className={classes.notifications}></List>
 // }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles<ITheme>((theme) => ({
   headerNotifications: {
     marginRight: 23,
     // position: 'relative',

@@ -29,7 +29,7 @@ const Sidebar: React.FC<ISidebarProps> = (props) => {
             role="link"
             aria-label="Modular Admin link"
           >
-            <BaseLogo size={30} isInversed={true} className={classes.logo} role="img" />
+            <BaseLogo size={30} isInversed={true} className={classes.logo} />
             <Typography
               component="h2"
               variant="h5"

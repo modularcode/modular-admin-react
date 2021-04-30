@@ -7,7 +7,9 @@ import IconCode from '@material-ui/icons/Code'
 import IconStar from '@material-ui/icons/Star'
 import IconDownload from '@material-ui/icons/GetApp'
 
-const AppHeaderDemoButtons = (props) => {
+export interface IAppHeaderDemoButtonsProps {}
+
+const AppHeaderDemoButtons: React.FC<IAppHeaderDemoButtonsProps> = (props) => {
   const classes = useStyles(props)
 
   return (

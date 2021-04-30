@@ -11,7 +11,7 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import IconSearch from '@material-ui/icons/Search'
 import IconButton from '@material-ui/core/IconButton'
 
-const AppHeaderSearch = () => {
+const AppHeaderSearch: React.FC = () => {
   const classes = useStyles()
   const [open, setOpen] = React.useState(false)
 

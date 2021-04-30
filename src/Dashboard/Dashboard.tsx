@@ -16,7 +16,7 @@ const Dashboard = () => {
     <BasePageContainer>
       <BasePageToolbar
         title={'Dashboard'}
-        actionsComponent={DashboardActions}
+        actions={<DashboardActions />}
       ></BasePageToolbar>
       <Grid container spacing={3}>
         <KeyMetrics />

@@ -1,21 +1,24 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import clsx from 'clsx'
 
 import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
-
 import IconMenu from '@material-ui/icons/Menu'
 
-import HeaderDemo from './AppHeaderDemoButtons'
+import { ITheme } from '_theme/'
 
+import HeaderDemo from './AppHeaderDemoButtons'
+import HeaderProfile from './AppHeaderProfile'
 // import HeaderSearch from './AppHeaderSearch'
 // import HeaderNotifications from './AppHeaderNotifications'
-import HeaderProfile from './AppHeaderProfile'
 
-const AppHeader = ({ onToggleClick }) => {
+export interface IAppHeader {
+  onToggleClick(): void
+}
+
+const AppHeader: React.FC<IAppHeader> = ({ onToggleClick }) => {
   const classes = useStyles()
 
   return (
@@ -39,11 +42,7 @@ const AppHeader = ({ onToggleClick }) => {
   )
 }
 
-AppHeader.propTypes = {
-  onToggleClick: PropTypes.func,
-}
-
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles<ITheme>((theme) => ({
   header: {
     background: '#fff',
     color: '#7b7b7b',

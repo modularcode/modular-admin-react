@@ -2,13 +2,14 @@ import React from 'react'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 
-/*
-interface LogoProps {
+export interface IBaseLogoProps {
   className?: string
   size?: number
+  isInversedOutline?: boolean
+  isInversed?: boolean
 }
- */
-const Logo = (props) => {
+
+const BaseLogo: React.FC<IBaseLogoProps> = (props) => {
   const classes = useStyles(props)
 
   return (
@@ -17,6 +18,7 @@ const Logo = (props) => {
       data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 563.82 637.44"
+      role="img"
     >
       <title>Modular Admin React</title>
       <g>
@@ -36,7 +38,7 @@ const Logo = (props) => {
 }
 
 const useStyles = makeStyles((theme) => ({
-  Logo: (props) => ({
+  Logo: (props: IBaseLogoProps) => ({
     display: 'inline-block',
     verticalAlign: 'text-bottom',
     width: props.size,
@@ -45,12 +47,12 @@ const useStyles = makeStyles((theme) => ({
   path: {
     transition: 'all .3s ease',
   },
-  outline: (props) => ({
+  outline: (props: IBaseLogoProps) => ({
     fill: props.isInversedOutline ? '#fff' : 'currentColor',
   }),
-  letter: (props) => ({
+  letter: (props: IBaseLogoProps) => ({
     fill: props.isInversed ? '#fff' : 'currentColor',
   }),
 }))
 
-export default Logo
+export default BaseLogo
