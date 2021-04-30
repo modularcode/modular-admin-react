@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 
 import { Link } from 'react-router-dom'
@@ -9,7 +8,11 @@ import Typography from '@material-ui/core/Typography'
 import Logo from '_common/BaseLogo/BaseLogo'
 import SidebarNav from './SidebarNav'
 
-const Sidebar = (props) => {
+export interface ISidebarProps {
+  isCollapsed?: boolean
+}
+
+const Sidebar: React.FC<ISidebarProps> = (props) => {
   const { isCollapsed } = props
 
   const classes = useStyles(props)
@@ -43,9 +46,9 @@ Sidebar.defaultProps = {
   isCollapsed: false,
 }
 
-Sidebar.propTypes = {
-  isCollapsed: PropTypes.bool,
-}
+// Sidebar.propTypes = {
+//   isCollapsed: PropTypes.bool,
+// }
 
 const useStyles = makeStyles((theme) => ({
   sidebar: {
@@ -95,7 +98,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.main,
     zIndex: 10,
   },
-  title: (props) => ({
+  title: (props: ISidebarProps) => ({
     position: 'relative',
     overflow: 'visible',
     marginLeft: '5px',

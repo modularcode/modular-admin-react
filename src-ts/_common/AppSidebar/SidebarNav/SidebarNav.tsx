@@ -15,7 +15,19 @@ import IconPreson from '@material-ui/icons/Person' //
 
 import NavList from './NavList'
 
-const SidebarNav = (props) => {
+export interface ISidebarNavItem {
+  name: string
+  link?: string
+  Icon?: any
+  IconClassName?: string
+  items?: ISidebarNavItem[]
+}
+
+export interface ISidebarNavProps {
+  isCollapsed?: boolean
+}
+
+const SidebarNav: React.FC<ISidebarNavProps> = (props) => {
   const { isCollapsed } = props
   const classes = useStyles()
 

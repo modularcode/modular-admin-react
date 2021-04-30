@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react'
+import React, { useLayoutEffect, MouseEvent } from 'react'
 import clsx from 'clsx'
 
 import { makeStyles, createStyles } from '@material-ui/core/styles'
@@ -15,11 +15,30 @@ import IconExpandLess from '@material-ui/icons/ExpandLess'
 import IconExpandMore from '@material-ui/icons/ExpandMore'
 import IconSpacer from '@material-ui/icons/FiberManualRecord'
 
+import { ISidebarNavItem } from './SidebarNav'
+
 import NavItemComponent from './NavItemComponent'
 
 // ----------------------------------------------------------------------
 
-const NavItemCollapsed = (props) => {
+export interface INavItemCollapsedProps {
+  name: string
+  link?: string
+  Icon?: any
+  IconStyles?: object
+  IconClassName?: string
+  isCollapsed?: boolean
+  className?: string
+  nestingLevel?: number
+  nestingOffset?: number
+  isNested?: boolean
+  items?: ISidebarNavItem[]
+  isOpen?: boolean
+  style?: any
+  onClick?: () => void
+}
+
+const NavItemCollapsed: React.FC<INavItemCollapsedProps> = (props) => {
   const {
     name,
     link,
@@ -36,11 +55,12 @@ const NavItemCollapsed = (props) => {
   const itemsAll = getItemsAll(items)
   const hasChildrenAndIsActive =
     hasChildren &&
-    itemsAll.filter((item) => `#${item.link}` === window.location.hash).length > 0
+    itemsAll.filter((item: ISidebarNavItem) => `#${item.link}` === window.location.hash)
+      .length > 0
 
-  const [anchorEl, setAnchorEl] = React.useState(null)
+  const [anchorEl, setAnchorEl] = React.useState<HTMLAnchorElement>()
 
-  const handlePopoverOpen = (event) => {
+  const handlePopoverOpen = (event: MouseEvent<HTMLAnchorElement>) => {
     if (!hasChildren) {
       return false
     }
@@ -49,7 +69,7 @@ const NavItemCollapsed = (props) => {
   }
 
   const handlePopoverClose = () => {
-    setAnchorEl(null)
+    setAnchorEl(undefined)
   }
 
   const open = Boolean(anchorEl)
@@ -152,7 +172,23 @@ const NavItemCollapsed = (props) => {
   )
 }
 
-const NavItemDefault = (props) => {
+export interface INavItemDefaultProps {
+  name: string
+  link?: string
+  Icon?: any
+  IconStyles?: object
+  IconClassName?: string
+  isCollapsed?: boolean
+  className?: string
+  nestingLevel?: number
+  nestingOffset?: number
+  style?: any
+  items?: ISidebarNavItem[]
+  isOpen?: boolean
+  onClick?: () => void
+}
+
+const NavItemDefault: React.FC<INavItemDefaultProps> = (props) => {
   const {
     name,
     link,
@@ -257,7 +293,7 @@ const NavItemDefault = (props) => {
   )
 }
 
-const NavItem = (props) => {
+const NavItem: React.FC<INavItemCollapsedProps | INavItemDefaultProps> = (props) => {
   if (props.isCollapsed) {
     return <NavItemCollapsed {...props} />
   } else {
@@ -344,8 +380,8 @@ const useStyles = makeStyles((theme) =>
 // ----------------------
 
 // Flattened array of all children
-function getItemsAll(items) {
-  return items.reduce((allItems, item) => {
+function getItemsAll(items: ISidebarNavItem[]): ISidebarNavItem[] {
+  return items.reduce((allItems: ISidebarNavItem[], item: ISidebarNavItem) => {
     // let res = allItems.concat([item])
 
     if (item.items && item.items.length) {

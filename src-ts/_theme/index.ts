@@ -1,8 +1,20 @@
+import { Theme } from '@material-ui/core/styles/createMuiTheme'
 import { createMuiTheme } from '@material-ui/core/styles'
 
 // Allow configuration using `createMuiTheme`
 // ref: https://material-ui.com/guides/typescript/
 declare module '@material-ui/core/styles/createMuiTheme' {
+  interface Theme {
+    header: {
+      background: string
+    }
+    sidebar: {
+      width: number
+      widthCollapsed: number
+      background: string
+      color: string
+    }
+  }
   interface ThemeOptions {}
 }
 

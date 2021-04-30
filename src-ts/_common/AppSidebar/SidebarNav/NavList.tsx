@@ -2,7 +2,15 @@ import React from 'react'
 
 import NavItem from './NavItem'
 
-const AppSidebarNavList = (props) => {
+import { ISidebarNavItem } from './SidebarNav'
+
+export interface IAppSidebarNavList {
+  isNested?: boolean
+  isCollapsed?: boolean
+  items: ISidebarNavItem[]
+}
+
+const AppSidebarNavList: React.FC<IAppSidebarNavList> = (props) => {
   const { items = [], isCollapsed = false, isNested = false } = props
   // const classes = useStyles()
 
