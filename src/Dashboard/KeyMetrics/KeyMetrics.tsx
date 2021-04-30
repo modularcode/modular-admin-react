@@ -56,7 +56,7 @@ const numbers = [
   },
 ]
 
-const KeyMetrics = () => {
+const KeyMetrics: React.FC = () => {
   const classes = useStyles()
 
   return (

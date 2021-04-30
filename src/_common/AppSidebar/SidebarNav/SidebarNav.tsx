@@ -23,7 +23,7 @@ const SidebarNav: React.FC<ISidebarNavProps> = (props) => {
       </List>
 
       {itemsCore.map((item: ISidebarNavListItem) => {
-        return <SidebarNavListItem {...item} />
+        return <SidebarNavListItem {...item} key={item.name} />
       })}
 
       <List className={classes.navList} disablePadding>
