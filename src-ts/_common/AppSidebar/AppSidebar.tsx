@@ -13,7 +13,7 @@ export interface ISidebarProps {
 }
 
 const Sidebar: React.FC<ISidebarProps> = (props) => {
-  const { isCollapsed } = props
+  // const { isCollapsed } = props
 
   const classes = useStyles(props)
 
@@ -36,7 +36,7 @@ const Sidebar: React.FC<ISidebarProps> = (props) => {
             </Typography>
           </Link>
         </div>
-        <SidebarNav isCollapsed={isCollapsed} />
+        <SidebarNav />
       </div>
     </aside>
   )
