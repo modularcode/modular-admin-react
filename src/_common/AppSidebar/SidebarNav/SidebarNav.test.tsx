@@ -1,9 +1,9 @@
 import React from 'react'
 import { render, screen } from '_tests'
-import AppSidebar from './AppSidebar'
+import SidebarNav from './SidebarNav'
 
-describe('AppSidebar', () => {
+describe('SidebarNav', () => {
   it('renders without crashing', () => {
-    render(<AppSidebar />)
+    render(<SidebarNav />)
   })
 })

@@ -6,7 +6,7 @@ import { Line } from 'react-chartjs-2'
 
 import { generateTrendChartData } from './data'
 
-const numbers = [
+const keyMetrics = [
   {
     name: 'Monthly Revenue',
     value: '24350$',
@@ -61,13 +61,18 @@ const KeyMetrics: React.FC = () => {
 
   return (
     <>
-      {numbers.map(({ name, value, change, trend, chart }) => (
+      {keyMetrics.map(({ name, value, change, trend, chart }) => (
         <Grid item xs={12} sm={6} md={3} key={name}>
           <Paper className={classes.paper}>
             <Grid container spacing={0}>
               <Grid item xs={6} sm={6} md={12} lg={6}>
                 <Box p={2}>
-                  <Typography variant="body2" className={classes.name}>
+                  <Typography
+                    variant="body2"
+                    className={classes.name}
+                    role="heading"
+                    aria-label={name}
+                  >
                     {name}
                   </Typography>
                   <Typography variant="body1" className={classes.value}>

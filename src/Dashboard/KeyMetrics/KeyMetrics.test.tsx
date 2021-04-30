@@ -1,9 +1,16 @@
 import React from 'react'
-import { render, screen } from '_tests/'
+import { render, waitFor, screen } from '_tests/'
 import KeyMetrics from './KeyMetrics'
 
-test('renders without crashing', () => {
-  render(<KeyMetrics />)
-  // const linkElement = screen.getByText(/learn react/i)
-  // expect(linkElement).toBeInTheDocument()
+describe('Dashboard/KeyMetrics', () => {
+  it('has 4 key metrics', async () => {
+    render(<KeyMetrics />)
+
+    // wait for headings to appear
+    await waitFor(() => screen.getAllByRole('heading'))
+
+    const Headings = screen.getAllByRole('heading')
+
+    expect(Headings).toHaveLength(4)
+  })
 })
