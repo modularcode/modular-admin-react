@@ -3,7 +3,8 @@ import { makeStyles, createStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import ListSubheader from '@material-ui/core/ListSubheader'
 
-import { itemsCore, itemsTheme } from './SidebarNavService'
+import { ITheme } from '_theme'
+import { itemsCore /*, itemsTheme */ } from './SidebarNavService'
 import SidebarNavListItem, { ISidebarNavListItem } from './SidebarNavListItem'
 
 export interface ISidebarNavProps {
@@ -35,7 +36,7 @@ const SidebarNav: React.FC<ISidebarNavProps> = (props) => {
   )
 }
 
-const useStyles = makeStyles((theme) =>
+const useStyles = makeStyles<ITheme>((theme) =>
   createStyles({
     navList: {
       width: theme.sidebar.width,

@@ -18,6 +18,8 @@ declare module '@material-ui/core/styles/createMuiTheme' {
   interface ThemeOptions {}
 }
 
+export interface ITheme extends Theme {}
+
 const baseTheme = createMuiTheme({
   props: {
     MuiPaper: {

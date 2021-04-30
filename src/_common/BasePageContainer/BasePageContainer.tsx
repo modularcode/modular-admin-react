@@ -2,10 +2,14 @@ import React from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
 
-const PageContainer = ({ children }) => {
+const BasePageContainer: React.FC = ({ children }) => {
   const classes = useStyles()
 
-  return <article className={classes.container}>{children}</article>
+  return (
+    <main className={classes.container} role="main">
+      {children}
+    </main>
+  )
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -18,4 +22,4 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default PageContainer
+export default BasePageContainer

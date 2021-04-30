@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom'
 import Typography from '@material-ui/core/Typography'
 
 // import AppSidebarBg from './AppSidebarBg.jpg'
-import Logo from '_common/BaseLogo/BaseLogo'
+import { ITheme } from '_theme/'
+import BaseLogo from '_common/BaseLogo'
 import SidebarNav from './SidebarNav'
 
 export interface ISidebarProps {
@@ -22,8 +23,13 @@ const Sidebar: React.FC<ISidebarProps> = (props) => {
       <div className={classes.sidebarBackground} />
       <div className={classes.sidebarBody}>
         <div className={classes.sidebarHeader}>
-          <Link to="/" className={classes.sidebarTitleLink}>
-            <Logo size={30} isInversed={true} className={classes.logo} />
+          <Link
+            to="/"
+            className={classes.sidebarTitleLink}
+            role="link"
+            aria-label="Modular Admin link"
+          >
+            <BaseLogo size={30} isInversed={true} className={classes.logo} role="img" />
             <Typography
               component="h2"
               variant="h5"
@@ -50,7 +56,7 @@ Sidebar.defaultProps = {
 //   isCollapsed: PropTypes.bool,
 // }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles<ITheme>((theme) => ({
   sidebar: {
     position: 'absolute',
     top: 0,
