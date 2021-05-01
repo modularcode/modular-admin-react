@@ -4,7 +4,7 @@
 
 Free [MaterialUI](https://material-ui.com/) dashboard theme implemented by using **ReactJS** + **React Hooks** + **TypeScript** + **Context API**
 
-**(this project is experimenta and in development, please use only for reference)**
+**(this project is experimental and in development, please use only for reference)**
 
 </div>
 
