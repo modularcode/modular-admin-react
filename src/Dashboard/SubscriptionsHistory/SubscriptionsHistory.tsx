@@ -14,7 +14,9 @@ import { Line } from 'react-chartjs-2'
 
 import { subscriptionsItems, subscriptionsHistoryChart } from './data'
 
-const Subscriptions: React.FC = () => {
+export type SubscriptionsProps = {}
+
+const Subscriptions: React.FC<SubscriptionsProps> = () => {
   const classes = useStyles()
 
   return (

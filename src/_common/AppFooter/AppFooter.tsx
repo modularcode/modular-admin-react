@@ -4,7 +4,9 @@ import Link from '@material-ui/core/Link'
 import { makeStyles } from '@material-ui/core/styles'
 import pkg from '../../../package.json'
 
-const Footer: React.FC = () => {
+type AppFooterProps = {}
+
+const AppFooter: React.FC<AppFooterProps> = () => {
   const classes = useStyles()
 
   return (
@@ -57,4 +59,4 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default Footer
+export default AppFooter

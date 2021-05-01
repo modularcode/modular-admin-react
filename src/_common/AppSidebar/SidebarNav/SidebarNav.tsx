@@ -3,15 +3,14 @@ import { makeStyles, createStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import ListSubheader from '@material-ui/core/ListSubheader'
 
-import { ITheme } from '_theme'
 import { itemsCore /*, itemsTheme */ } from './SidebarNavService'
-import SidebarNavListItem, { ISidebarNavListItem } from './SidebarNavListItem'
+import SidebarNavListItem, { SidebarNavListItemProps } from './SidebarNavListItem'
 
-export interface ISidebarNavProps {
+export type SidebarNavProps = {
   // isCollapsed?: boolean
 }
 
-const SidebarNav: React.FC<ISidebarNavProps> = (props) => {
+const SidebarNav: React.FC<SidebarNavProps> = (props) => {
   // const { isCollapsed } = props
   const classes = useStyles()
 
@@ -23,7 +22,7 @@ const SidebarNav: React.FC<ISidebarNavProps> = (props) => {
         </ListSubheader>
       </List>
 
-      {itemsCore.map((item: ISidebarNavListItem) => {
+      {itemsCore.map((item: SidebarNavListItemProps) => {
         return <SidebarNavListItem {...item} key={item.name} />
       })}
 
@@ -36,7 +35,7 @@ const SidebarNav: React.FC<ISidebarNavProps> = (props) => {
   )
 }
 
-const useStyles = makeStyles<ITheme>((theme) =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     navList: {
       width: theme.sidebar.width,

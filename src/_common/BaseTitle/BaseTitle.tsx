@@ -1,6 +1,8 @@
 import React from 'react'
 
-const BaseTitle: React.FC = () => {
+export type BaseTitleProps = {}
+
+const BaseTitle: React.FC<BaseTitleProps> = () => {
   return <div></div>
 }
 

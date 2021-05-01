@@ -20,7 +20,9 @@ import { FormattedDate } from 'react-intl'
 
 import { recentSubscriptions } from './data'
 
-const Subscriptions = () => {
+export type SubscriptionsRecentProps = {}
+
+const SubscriptionsRecent: React.FC<SubscriptionsRecentProps> = () => {
   const classes = useStyles()
 
   return (
@@ -78,8 +80,6 @@ const Subscriptions = () => {
   )
 }
 
-Subscriptions.propTypes = {}
-
 const useStyles = makeStyles((theme) => ({
   card: {
     height: '100%',
@@ -102,4 +102,4 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default Subscriptions
+export default SubscriptionsRecent

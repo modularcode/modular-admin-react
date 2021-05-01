@@ -1,8 +1,9 @@
 import React from 'react'
-
 import { makeStyles } from '@material-ui/core/styles'
 
-const BasePageContainer: React.FC = ({ children }) => {
+export type BasePageContainerProps = {}
+
+const BasePageContainer: React.FC<BasePageContainerProps> = ({ children }) => {
   const classes = useStyles()
 
   return (

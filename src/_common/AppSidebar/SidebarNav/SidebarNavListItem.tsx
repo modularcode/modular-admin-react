@@ -6,17 +6,15 @@ import Collapse from '@material-ui/core/Collapse'
 
 // import { makeStyles, createStyles } from '@material-ui/core/styles'
 
-export interface ISidebarNavListItem {
+export type SidebarNavListItemProps = {
   name: string
   link?: string
   Icon?: any
   IconClassName?: string
-  items?: ISidebarNavListItem[]
+  items?: SidebarNavListItemProps[]
 }
 
-export interface ISidebarNavListItemProps extends ISidebarNavListItem {}
-
-const SidebarNavListItem: React.FC<ISidebarNavListItemProps> = (props) => {
+const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (props) => {
   const { name, items = [] } = props
 
   const [open, setOpen] = React.useState(false)
@@ -36,7 +34,7 @@ const SidebarNavListItem: React.FC<ISidebarNavListItemProps> = (props) => {
       {items.length > 0 && (
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            {items.map((item: ISidebarNavListItem) => (
+            {items.map((item: SidebarNavListItemProps) => (
               <SidebarNavListItem {...item} key={item.name || item.link} />
             ))}
           </List>

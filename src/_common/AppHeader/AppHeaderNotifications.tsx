@@ -12,7 +12,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 import Avatar from '@material-ui/core/Avatar'
 import Typography from '@material-ui/core/Typography'
 
-import { ITheme } from '_theme/'
+import { Theme } from '_theme/'
 
 const notifications = [
   {
@@ -41,7 +41,9 @@ const notifications = [
   },
 ]
 
-const AppHeaderNotifications: React.FC = () => {
+export type AppHeaderNotificationsProps = {}
+
+const AppHeaderNotifications: React.FC<AppHeaderNotificationsProps> = () => {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement>()
 
@@ -122,7 +124,7 @@ const AppHeaderNotifications: React.FC = () => {
 //   return <List className={classes.notifications}></List>
 // }
 
-const useStyles = makeStyles<ITheme>((theme) => ({
+const useStyles = makeStyles((theme) => ({
   headerNotifications: {
     marginRight: 23,
     // position: 'relative',

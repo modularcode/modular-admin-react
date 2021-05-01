@@ -12,7 +12,9 @@ import { Bar } from 'react-chartjs-2'
 
 import { chart } from './data'
 
-const SubscriptionsBreakdown = () => {
+export type SubscriptionsBreakdownProps = {}
+
+const SubscriptionsBreakdown: React.FC<SubscriptionsBreakdownProps> = () => {
   const classes = useStyles()
 
   return (
@@ -39,8 +41,6 @@ const SubscriptionsBreakdown = () => {
     </Grid>
   )
 }
-
-SubscriptionsBreakdown.propTypes = {}
 
 const useStyles = makeStyles((theme) => ({
   card: {

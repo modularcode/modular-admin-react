@@ -7,18 +7,16 @@ import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import IconMenu from '@material-ui/icons/Menu'
 
-import { ITheme } from '_theme/'
-
 import HeaderDemo from './AppHeaderDemoButtons'
 import HeaderProfile from './AppHeaderProfile'
 // import HeaderSearch from './AppHeaderSearch'
 // import HeaderNotifications from './AppHeaderNotifications'
 
-export interface IAppHeader {
+export type AppHeaderProps = {
   onToggleClick(): void
 }
 
-const AppHeader: React.FC<IAppHeader> = ({ onToggleClick }) => {
+const AppHeader: React.FC<AppHeaderProps> = ({ onToggleClick }) => {
   const classes = useStyles()
 
   return (
@@ -42,7 +40,7 @@ const AppHeader: React.FC<IAppHeader> = ({ onToggleClick }) => {
   )
 }
 
-const useStyles = makeStyles<ITheme>((theme) => ({
+const useStyles = makeStyles((theme) => ({
   header: {
     background: '#fff',
     color: '#7b7b7b',

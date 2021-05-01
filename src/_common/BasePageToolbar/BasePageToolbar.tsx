@@ -5,7 +5,7 @@ import { makeStyles, createStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 
-export interface IBasePageToolbarProps {
+export type BasePageToolbarProps = {
   classes?: {
     container?: string
     titleContainer?: string
@@ -16,7 +16,7 @@ export interface IBasePageToolbarProps {
   ActionsComponent?: React.ComponentType
 }
 
-const BasePageToolbar: React.FC<IBasePageToolbarProps> = (props) => {
+const BasePageToolbar: React.FC<BasePageToolbarProps> = (props) => {
   const classes = useStyles()
   const externalClasses = props.classes || {}
   const ActionsComponent = props.ActionsComponent || null

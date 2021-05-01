@@ -56,7 +56,9 @@ const keyMetrics = [
   },
 ]
 
-const KeyMetrics: React.FC = () => {
+export type KeyMetricsProps = {}
+
+const KeyMetrics: React.FC<KeyMetricsProps> = () => {
   const classes = useStyles()
 
   return (
@@ -103,8 +105,6 @@ const KeyMetrics: React.FC = () => {
     </>
   )
 }
-
-KeyMetrics.propTypes = {}
 
 const useStyles = makeStyles((theme) => ({
   root: {

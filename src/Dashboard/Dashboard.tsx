@@ -11,7 +11,9 @@ import KeyMetrics from './KeyMetrics/'
 import SubscriptionsRecent from './SubscriptionsRecent/'
 import SubscriptionsBreakdown from './SubscriptionsBreakdown/'
 
-const Dashboard: React.FC = () => {
+export type DashboardProps = {}
+
+const Dashboard: React.FC<DashboardProps> = () => {
   return (
     <BasePageContainer>
       <BasePageToolbar title={'Dashboard'} ActionsComponent={DashboardActions} />

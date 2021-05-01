@@ -2,14 +2,14 @@ import React from 'react'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 
-export interface IBaseLogoProps {
+export type BaseLogoProps = {
   className?: string
   size?: number
   isInversedOutline?: boolean
   isInversed?: boolean
 }
 
-const BaseLogo: React.FC<IBaseLogoProps> = (props) => {
+const BaseLogo: React.FC<BaseLogoProps> = (props) => {
   const classes = useStyles(props)
 
   return (
@@ -38,7 +38,7 @@ const BaseLogo: React.FC<IBaseLogoProps> = (props) => {
 }
 
 const useStyles = makeStyles((theme) => ({
-  Logo: (props: IBaseLogoProps) => ({
+  Logo: (props: BaseLogoProps) => ({
     display: 'inline-block',
     verticalAlign: 'text-bottom',
     width: props.size,
@@ -47,10 +47,10 @@ const useStyles = makeStyles((theme) => ({
   path: {
     transition: 'all .3s ease',
   },
-  outline: (props: IBaseLogoProps) => ({
+  outline: (props: BaseLogoProps) => ({
     fill: props.isInversedOutline ? '#fff' : 'currentColor',
   }),
-  letter: (props: IBaseLogoProps) => ({
+  letter: (props: BaseLogoProps) => ({
     fill: props.isInversed ? '#fff' : 'currentColor',
   }),
 }))

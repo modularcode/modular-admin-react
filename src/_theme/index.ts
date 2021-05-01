@@ -1,4 +1,4 @@
-import { Theme } from '@material-ui/core/styles/createMuiTheme'
+import { Theme as MuiTheme } from '@material-ui/core/styles/createMuiTheme'
 import { createMuiTheme } from '@material-ui/core/styles'
 
 // Allow configuration using `createMuiTheme`
@@ -18,7 +18,7 @@ declare module '@material-ui/core/styles/createMuiTheme' {
   interface ThemeOptions {}
 }
 
-export interface ITheme extends Theme {}
+export interface Theme extends MuiTheme {}
 
 const baseTheme = createMuiTheme({
   props: {

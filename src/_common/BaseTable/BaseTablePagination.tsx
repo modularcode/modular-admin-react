@@ -10,15 +10,6 @@ import {
   LastPage as LastPageIcon,
 } from '@material-ui/icons/'
 
-import { ITheme } from '_theme/'
-
-export interface IBaseTablePaginationActionsProps {
-  count: number
-  page: number
-  rowsPerPage: number
-  onChangePage: (event: React.MouseEvent<HTMLButtonElement>, newPage: number) => void
-}
-
 const BaseTablePaginationActions: React.FC<TablePaginationActionsProps> = (props) => {
   const classes = useStyles()
   const theme = useTheme()
@@ -74,9 +65,9 @@ const BaseTablePaginationActions: React.FC<TablePaginationActionsProps> = (props
   )
 }
 
-export type IBaseTablePaginationProps = TablePaginationProps
+export type BaseTablePaginationProps = TablePaginationProps
 
-const BaseTablePagination: React.FC<IBaseTablePaginationProps> = (props) => {
+const BaseTablePagination: React.FC<BaseTablePaginationProps> = (props) => {
   const { count, page, rowsPerPage, onChangePage, onChangeRowsPerPage = () => {} } = props
 
   return (
@@ -97,7 +88,7 @@ const BaseTablePagination: React.FC<IBaseTablePaginationProps> = (props) => {
   )
 }
 
-const useStyles = makeStyles<ITheme>((theme) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexShrink: 0,
     marginLeft: theme.spacing(2.5),
