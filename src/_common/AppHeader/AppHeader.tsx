@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import clsx from 'clsx'
 
 import { makeStyles } from '@material-ui/core/styles'
@@ -17,6 +17,8 @@ export type AppHeaderProps = {
 }
 
 const AppHeader: React.FC<AppHeaderProps> = ({ onToggleClick }) => {
+  console.log('AppHeader rendered')
+
   const classes = useStyles()
 
   return (
@@ -61,4 +63,4 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default AppHeader
+export default memo(AppHeader)

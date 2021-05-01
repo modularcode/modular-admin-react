@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Typography from '@material-ui/core/Typography'
 import Link from '@material-ui/core/Link'
 import { makeStyles } from '@material-ui/core/styles'
@@ -7,6 +7,8 @@ import pkg from '../../../package.json'
 type AppFooterProps = {}
 
 const AppFooter: React.FC<AppFooterProps> = () => {
+  console.log('AppFooter rendered')
+
   const classes = useStyles()
 
   return (
@@ -59,4 +61,4 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default AppFooter
+export default memo(AppFooter)

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
@@ -10,14 +10,8 @@ import AppHeader from '../../_common/AppHeader'
 import AppFooter from '../../_common/AppFooter'
 import AppSidebar from '../../_common/AppSidebar'
 
-const DashboardLayout = (
-  { header, footer, sidebar, children } = {
-    header: AppHeader,
-    footer: AppFooter,
-    sidebar: AppSidebar,
-  },
-) => {
-  const refHeaderContainer = useRef(null)
+const DashboardLayout: React.FC = ({ children }) => {
+  const refHeaderContainer = useRef<HTMLDivElement>(null)
 
   const classes = useStyles()
   const theme = useTheme()
@@ -30,9 +24,10 @@ const DashboardLayout = (
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
 
   useEffect(() => {
-    // code to run on component mount
-    setHeaderHeight(refHeaderContainer.current.offsetHeight)
-  }, [])
+    if (refHeaderContainer && refHeaderContainer.current) {
+      setHeaderHeight(refHeaderContainer.current.offsetHeight)
+    }
+  }, [refHeaderContainer])
 
   const contentOffset = (() => {
     if ((isDesktop && !isSidebarOpenDesktop) || isMobile) {
@@ -44,24 +39,20 @@ const DashboardLayout = (
     }
   })()
 
-  const HeaderComponent = header
-  const SidebarComponent = sidebar
-  const FooterComponent = footer
-
   function handleSidebarToggleOpenMobile() {
     setIsSidebarOpenMobile(!isSidebarOpenMobile)
   }
 
-  function handleSidebarToggle() {
+  const handleSidebarToggle = useCallback(() => {
     // Open/close on mobile
     if (isMobile) {
-      setIsSidebarOpenMobile(!isSidebarOpenMobile)
+      setIsSidebarOpenMobile((isSidebarOpenMobile) => !isSidebarOpenMobile)
     }
     // Collapse/uncollapse on desktop
     else {
-      setIsSidebarCollapsed(!isSidebarCollapsed)
+      setIsSidebarCollapsed((isSidebarCollapsed) => !isSidebarCollapsed)
     }
-  }
+  }, [isMobile])
 
   // function handleSidebarToggleCollapse() {
   //   setIsSidebarCollapsed(!isSidebarCollapsed)
@@ -76,7 +67,7 @@ const DashboardLayout = (
           width: `calc(100% - ${contentOffset}px)`,
         }}
       >
-        {HeaderComponent && <HeaderComponent onToggleClick={handleSidebarToggle} />}
+        <AppHeader onToggleClick={handleSidebarToggle} />
       </div>
       <div
         // ref={refSidebarContainer}
@@ -99,7 +90,7 @@ const DashboardLayout = (
               keepMounted: true, // Better open performance on mobile.
             }}
           >
-            {SidebarComponent && <SidebarComponent />}
+            <AppSidebar />
           </Drawer>
         </Hidden>
         {/* Desktop sidebar */}
@@ -110,7 +101,7 @@ const DashboardLayout = (
             }}
             variant="permanent"
           >
-            {SidebarComponent && <SidebarComponent isCollapsed={isSidebarCollapsed} />}
+            <AppSidebar isCollapsed={isSidebarCollapsed} />
           </Drawer>
         </Hidden>
       </div>
@@ -122,7 +113,7 @@ const DashboardLayout = (
       >
         <div className={classes.contentContainer}>{children}</div>
         <div className={classes.footerContainer}>
-          {FooterComponent && <FooterComponent />}
+          <AppFooter />
         </div>
       </main>
     </div>

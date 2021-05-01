@@ -14,6 +14,8 @@ import SubscriptionsBreakdown from './SubscriptionsBreakdown/'
 export type DashboardProps = {}
 
 const Dashboard: React.FC<DashboardProps> = () => {
+  console.log('Dashboard rendered')
+
   return (
     <BasePageContainer>
       <BasePageToolbar title={'Dashboard'} ActionsComponent={DashboardActions} />

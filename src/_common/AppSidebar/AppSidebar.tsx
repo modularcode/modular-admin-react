@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 
 import { Link } from 'react-router-dom'
@@ -12,7 +12,9 @@ export type AppSidebarProps = {
   isCollapsed?: boolean
 }
 
-const Sidebar: React.FC<AppSidebarProps> = (props) => {
+const AppSidebar: React.FC<AppSidebarProps> = (props) => {
+  console.log('AppSidebar rendered')
+
   // const { isCollapsed } = props
 
   const classes = useStyles(props)
@@ -48,7 +50,7 @@ const Sidebar: React.FC<AppSidebarProps> = (props) => {
   )
 }
 
-Sidebar.defaultProps = {
+AppSidebar.defaultProps = {
   isCollapsed: false,
 }
 
@@ -128,4 +130,4 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default Sidebar
+export default memo(AppSidebar)
