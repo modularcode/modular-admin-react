@@ -5,7 +5,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import AuthContent from '../_common/AuthContent'
 import AuthHeader from '../_common/AuthHeader'
 
-export default function Login() {
+const Reset: React.FC = () => {
   const classes = useStyles()
 
   return (
@@ -67,3 +67,5 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }))
+
+export default Reset

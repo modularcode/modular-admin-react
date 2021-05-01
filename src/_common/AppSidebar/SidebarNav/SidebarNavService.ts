@@ -59,6 +59,16 @@ export const itemsCore = [
         link: '/administration/users',
         Icon: IconGroup,
       },
+      {
+        name: 'Organizations',
+        link: '/administration/users',
+        Icon: IconGroup,
+      },
+      {
+        name: 'Subscription Plans',
+        link: '/administration/subscriptionPlans',
+        Icon: IconGroup,
+      },
     ],
   },
   {

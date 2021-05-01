@@ -1,24 +1,16 @@
 import React from 'react'
-import {
-  makeStyles,
-  Button,
-  TextField,
-  FormControlLabel,
-  Checkbox,
-  Link,
-  Grid,
-} from '@material-ui/core'
+import { makeStyles, Button, TextField, Link, Grid } from '@material-ui/core'
 import { Link as RouterLink } from 'react-router-dom'
 
-import AuthHeader from '../_common/AuthHeader'
 import AuthContent from '../_common/AuthContent'
+import AuthHeader from '../_common/AuthHeader'
 
-export default function Login() {
+const Recover: React.FC = () => {
   const classes = useStyles()
 
   return (
     <AuthContent>
-      <AuthHeader title={'Sign In'} />
+      <AuthHeader title={'Recover Password'} />
       <form className={classes.form} noValidate>
         <TextField
           variant="outlined"
@@ -31,21 +23,6 @@ export default function Login() {
           autoComplete="email"
           autoFocus
         />
-        <TextField
-          variant="outlined"
-          margin="normal"
-          required
-          fullWidth
-          name="password"
-          label="Password"
-          type="password"
-          id="password"
-          autoComplete="current-password"
-        />
-        <FormControlLabel
-          control={<Checkbox value="remember" color="primary" />}
-          label="Remember me"
-        />
         <Button
           type="submit"
           fullWidth
@@ -53,17 +30,17 @@ export default function Login() {
           color="primary"
           className={classes.submit}
         >
-          Sign In
+          Request Password Reset
         </Button>
         <Grid container>
           <Grid item xs>
-            <Link component={RouterLink} to="/auth/recover" variant="body2">
-              Forgot password?
+            <Link component={RouterLink} to="/auth/login" variant="body2">
+              Back to Login
             </Link>
           </Grid>
           <Grid item>
             <Link component={RouterLink} to="/auth/signup" variant="body2">
-              {"Don't have an account? Sign Up"}
+              Create a new account
             </Link>
           </Grid>
         </Grid>
@@ -81,3 +58,5 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }))
+
+export default Recover

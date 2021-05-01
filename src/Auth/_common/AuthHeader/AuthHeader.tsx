@@ -4,7 +4,11 @@ import PropTypes from 'prop-types'
 import { makeStyles, Typography } from '@material-ui/core'
 import BaseLogo from '../../../_common/BaseLogo'
 
-const AuthHeader = ({ title = '' }) => {
+export type AuthHeaderProps = {
+  title: string
+}
+
+const AuthHeader: React.FC<AuthHeaderProps> = ({ title = '' }) => {
   const classes = useStyles()
 
   return (
@@ -12,10 +16,6 @@ const AuthHeader = ({ title = '' }) => {
       <BaseLogo size={30} className={classes.logo} /> {title}
     </Typography>
   )
-}
-
-AuthHeader.propTypes = {
-  title: PropTypes.string,
 }
 
 const useStyles = makeStyles((theme) => ({

@@ -13,7 +13,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import AuthContent from '../_common/AuthContent'
 import AuthHeader from '../_common/AuthHeader'
 
-export default function SignUp() {
+const Signup: React.FC = () => {
   const classes = useStyles()
 
   return (
@@ -116,3 +116,5 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }))
+
+export default Signup

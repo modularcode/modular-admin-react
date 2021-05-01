@@ -1,13 +1,13 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core'
 
-const AuthContent = (props) => {
+export type AuthContentProps = {}
+
+const AuthContent: React.FC<AuthContentProps> = (props) => {
   const classes = useStyles()
 
   return <div className={classes.paper}>{props.children}</div>
 }
-
-AuthContent.propTypes = {}
 
 const useStyles = makeStyles((theme) => ({
   paper: {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Redirect } from 'react-router-dom' //
+import { Route, Redirect, match as Match } from 'react-router-dom' //
 import { makeStyles } from '@material-ui/core/styles'
 
 import { Grid, Typography, Link, Box } from '@material-ui/core/'
@@ -10,7 +10,7 @@ import Signup from './Signup'
 import Recover from './Recover'
 import Reset from './Reset'
 
-function Footer() {
+const AuthFooter = () => {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       <Link color="inherit" component={RouterLink} to="/">
@@ -20,7 +20,11 @@ function Footer() {
   )
 }
 
-export default function Auth({ match }) {
+export type AuthProps = {
+  match: Match
+}
+
+const Auth: React.FC<AuthProps> = ({ match }) => {
   const classes = useStyles()
 
   return (
@@ -33,7 +37,7 @@ export default function Auth({ match }) {
           <Route path={`${match.path}/recover`} component={Recover} />
           <Route path={`${match.path}/reset`} component={Reset} />
           <Box mt={8}>
-            <Footer />
+            <AuthFooter />
           </Box>
         </Box>
       </Grid>
@@ -64,3 +68,5 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }))
+
+export default Auth
