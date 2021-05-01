@@ -6,7 +6,7 @@ import organizationsData from './_data/organizationsData'
 
 const apiUrl = config.api.url
 
-export default [
+const organizationsMocks = [
   rest.get(`${apiUrl}/organizations`, (req, res, ctx) => {
     const { limit = 10, offset = 0, order = {} } = req.params
     const organizationsAll = order
@@ -94,3 +94,5 @@ export default [
     }
   }),
 ]
+
+export default organizationsMocks

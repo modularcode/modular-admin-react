@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "outDir": "src-es",
+    "baseUrl": "src",
+    "target": "ES2020",
+    "noEmit": false,
+    "jsx": "preserve",
+    "declaration": false
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "package.json"
+  ],
+  "extends": "./tsconfig.json"
+}

@@ -5,7 +5,7 @@ import config from '_config'
 
 let apiMocks: any
 
-if (config.api.useMocks) {
+if (config.api.useMocks || process.env.NODE_ENV === 'test') {
   apiMocks = require('./_mocks/')
 }
 
@@ -14,7 +14,7 @@ const init = async () => {
     // Remove all SW caches
     const cachesNames = await caches.keys()
 
-    await Promise.all(cachesNames.map(name => caches.delete(name)))
+    await Promise.all(cachesNames.map((name) => caches.delete(name)))
 
     await apiMocks.default.init()
   }

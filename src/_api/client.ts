@@ -8,23 +8,23 @@ const apiService = axios.create({
 
 // Use the Token header for all requests
 apiService.interceptors.request.use(
-  config => {
+  (config) => {
     const token = authService.getToken()
     config.headers.Authorization = `Bearer ${token}`
 
     return config
   },
-  error => {
+  (error) => {
     return Promise.reject(error)
   },
 )
 
 // Unauth the token if we get 401 unauth response from the server
 apiService.interceptors.response.use(
-  response => {
+  (response) => {
     return response
   },
-  error => {
+  (error) => {
     if (error.response.status === 401) {
       authService.unauth()
     }

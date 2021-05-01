@@ -6,15 +6,15 @@ import usersData from './_data/usersData'
 
 const apiUrl = config.api.url
 
-export default [
+const userMocks = [
   rest.get(`${apiUrl}/users/profile`, (rex, res, ctx) => {
     return res(ctx.json(usersData.current))
   }),
 
   rest.get(`${apiUrl}/users`, async (req, res, ctx) => {
-    let limit = parseInt(req.query.get('limit') || '0')
-    let offset = parseInt(req.query.get('offset') || '10')
-    let order = JSON.parse(req.query.get('order') || '{}')
+    let limit = parseInt(req.params.limit || '10')
+    let offset = parseInt(req.params.offset || '0')
+    let order = req.params.order ? JSON.parse(req.params.order || '{}') : null
 
     const usersAll = order
       ? _.orderBy(usersData.list, [order.orderBy], [order.order])
@@ -98,3 +98,5 @@ export default [
     }
   }),
 ]
+
+export default userMocks

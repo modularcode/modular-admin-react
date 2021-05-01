@@ -148,7 +148,7 @@ const list: User[] = [
     avatarUrl: 'https://randomuser.me/api/portraits/women/0.jpg',
     status: 'active',
   },
-].map(user => {
+].map((user) => {
   const userToOrganization = usersToOrganizationsData.byUserId[user.id] || []
 
   return {
@@ -159,9 +159,7 @@ const list: User[] = [
         organization: _get(organizationsData.byId, relation.organizationId, {}),
       }
     }),
-    createdAt: moment()
-      .subtract(user.id, 'days')
-      .format(),
+    createdAt: moment().subtract(user.id, 'days').format(),
   }
 })
 

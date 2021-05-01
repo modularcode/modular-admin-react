@@ -1,13 +1,11 @@
 import React from 'react'
-import moment, { Moment } from 'moment'
+import moment from 'moment'
 
 // The default context, which is used when there is no provider
 // (might be used for components testing)
 export const dashboardContextDefault = {
   filter: {
-    dateFrom: moment()
-      .subtract(14, 'day')
-      .startOf('day'),
+    dateFrom: moment().subtract(14, 'day').startOf('day'),
     dateTo: moment().startOf('day'),
   },
 }
