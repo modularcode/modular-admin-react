@@ -316,8 +316,12 @@ const useStyles = makeStyles((theme) =>
       background: 'rgba(0, 0, 0, 0.08)',
     },
     navItem: {
+      color: '#fff',
       position: 'relative',
       transition: 'background .23s ease',
+      '& a': {
+        color: 'inherit',
+      },
       '&.active:not(.open)': {
         color: theme.palette.primary.main,
         // background: 'rgba(0, 0, 0, 0.08)',

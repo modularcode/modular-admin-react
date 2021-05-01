@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography'
 
 import BaseLogo from '_common/BaseLogo'
 import SidebarNav from './SidebarNav'
+import SidebarNavRecursive from './SidebarNavRecursive'
 
 export type AppSidebarProps = {
   isCollapsed?: boolean
@@ -40,7 +41,8 @@ const Sidebar: React.FC<AppSidebarProps> = (props) => {
             </Typography>
           </Link>
         </div>
-        <SidebarNav />
+        {/* <SidebarNav /> */}
+        <SidebarNavRecursive />
       </div>
     </aside>
   )
