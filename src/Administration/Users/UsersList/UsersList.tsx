@@ -74,13 +74,13 @@ type UsersData = {
   count: number
 }
 
-const UsersList: React.FC<UsersListProps> = ({ match }) => {
-  const [status, setStatus] = React.useState('idle')
-  const [statusMessage, setStatusMessage] = React.useState('')
-  const [page, setPage] = React.useState(0)
+const UsersList: React.FC<UsersListProps> = () => {
+  const [status, setStatus] = useState('idle')
+  const [statusMessage, setStatusMessage] = useState('')
+  const [page, setPage] = useState(0)
   const [usersData, setUsersData] = useState<UsersData>({ users: [], count: 0 })
-  const [rowsPerPage, setRowsPerPage] = React.useState(10)
-  const [order, setOrder] = React.useState({
+  const [rowsPerPage, setRowsPerPage] = useState(10)
+  const [order, setOrder] = useState({
     order: 'desc',
     orderBy: 'createdAt',
   })
@@ -159,7 +159,7 @@ const UsersList: React.FC<UsersListProps> = ({ match }) => {
                           <TableSortLabel
                             active={order.orderBy === column.id}
                             direction={order.orderBy === column.id ? 'desc' : 'asc'}
-                            onClick={(event) => handelChangeOrder(event, column.id)}
+                            onClick={(event: any) => handelChangeOrder(event, column.id)}
                           >
                             {column.label}
                           </TableSortLabel>
