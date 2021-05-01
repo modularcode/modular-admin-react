@@ -33,6 +33,16 @@ const AppRouter: React.FC = () => {
           component={Administration}
           layout={DashboardLayout}
         />
+        <RouteWithLayout
+          path={`/account`}
+          component={() => null}
+          layout={DashboardLayout}
+        />
+        <RouteWithLayout
+          path={`/settings`}
+          component={() => null}
+          layout={DashboardLayout}
+        />
       </Switch>
     </AppRouterComponent>
   )

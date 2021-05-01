@@ -65,11 +65,11 @@ const SidebarNav: React.FC<ISidebarNavProps> = (props) => {
       items: [
         {
           name: 'Profile',
-          link: '/profile/me',
+          link: '/account/profile',
         },
         {
           name: 'Organization',
-          link: '/organization',
+          link: '/account/organization',
         },
       ],
     },
@@ -92,15 +92,15 @@ const SidebarNav: React.FC<ISidebarNavProps> = (props) => {
   ]
 
   const itemsTheme = [
-    {
-      name: 'Why Modular?',
-      link: '/demo/features',
-      Icon: IconNewReleases,
-      IconClassName: classes.iconFeatures,
-    },
+    // {
+    //   name: 'Why Modular?',
+    //   link: '/demo/features',
+    //   Icon: IconNewReleases,
+    //   IconClassName: classes.iconFeatures,
+    // },
     {
       name: 'Docs',
-      link: '/demo/docs',
+      link: 'https://github.com/modularcode/modular-admin-react/blob/master/README.md',
       Icon: IconLibraryBooks,
       IconClassName: classes.iconDocs,
     },
