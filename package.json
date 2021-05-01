@@ -99,5 +99,8 @@
     "moduleNameMapper": {
       "@/(.*)": "<rootDir>/src/$1"
     }
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

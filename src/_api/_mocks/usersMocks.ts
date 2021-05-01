@@ -12,9 +12,9 @@ const userMocks = [
   }),
 
   rest.get(`${apiUrl}/users`, async (req, res, ctx) => {
-    let limit = parseInt(req.params.get('limit') || '0')
-    let offset = parseInt(req.params.get('offset') || '10')
-    let order = JSON.parse(req.params.get('order') || '{}')
+    let limit = parseInt(req.params.limit || '0')
+    let offset = parseInt(req.params.offset || '10')
+    let order = JSON.parse(req.params.order || '{}')
 
     const usersAll = order
       ? _.orderBy(usersData.list, [order.orderBy], [order.order])
