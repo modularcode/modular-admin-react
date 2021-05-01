@@ -11,13 +11,15 @@ export interface IBasePageToolbarProps {
     titleContainer?: string
     actionsContainer?: string
   }
-  title: React.ReactNode
-  actions: React.ReactNode
+  title?: string
+  TitleComponent?: React.ComponentType
+  ActionsComponent?: React.ComponentType
 }
 
 const BasePageToolbar: React.FC<IBasePageToolbarProps> = (props) => {
   const classes = useStyles()
   const externalClasses = props.classes || {}
+  const ActionsComponent = props.ActionsComponent || null
 
   const Title =
     typeof props.title === 'string' ? (
@@ -25,12 +27,10 @@ const BasePageToolbar: React.FC<IBasePageToolbarProps> = (props) => {
         {props.title}
       </Typography>
     ) : (
-      props.title
+      props.TitleComponent
     )
-  // const TitleComponent = props.titleComponent
 
-  const Actions = props.actions
-  // const ActionsComponent = props.actionsComponent
+  const Actions = ActionsComponent && <ActionsComponent />
 
   return (
     <Grid
@@ -46,7 +46,7 @@ const BasePageToolbar: React.FC<IBasePageToolbarProps> = (props) => {
         container
         className={clsx(classes.titleContainer, externalClasses.titleContainer)}
       >
-        {Title && Title}
+        {Title}
       </Grid>
       <Grid
         item
@@ -56,7 +56,7 @@ const BasePageToolbar: React.FC<IBasePageToolbarProps> = (props) => {
         container
         className={clsx(classes.actionsContainer, externalClasses.titleContainer)}
       >
-        {Actions && Actions}
+        {Actions}
       </Grid>
     </Grid>
   )

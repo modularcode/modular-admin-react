@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { TablePagination, IconButton } from '@material-ui/core'
+import React, { MouseEvent } from 'react'
+import { TablePagination, TablePaginationProps, IconButton } from '@material-ui/core'
+import { TablePaginationActionsProps } from '@material-ui/core/TablePagination/TablePaginationActions'
 import { useTheme, makeStyles } from '@material-ui/core/styles'
 
 import {
@@ -10,25 +10,34 @@ import {
   LastPage as LastPageIcon,
 } from '@material-ui/icons/'
 
-const BaseTablePaginationActions = (props) => {
+import { ITheme } from '_theme/'
+
+export interface IBaseTablePaginationActionsProps {
+  count: number
+  page: number
+  rowsPerPage: number
+  onChangePage: (event: React.MouseEvent<HTMLButtonElement>, newPage: number) => void
+}
+
+const BaseTablePaginationActions: React.FC<TablePaginationActionsProps> = (props) => {
   const classes = useStyles()
   const theme = useTheme()
-  const { count, page, itemsPerPage, onChangePage } = props
+  const { count, page, rowsPerPage, onChangePage } = props
 
-  const handleFirstPageButtonClick = (event) => {
+  const handleFirstPageButtonClick = (event: MouseEvent<HTMLButtonElement>) => {
     onChangePage(event, 0)
   }
 
-  const handleBackButtonClick = (event) => {
+  const handleBackButtonClick = (event: MouseEvent<HTMLButtonElement>) => {
     onChangePage(event, page - 1)
   }
 
-  const handleNextButtonClick = (event) => {
+  const handleNextButtonClick = (event: MouseEvent<HTMLButtonElement>) => {
     onChangePage(event, page + 1)
   }
 
-  const handleLastPageButtonClick = (event) => {
-    onChangePage(event, Math.max(0, Math.ceil(count / itemsPerPage) - 1))
+  const handleLastPageButtonClick = (event: MouseEvent<HTMLButtonElement>) => {
+    onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1))
   }
 
   return (
@@ -49,14 +58,14 @@ const BaseTablePaginationActions = (props) => {
       </IconButton>
       <IconButton
         onClick={handleNextButtonClick}
-        disabled={page >= Math.ceil(count / itemsPerPage) - 1}
+        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
         aria-label="next page"
       >
         {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
       </IconButton>
       <IconButton
         onClick={handleLastPageButtonClick}
-        disabled={page >= Math.ceil(count / itemsPerPage) - 1}
+        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
         aria-label="last page"
       >
         {theme.direction === 'rtl' ? <FirstPageIcon /> : <LastPageIcon />}
@@ -65,7 +74,9 @@ const BaseTablePaginationActions = (props) => {
   )
 }
 
-const BaseTablePagination = (props) => {
+export type IBaseTablePaginationProps = TablePaginationProps
+
+const BaseTablePagination: React.FC<IBaseTablePaginationProps> = (props) => {
   const { count, page, rowsPerPage, onChangePage, onChangeRowsPerPage = () => {} } = props
 
   return (
@@ -86,19 +97,11 @@ const BaseTablePagination = (props) => {
   )
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles<ITheme>((theme) => ({
   root: {
     flexShrink: 0,
     marginLeft: theme.spacing(2.5),
   },
 }))
-
-BaseTablePagination.propTypes = {
-  count: PropTypes.number.isRequired,
-  page: PropTypes.number.isRequired,
-  rowsPerPage: PropTypes.number.isRequired,
-  onChangePage: PropTypes.func.isRequired,
-  onChangeRowsPerPage: PropTypes.func,
-}
 
 export default BaseTablePagination

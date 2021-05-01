@@ -11,13 +11,10 @@ import KeyMetrics from './KeyMetrics/'
 import SubscriptionsRecent from './SubscriptionsRecent/'
 import SubscriptionsBreakdown from './SubscriptionsBreakdown/'
 
-const Dashboard = () => {
+const Dashboard: React.FC = () => {
   return (
     <BasePageContainer>
-      <BasePageToolbar
-        title={'Dashboard'}
-        actions={<DashboardActions />}
-      ></BasePageToolbar>
+      <BasePageToolbar title={'Dashboard'} ActionsComponent={DashboardActions} />
       <Grid container spacing={3}>
         <KeyMetrics />
         <Grid item xs={12}>
