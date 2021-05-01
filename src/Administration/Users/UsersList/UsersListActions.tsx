@@ -14,12 +14,14 @@ import {
 
 // import usersListContext from './usersListContext'
 
-const DashboardActions = () => {
+const UsersListActions: React.FC = () => {
   const classes = useStyles()
   const [search, setSearch] = useState('')
   // const { filter } = useContext(usersListContext)
 
-  const handleChangeSearchInput = (event) => {
+  const handleChangeSearchInput: React.ChangeEventHandler<
+    HTMLInputElement | HTMLTextAreaElement
+  > = (event) => {
     setSearch(event.target.value)
   }
 
@@ -134,4 +136,4 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default DashboardActions
+export default UsersListActions

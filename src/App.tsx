@@ -7,7 +7,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from './_theme'
 import AppRouter from './AppRouter'
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <div className="App">
       <CssBaseline />

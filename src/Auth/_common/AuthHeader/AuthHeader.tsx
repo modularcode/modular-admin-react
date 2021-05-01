@@ -1,8 +1,7 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-
 import { makeStyles, Typography } from '@material-ui/core'
-import BaseLogo from '../../../_common/BaseLogo'
+
+import BaseLogo from '_common/BaseLogo'
 
 export type AuthHeaderProps = {
   title: string

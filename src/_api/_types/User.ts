@@ -21,8 +21,10 @@ export interface UserSubmissionData {
   status?: string
 }
 
-export default interface User extends UserSubmissionData, Entity {
+export interface User extends UserSubmissionData, Entity {
   id: UserId
   organizations?: Organization[]
   userToOrganizations?: UserToOrganization[]
 }
+
+export default User

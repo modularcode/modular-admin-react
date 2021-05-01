@@ -1,11 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
-
-import api from '@/_api'
-
-import BasePageContainer from '@/_common/BasePageContainer'
-import BasePageToolbar from '@/_common/BasePageToolbar'
-import { Save as SaveIcon } from '@material-ui/icons/'
+import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react'
+import { match as Match } from 'react-router-dom'
 import {
   Input,
   Select,
@@ -17,18 +11,29 @@ import {
   makeStyles,
   Grid,
 } from '@material-ui/core'
+import { Save as SaveIcon } from '@material-ui/icons/'
 
-const UserEditor = (props) => {
+import api from '_api'
+
+import { UserSubmissionData } from '_api/_types/User'
+import BasePageContainer from '_common/BasePageContainer'
+import BasePageToolbar from '_common/BasePageToolbar'
+
+export type UserEditorProps = {
+  userId?: number
+  match: Match
+}
+
+const UserEditor: React.FC<UserEditorProps> = (props) => {
   const classes = useStyles()
 
   const { userId } = props
-  const [user, setUser] = useState({
+  const [user, setUser] = useState<UserSubmissionData>({
     avatarUrl: '',
     email: '',
     firstName: '',
     globalRole: '',
     lastName: '',
-    userToOrganizations: [{}],
     username: '',
   })
 
@@ -36,7 +41,10 @@ const UserEditor = (props) => {
     if (!userId) {
       return
     }
+
     async function fetchUser() {
+      if (!userId) return
+
       try {
         const userDataRes = await api.users.getOne(userId)
         setUser(userDataRes)
@@ -47,19 +55,19 @@ const UserEditor = (props) => {
     fetchUser()
   }, [userId])
 
-  const onChangeHandler = (e) =>
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) =>
     setUser({
       ...user,
       [e.target.name]: e.target.value,
     })
 
-  const setGlobalRole = (e) =>
+  const setGlobalRole = (e: ChangeEvent<any>) =>
     setUser({
       ...user,
       globalRole: e.target.value,
     })
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     try {
       if (userId) {
@@ -83,7 +91,7 @@ const UserEditor = (props) => {
               value={user.firstName}
               name="firstName"
               className={classes.width}
-              onChange={(e) => onChangeHandler(e)}
+              onChange={onChangeHandler}
             />
           </FormControl>
           <FormControl className={classes.control}>
@@ -92,7 +100,7 @@ const UserEditor = (props) => {
               value={user.lastName}
               name="lastName"
               className={classes.width}
-              onChange={(e) => onChangeHandler(e)}
+              onChange={onChangeHandler}
             />
           </FormControl>
           <FormControl className={classes.control}>
@@ -101,7 +109,7 @@ const UserEditor = (props) => {
               value={user.username}
               name="username"
               className={classes.width}
-              onChange={(e) => onChangeHandler(e)}
+              onChange={onChangeHandler}
             />
           </FormControl>
           <FormControl className={classes.control}>
@@ -110,7 +118,7 @@ const UserEditor = (props) => {
               value={user.email}
               name="email"
               className={classes.width}
-              onChange={(e) => onChangeHandler(e)}
+              onChange={onChangeHandler}
             />
           </FormControl>
           <FormControl className={classes.control}>
@@ -140,10 +148,6 @@ const UserEditor = (props) => {
       </Grid>
     </BasePageContainer>
   )
-}
-
-UserEditor.propTypes = {
-  userId: PropTypes.number,
 }
 
 const useStyles = makeStyles((theme) => ({

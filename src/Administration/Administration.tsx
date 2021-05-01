@@ -1,9 +1,17 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, match as Match } from 'react-router-dom'
 import UsersList from './Users/UsersList'
-import UserEditor from './Users/UsersEditor/UsersEditor'
+import UserEditor from './Users/UsersEditor'
 
-const Administration = ({ match }) => {
+export type AdministrationRouteParams = {
+  userId: string
+}
+
+export type AdministrationProps = {
+  match: Match<AdministrationRouteParams>
+}
+
+const Administration: React.FC<AdministrationProps> = ({ match }) => {
   return (
     <>
       <Route exact path={`${match.path}/users`} component={UsersList} />
@@ -14,7 +22,7 @@ const Administration = ({ match }) => {
       <Route
         path={`${match.path}/users/:userId/edit`}
         render={(props) => (
-          <UserEditor {...props} userId={parseInt(props.match.params.userId)} />
+          <UserEditor {...props} userId={parseInt(match.params.userId)} />
         )}
       />
     </>

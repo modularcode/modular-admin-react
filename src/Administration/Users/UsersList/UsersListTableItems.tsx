@@ -3,10 +3,21 @@ import { FormattedDate } from 'react-intl'
 import { Link } from 'react-router-dom'
 import { makeStyles, TableCell, TableRow, Avatar, Chip } from '@material-ui/core'
 import { Skeleton } from '@material-ui/lab'
-
 import { Edit as EditIcon, Delete as DeleteIcon } from '@material-ui/icons/'
 
-const UsersListTableItems = ({ users, rowsPerPage = 10, rowsExpected = 10 }) => {
+import { User } from '_api/_types/User'
+
+export type UsersListTableItemsProps = {
+  users: User[]
+  rowsPerPage?: number
+  rowsExpected?: number
+}
+
+const UsersListTableItems: React.FC<UsersListTableItemsProps> = ({
+  users,
+  rowsPerPage = 10,
+  rowsExpected = 10,
+}) => {
   const classes = useStyles()
   // Count how many empty rows needs to be filled
   const usersVisible = users.length || rowsExpected
@@ -63,12 +74,14 @@ const UsersListTableItems = ({ users, rowsPerPage = 10, rowsExpected = 10 }) => 
             />
           </TableCell>
           <TableCell>
-            <FormattedDate
-              value={new Date(row.createdAt)}
-              year="numeric"
-              month="long"
-              day="2-digit"
-            />
+            {row.createdAt && (
+              <FormattedDate
+                value={new Date(row.createdAt)}
+                year="numeric"
+                month="long"
+                day="2-digit"
+              />
+            )}
           </TableCell>
           <TableCell>
             <Link to={{ pathname: `users/${row.id}/edit` }} className={classes.link}>
@@ -86,8 +99,6 @@ const UsersListTableItems = ({ users, rowsPerPage = 10, rowsExpected = 10 }) => 
     </>
   )
 }
-
-UsersListTableItems.propTypes = {}
 
 const useStyles = makeStyles((theme) => ({
   link: {
