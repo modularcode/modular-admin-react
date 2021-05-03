@@ -37,7 +37,7 @@
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "prop-types": "^15.7.2",
-    "react": "^16",
+    "react": "^17",
     "react-chartjs-2": "^3.0.3",
     "react-dom": "^16",
     "react-intl": "^5.17.1",
