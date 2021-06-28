@@ -40,7 +40,7 @@
     "react": "^16",
     "react-chartjs-2": "^3.0.3",
     "react-dom": "^16",
-    "react-intl": "^5.17.1",
+    "react-intl": "^5.20.4",
     "react-router-dom": "^5.2.0",
     "react-script": "^2.0.5",
     "react-scripts": "^4.0.3",
