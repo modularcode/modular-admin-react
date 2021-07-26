@@ -78,7 +78,7 @@
     "react-docgen-typescript-loader": "^3.7.2",
     "rimraf": "^3.0.2",
     "symlink-dir": "^5.0.0",
-    "ts-loader": "^9.1.1"
+    "ts-loader": "^9.2.4"
   },
   "eslintConfig": {
     "extends": "react-app"
